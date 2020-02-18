@@ -13,13 +13,17 @@ import {
   MDBIcon
 } from "mdbreact";
 // import { BrowserRouter as Router } from 'react-router-dom';
-import { ReactComponent as Logo } from "./assets/logo.svg";
 import Routes from "./Routes";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-// import Login from "./components/auth/Login";
+import Alert from "./components/layout/Alert";
+
+//Redux
+import { Provider } from "react-redux";
+import store from "./store";
+
 class App extends Component {
   state = {
     collapseID: ""
@@ -48,28 +52,31 @@ class App extends Component {
     const { collapseID } = this.state;
 
     return (
-      <Router>
-        <div className="flyout">
-          <Navbar />
-          {/* <Landing></Landing> */}
-          {collapseID && overlay}
-          <main style={{ marginTop: "4rem" }}>
-            <Routes />
-            <Route exact path="/" component={Landing} />
-            <Switch>
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-            </Switch>
-            {/* routes here */}
-          </main>
-          {/* <MDBFooter color='indigo'>
+      <Provider store={store}>
+        <Router>
+          <div className="flyout">
+            <Navbar />
+            {/* <Landing></Landing> */}
+            {collapseID && overlay}
+            <main style={{ marginTop: "4rem" }}>
+              <Routes />
+              <Route exact path="/" component={Landing} />
+              <Alert />
+              <Switch>
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+              </Switch>
+              {/* routes here */}
+            </main>
+            {/* <MDBFooter color='indigo'>
             <p className='footer-copyright mb-0 py-3 text-center'>
               &copy; {new Date().getFullYear()} Copyright:
               <a href='https://www.MDBootstrap.com'> MDBootstrap.com </a>
             </p>
           </MDBFooter> */}
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }

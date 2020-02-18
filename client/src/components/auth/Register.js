@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
+import { connect } from "react-redux";
+import { MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
-import axios from "axios";
-const Register = () => {
+import { setAlert } from "../../actions/alert";
+
+import PropTypes from "prop-types";
+
+const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,31 +25,17 @@ const Register = () => {
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  // console.log(formData);
 
   const onSubmit = async e => {
     e.preventDefault();
+
+    e.target.className += " was-validated"; //this line is added to the form class = needs validation -was-validated
+
     if (password !== password2) {
-      console.log("password not match");
+      setAlert("password not match", "danger");
+      setAlert("test alert ", "danger");
     } else {
       console.log(formData);
-
-      const newUser = {
-        name,
-        email,
-        password
-      };
-
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        };
-        const body = JSON.stringify(newUser);
-        // const res = await axios.post("/api/users", body, config);
-        // console.log(res.data);
-      } catch (err) {}
     }
   };
 
@@ -55,9 +45,20 @@ const Register = () => {
         <MDBRow className="d-flex flex-row justify-content-center row">
           <MDBCol md="6">
             <SectionContainer>
-              <form onSubmit={e => onSubmit(e)}>
+              <form onSubmit={e => onSubmit(e)} className="needs-validation">
                 <p className="h5 text-center mb-4">Sign inn</p>
                 <div className="grey-text">
+                  <MDBInput
+                    value={name}
+                    name="name"
+                    onChange={e => onChange(e)}
+                    type="text"
+                    id="materialFormRegisterNameEx"
+                    label="First name"
+                    required
+                  >
+                    <div className="valid-feedback">Looks good!</div>
+                  </MDBInput>
                   <MDBInput
                     label="Type your email"
                     icon="lock"
@@ -88,7 +89,7 @@ const Register = () => {
                     validate
                   />
                   <MDBInput
-                    label="Type your password"
+                    label="Retype your password"
                     icon="lock"
                     group
                     name="password2"
@@ -96,6 +97,9 @@ const Register = () => {
                     onChange={e => onChange(e)}
                     validate
                   />
+                  <div className="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
                 </div>
 
                 <div className="text-center">
@@ -110,4 +114,9 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
+export default connect(null, { setAlert })(Register);
+//pass all the actions you wanna use you have to pass it in to connect
+//connect takes two parameter
