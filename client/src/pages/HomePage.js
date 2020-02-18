@@ -14,9 +14,9 @@ import {
   MDBAnimation,
   MDBNavLink
 } from 'mdbreact';
-import './HomePage.css';
+// import './Landing.css';
 
-class HomePage extends React.Component {
+class Landing extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
 
   render() {
@@ -381,4 +381,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default Landing;
