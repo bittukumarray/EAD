@@ -81,4 +81,18 @@ router.post(
   }
 );
 
+
+router.post('/print',[
+  // check('email',"not a valid email").isEmail(),
+  check('name',"name is not there").not().isEmpty()
+],async (req, res, next)=>{
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  console.log(req.body);
+  return res.status(200).json({print:"printed"});
+})
+
 module.exports = router;
