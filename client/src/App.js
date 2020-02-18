@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -11,10 +12,13 @@ import {
   MDBTooltip,
   MDBIcon
 } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import { ReactComponent as Logo } from './assets/logo.svg';
 import Routes from './Routes';
+import Landing from './components/layout/Landing'
 import Navbar from './components/layout/Navbar'
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
 class App extends Component {
   state = {
     collapseID: ''
@@ -46,12 +50,17 @@ class App extends Component {
       <Router>
         <div className='flyout'>
         <Navbar/>
+{/* <Landing></Landing> */}
           {collapseID && overlay}
           <main style={{ marginTop: '4rem' }}>
-            {/* <Routes /> */}
+            <Routes />
+            <Route exact path="/" component={Landing}/>
+            <Switch>
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
 
+            </Switch>
           {/* routes here */}
-            <h1>hello world</h1>
           </main>
           {/* <MDBFooter color='indigo'>
             <p className='footer-copyright mb-0 py-3 text-center'>

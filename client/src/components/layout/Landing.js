@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   MDBEdgeHeader,
   MDBFreeBird,
@@ -21,8 +21,12 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <>
-        <MDBEdgeHeader color='indigo darken-3' className='sectionPage' />
+      <Fragment>
+          <div>
+
+          hello this will be our lading page
+        </div>
+        {/* <MDBEdgeHeader color='indigo darken-3' className='sectionPage' />
         <div className='mt-3 mb-5'>
           <MDBFreeBird>
             <MDBRow>
@@ -376,7 +380,8 @@ class Landing extends React.Component {
             </MDBRow>
           </MDBContainer>
         </div>
-      </>
+       */}
+      </Fragment>
     );
   }
 }

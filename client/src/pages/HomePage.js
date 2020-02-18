@@ -42,10 +42,9 @@ class Landing extends React.Component {
                     </strong>
                   </h2>
                   <MDBRow />
-                  <p>React Bootstrap with Material Design</p>
+                    <p>This will we our Homepage</p>
                   <p className='pb-4'>
-                    This application shows the actual use of MDB React
-                    components in the application.
+                   Welcome
                   </p>
                   <MDBRow className='d-flex flex-row justify-content-center row'>
                     <a

@@ -9,9 +9,7 @@ import {
   MDBTooltip,
   MDBIcon
 } from 'mdbreact';
-// import { BrowserRouter as Router } from 'react-router-dom';
-// import { ReactComponent as Logo } from './assets/logo.svg';
-// import { ReactComponent as Logo } from './assets/logo.svg';
+
 import {ReactComponent as Logo } from '../../assets/logo.svg'
 
 class Navbar extends Component {
