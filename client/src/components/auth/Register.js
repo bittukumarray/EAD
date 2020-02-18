@@ -43,8 +43,8 @@ const Register = () => {
           }
         };
         const body = JSON.stringify(newUser);
-        const res = await axios.post("/api/users", body, config);
-        console.log(res.data);
+        // const res = await axios.post("/api/users", body, config);
+        // console.log(res.data);
       } catch (err) {}
     }
   };
