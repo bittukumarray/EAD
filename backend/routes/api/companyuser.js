@@ -5,7 +5,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const User = require("../../models/User");
+const CompanyUser = require("../../models/company");
+const Role = require("../../helpers/roles");
 
 router.post(
   "/",
@@ -22,17 +23,17 @@ router.post(
     })
   ],
   async (req, res, next) => {
-    // console.log(req.body);
+    console.log(req.body);
+    console.log(typeof User);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     try {
-      console.log(typeof User);
-      let user = await User.findOne({ email });
+      let user = await CompanyUser.findOne({ email });
       if (user) {
         return res
           .status(400)
@@ -45,15 +46,20 @@ router.post(
         d: "mm"
       });
 
-      user = new User({
+      const api_salt=await bcrypt.genSalt(15);
+      const api_key = await bcrypt.hash(email+role, api_salt);
+      user = new CompanyUser({
         name,
         email,
         avatar,
-        password
+        password,
+        role,
+        api_key
       });
 
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
+
       await user.save();
 
       //return jsonwebtoken

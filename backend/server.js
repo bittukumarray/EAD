@@ -13,6 +13,7 @@ app.use(express.json({ extended: false }));
 //define routes
 
 app.use("/api/users", require("./routes/api/users"));
+app.use("/api/company", require("./routes/api/companyuser"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profile"));
 

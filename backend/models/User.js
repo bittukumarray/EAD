@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 
+const baseOptions = {
+  discriminatorKey: 'itemtype', // our discriminator key, could be anything
+  collection: 'users', // the name of our collection
+};
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -21,9 +25,6 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-});
-
-
-
+}, baseOptions);
 
 module.exports = User = mongoose.model("user", UserSchema);
