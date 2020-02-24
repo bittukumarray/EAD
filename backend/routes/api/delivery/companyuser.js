@@ -39,7 +39,7 @@ router.post(
       }
       
 
-      const avatar = gravatar.url(email+Role.Company, {
+      const avatar = gravatar.url(email, {
         s: "200",
         r: "pg",
         d: "mm"

@@ -9,7 +9,7 @@ const config = require("config");
 const User = require("../../../models/farmer/farmer");
 //resgister user , post , public
 router.get("/", auth, async (req, res, next) => {
-  console.log("body");
+  // console.log("body");
 
   try {
     const user = await User.findById(req.user.id).select("-password");
