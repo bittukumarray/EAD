@@ -12,9 +12,10 @@ app.use(express.json({ extended: false }));
 
 //define routes
 
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/company", require("./routes/api/companyuser"));
-app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/signup/farmer", require("./routes/api/farmer/users"));
+app.use("/api/signup/company", require("./routes/api/delivery/companyuser"));
+app.use("/api/login/farmer", require("./routes/api/farmer/auth"));
+app.use("/api/login/company", require("./routes/api/delivery/companyLogin"));
 app.use("/api/profile", require("./routes/api/profile"));
 
 const PORT = process.env.PORT || 5000;

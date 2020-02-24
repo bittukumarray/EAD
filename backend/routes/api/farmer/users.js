@@ -5,7 +5,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const User = require("../../models/User");
+const FarmerUser = require("../../../models/farmer/farmer");
+const Role = require("../../../helpers/roles");
+const User = require("../../../models/User");
 
 router.post(
   "/",
@@ -28,7 +30,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     try {
       console.log(typeof User);
@@ -39,17 +41,18 @@ router.post(
           .json({ errors: [{ msg: "User already Exists" }] });
       }
 
-      const avatar = gravatar.url(email, {
+      const avatar = gravatar.url(email+Role.Farmer, {
         s: "200",
         r: "pg",
         d: "mm"
       });
 
-      user = new User({
+      user = new FarmerUser({
         name,
         email,
         avatar,
-        password
+        password,
+        role
       });
 
       const salt = await bcrypt.genSalt(10);
