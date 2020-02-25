@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
 import { setAlert } from "../../actions/alert";
-
+import { registerFarmer } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, registerFarmer }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,6 +36,7 @@ const Register = ({ setAlert }) => {
       setAlert("test alert ", "danger");
     } else {
       console.log(formData);
+      registerFarmer({ name, email, password });
     }
   };
 
@@ -115,8 +116,9 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  registerFarmer: PropTypes.func.isRequired
 };
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, registerFarmer })(Register);
 //pass all the actions you wanna use you have to pass it in to connect
 //connect takes two parameter
