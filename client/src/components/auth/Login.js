@@ -4,10 +4,10 @@ import SectionContainer from "../../components/sectionContainer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
-
+import { Redirect } from "react-router-dom";
 import { loginFarmer } from "../../actions/auth";
 
-const Login = ({ loginFarmer }) => {
+const Login = ({ loginFarmer, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -32,6 +32,12 @@ const Login = ({ loginFarmer }) => {
     console.log(email, password);
     loginFarmer(email, password);
   };
+
+  //redirect if logged in
+
+  if (isAuthenticated) {
+    return <Redirect to="/"></Redirect>;
+  }
 
   return (
     <Fragment>
@@ -80,6 +86,12 @@ const Login = ({ loginFarmer }) => {
 
 loginFarmer.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  loginFarmer: PropTypes.func.isRequired
+  loginFarmer: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
-export default connect(null, { loginFarmer })(Login);
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { loginFarmer })(Login);

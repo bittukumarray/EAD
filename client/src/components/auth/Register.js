@@ -5,8 +5,9 @@ import SectionContainer from "../../components/sectionContainer";
 import { setAlert } from "../../actions/alert";
 import { registerFarmer } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
-const Register = ({ setAlert, registerFarmer }) => {
+const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,6 +40,9 @@ const Register = ({ setAlert, registerFarmer }) => {
       registerFarmer({ name, email, password });
     }
   };
+  if (isAuthenticated) {
+    return <Redirect to="/"></Redirect>;
+  }
 
   return (
     <Fragment>
@@ -117,8 +121,13 @@ const Register = ({ setAlert, registerFarmer }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  registerFarmer: PropTypes.func.isRequired
+  registerFarmer: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
-export default connect(null, { setAlert, registerFarmer })(Register);
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+export default connect(mapStateToProps, { setAlert, registerFarmer })(Register);
 //pass all the actions you wanna use you have to pass it in to connect
 //connect takes two parameter
