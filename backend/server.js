@@ -17,8 +17,10 @@ app.use("/api/signup/company", require("./routes/api/delivery/companyuser"));
 app.use("/api/login/farmer", require("./routes/api/farmer/auth"));
 app.use("/api/login/company", require("./routes/api/delivery/companyLogin"));
 app.use("/api/profile/farmer", require("./routes/api/farmer/profile"));
-app.use("/api/profile/company", require("./routes/api/delivery/companyProfile"));
-
+app.use(
+  "/api/profile/company",
+  require("./routes/api/delivery/companyProfile")
+);
 
 const PORT = process.env.PORT || 5000;
 
