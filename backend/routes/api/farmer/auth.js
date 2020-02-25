@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
 
 //
 router.post(
-  "farmer/signup",
+  "/",
   [
     check("email", "Please include a valid email").isEmail(),
     check("password", "please is required").exists()
