@@ -48,22 +48,18 @@ const App = () => {
         <div className="flyout">
           <Navbar />
 
-          <main style={{ marginTop: "4rem" }}>
+          {/* <main style={{ marginTop: "4rem" }}> */}
+          <Switch>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/company-register" component={CompanyRegister} />
+            <Route exact path="/company-login" component={CompanyLogin} />
             <Routes />
             <Route exact path="/" component={Landing} />
             <Alert />
-            <Switch>
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route
-                exact
-                path="/company-register"
-                component={CompanyRegister}
-              />
-              <Route exact path="/company-login" component={CompanyLogin} />
-            </Switch>
-            {/* routes here */}
-          </main>
+          </Switch>
+          {/* routes here */}
+          {/* </main> */}
           {/* <MDBFooter color='indigo'>
             <p className='footer-copyright mb-0 py-3 text-center'>
               &copy; {new Date().getFullYear()} Copyright:
