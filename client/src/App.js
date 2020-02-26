@@ -45,29 +45,26 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        = <Navbar />
-        <main style={{ marginTop: "4rem" }}>
-          <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/company-register" component={CompanyRegister} />
-            <Route exact path="/company-login" component={CompanyLogin} />
-            <Route exact path="/" component={Landing} />
+        <div className="flyout">
+          <Navbar />
+
+          <main style={{ marginTop: "4rem" }}>
             <Alert />
-          </Switch>
-        </main>
-      </Router>
-      {/* <Router>
-        <div className="App">
-          <div className="App">
-            <Navbar />
+
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/company-register"
+                component={CompanyRegister}
+              />
+              <Route exact path="/company-login" component={CompanyLogin} />
+              <Route exact path="/" component={Landing} />
             </Switch>
-          </div>
+          </main>
         </div>
-      </Router> */}
+      </Router>
     </Provider>
   );
 };
