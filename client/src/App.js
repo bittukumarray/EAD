@@ -17,6 +17,8 @@ import Routes from "./Routes";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
+import CompanyRegister from "./components/auth/CompanyRegister";
+import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 
@@ -26,6 +28,7 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 // import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+// import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -51,6 +54,12 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/company-register"
+                component={CompanyRegister}
+              />
+              <Route exact path="/company-login" component={CompanyLogin} />
             </Switch>
             {/* routes here */}
           </main>
