@@ -39,7 +39,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log("Succes sbmit");
+    console.log("Success submit");
     console.log(email, password);
     loginFarmer(email, password);
   };

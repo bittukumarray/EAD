@@ -34,10 +34,25 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const guestLinks = (
     <Fragment>
       <MDBNavItem>
-        <Link to="/login">Login</Link>
+        <Link
+          to="/login"
+          style={{ color: "black", fontWeight: "bolder", fontSize: "20px" }}
+        >
+          Login
+        </Link>
       </MDBNavItem>
       <MDBNavItem>
-        <Link to="/register">jafds;kfjas</Link>
+        <Link
+          to="/register"
+          style={{
+            color: "black",
+            fontWeight: "bolder",
+            fontSize: "20px",
+            marginLeft: "1rem"
+          }}
+        >
+          Sign Up
+        </Link>
 
         {/* <a href="register">register</a> */}
       </MDBNavItem>
@@ -47,9 +62,13 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   return (
     <MDBNavbar color="indigo" dark expand="md" fixed="top" scrolling>
       {/* <a href="/" className="py-0 font-weight-bold"> */}
-      <Link to="/login">jafds;kfjas</Link>
-      <Logo style={{ height: "2.5rem", width: "2.5rem" }} />
-      <strong className="align-middle">MDB React</strong>
+      <Link
+        to="/login"
+        style={{ color: "black", fontWeight: "bolder", fontSize: "20px" }}
+      >
+        Agventure
+      </Link>
+
       {/* </a> */}
 
       <MDBCollapse id="mainNavbarCollapse" navbar>

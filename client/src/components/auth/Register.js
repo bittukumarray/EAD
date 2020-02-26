@@ -51,7 +51,7 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
           <MDBCol md="6">
             <SectionContainer>
               <form onSubmit={e => onSubmit(e)} className="needs-validation">
-                <p className="h5 text-center mb-4">Sign inn</p>
+                <p className="h5 text-center mb-4">Register</p>
                 <div className="grey-text">
                   <MDBInput
                     value={name}
