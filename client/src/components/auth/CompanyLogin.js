@@ -10,7 +10,6 @@ import {
   MDBIcon,
   MDBBtn
 } from "mdbreact";
-import SectionContainer from "../../components/sectionContainer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
@@ -111,4 +110,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { loginCompany })(Login);
+export default connect(mapStateToProps, { setAlert, loginCompany })(Login);

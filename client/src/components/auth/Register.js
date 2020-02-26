@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBContainer } from "mdbreact";
+import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
 import { setAlert } from "../../actions/alert";
 import { registerFarmer } from "../../actions/auth";
@@ -84,10 +84,10 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
                   htmlFor="defaultFormRegisterConfirmEx"
                   className="grey-text"
                 >
-                  Confirm your pass
+                  Your password
                 </label>
                 <input
-                  type="type"
+                  type="password"
                   name="password"
                   id="defaultFormRegisterConfirmEx"
                   className="form-control"
@@ -98,7 +98,7 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
                   htmlFor="defaultFormRegisterPasswordEx"
                   className="grey-text"
                 >
-                  Your password
+                  Confirm your pass
                 </label>
                 <input
                   type="password"

@@ -1,12 +1,10 @@
 import React, { Fragment, useState } from "react";
 import {
-  MDBContainer,
   MDBRow,
   MDBCard,
   MDBCol,
   MDBInput,
   MDBCardBody,
-  MDBCardHeader,
   MDBIcon,
   MDBBtn,
   MDBModalFooter
@@ -164,6 +162,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { loginFarmer }, null, {
+export default connect(mapStateToProps, { setAlert, loginFarmer }, null, {
   pure: false
 })(Login);

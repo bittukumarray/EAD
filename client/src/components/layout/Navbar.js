@@ -1,23 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 
 import {
   MDBNavbar,
-  MDBNavbarBrand,
   MDBNavbarNav,
   MDBNavItem,
   MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBFormInline,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem
+  MDBCollapse
 } from "mdbreact";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import { MDBFooter, MDBTooltip, MDBIcon } from "mdbreact";
-
-import { ReactComponent as Logo } from "../../assets/logo.svg";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
