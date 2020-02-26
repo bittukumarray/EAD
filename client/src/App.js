@@ -1,84 +1,53 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBNavItem,
-  MDBFooter,
-  MDBNavLink,
-  MDBTooltip,
-  MDBIcon
-} from "mdbreact";
-// import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from "./Routes";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
+import CompanyRegister from "./components/auth/CompanyRegister";
+import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
-
-class App extends Component {
-  state = {
-    collapseID: ""
-  };
-
-  toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-    }));
-
-  closeCollapse = collID => () => {
-    const { collapseID } = this.state;
-    window.scrollTo(0, 0);
-    collapseID === collID && this.setState({ collapseID: "" });
-  };
-
-  render() {
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.toggleCollapse("mainNavbarCollapse")}
-      />
-    );
-
-    const { collapseID } = this.state;
-
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className="flyout">
-            <Navbar />
-            {/* <Landing></Landing> */}
-            {collapseID && overlay}
-            <main style={{ marginTop: "4rem" }}>
-              <Routes />
-              <Route exact path="/" component={Landing} />
-              <Alert />
-              <Switch>
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-              </Switch>
-              {/* routes here */}
-            </main>
-            {/* <MDBFooter color='indigo'>
-            <p className='footer-copyright mb-0 py-3 text-center'>
-              &copy; {new Date().getFullYear()} Copyright:
-              <a href='https://www.MDBootstrap.com'> MDBootstrap.com </a>
-            </p>
-          </MDBFooter> */}
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
+import { loadUser } from "./actions/auth";
+// import { loadUser } from "./actions/auth";
+import setAuthToken from "./utils/setAuthToken";
+// import companyRegister from "./components/auth/companyRegister";
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
 }
+
+const App = () => {
+  //it is like component did mount
+  useEffect(() => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+      store.dispatch(loadUser());
+    }
+  }, []);
+  return (
+    <Provider store={store}>
+      <Router>
+        {/* <div className="flyout"> */}
+        <Navbar />
+
+        <main style={{ marginTop: "4rem" }}>
+          <Alert />
+
+          <Switch>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/company-register" component={CompanyRegister} />
+            <Route exact path="/company-login" component={CompanyLogin} />
+            <Route exact path="/" component={Landing} />
+          </Switch>
+        </main>
+        {/* </div> */}
+      </Router>
+    </Provider>
+  );
+};
 
 export default App;

@@ -1,25 +1,28 @@
 const express = require("express");
 const router = express.Router();
-const jwtDecode = require('jwt-decode');
+const jwtDecode = require("jwt-decode");
 const bcrypt = require("bcryptjs");
 const auth = require("../../../middleware/farmer/auth");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
 const User = require("../../../models/farmer/farmer");
-//resgister user , post , public
-router.get("/", auth, async (req, res, next) => {
-  // console.log("body");
 
-  try {
-    const user = await User.findById(req.user.id).select("-password");
+//get user api , post , public
+// router.get("/", async (req, res, next) => {
+//   // console.log("body");
 
-    return res.json(user);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send("server error");
-  }
-});
+//   try {
+//     console.log(res);
+//     const user = await User.findById(req.user.id).select("-password");
+//     console.error("fasdfads");
+
+//     return res.json(user);
+//   } catch (err) {
+//     console.error("fasdfads");
+//     return res.status(500).send("server error");
+//   }
+// });
 
 //
 router.post(
@@ -55,9 +58,9 @@ router.post(
       const payload = {
         user: {
           id: user.id,
-          name:user.name,
-          email:user.email,
-          role:user.role
+          name: user.name,
+          email: user.email,
+          role: user.role
         }
       };
 

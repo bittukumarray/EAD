@@ -1,20 +1,5 @@
-import React, { Fragment } from 'react';
-import {
-  MDBEdgeHeader,
-  MDBFreeBird,
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBCardBody,
-  MDBIcon,
-  MDBCard,
-  MDBCardTitle,
-  MDBCardImage,
-  MDBCardText,
-  MDBAnimation,
-  MDBNavLink
-} from 'mdbreact';
-import './HomePage.css';
+import React, { Fragment } from "react";
+import "./HomePage.css";
 
 class Landing extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
@@ -22,10 +7,7 @@ class Landing extends React.Component {
   render() {
     return (
       <Fragment>
-          <div>
-
-          hello this will be our lading page
-        </div>
+        <div>hello this will be our lading page</div>
         {/* <MDBEdgeHeader color='indigo darken-3' className='sectionPage' />
         <div className='mt-3 mb-5'>
           <MDBFreeBird>
