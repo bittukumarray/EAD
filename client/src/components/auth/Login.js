@@ -39,7 +39,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log("Succes sbmit");
+    console.log("Success submit");
     console.log(email, password);
     loginFarmer(email, password);
   };
@@ -52,8 +52,8 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <MDBContainer>
-        <MDBRow>
+      <SectionContainer header="" noBorder>
+        <MDBRow className="d-flex flex-row justify-content-center row">
           <MDBCol md="6">
             <MDBCard>
               <MDBCardBody className="mx-4">
@@ -149,7 +149,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
             </MDBCard>
           </MDBCol>
         </MDBRow>
-      </MDBContainer>
+      </SectionContainer>
     </Fragment>
   );
 };

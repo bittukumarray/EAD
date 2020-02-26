@@ -50,8 +50,6 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
         <MDBRow className="d-flex flex-row justify-content-center row">
           <MDBCol md="6">
             <SectionContainer>
-              {/* //fasdfaskdjfform */}
-
               <form onSubmit={e => onSubmit(e)}>
                 <p className="h4 text-center mb-4">Sign up</p>
                 <label
