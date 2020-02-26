@@ -1,19 +1,5 @@
-import React, { Component, useEffect } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBNavItem,
-  MDBFooter,
-  MDBNavLink,
-  MDBTooltip,
-  MDBIcon
-} from "mdbreact";
-// import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from "./Routes";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
@@ -25,7 +11,7 @@ import Alert from "./components/layout/Alert";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
-import { loadUser, loadCompanyUser } from "./actions/auth";
+import { loadUser } from "./actions/auth";
 // import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 // import companyRegister from "./components/auth/companyRegister";
@@ -39,31 +25,26 @@ const App = () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
       store.dispatch(loadUser());
-      // store.dispatch(loadCompanyUser());
     }
   }, []);
   return (
     <Provider store={store}>
       <Router>
-        <div className="flyout">
-          <Navbar />
+        {/* <div className="flyout"> */}
+        <Navbar />
 
-          <main style={{ marginTop: "4rem" }}>
-            <Alert />
+        <main style={{ marginTop: "4rem" }}>
+          <Alert />
 
-            <Switch>
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route
-                exact
-                path="/company-register"
-                component={CompanyRegister}
-              />
-              <Route exact path="/company-login" component={CompanyLogin} />
-              <Route exact path="/" component={Landing} />
-            </Switch>
-          </main>
-        </div>
+          <Switch>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/company-register" component={CompanyRegister} />
+            <Route exact path="/company-login" component={CompanyLogin} />
+            <Route exact path="/" component={Landing} />
+          </Switch>
+        </main>
+        {/* </div> */}
       </Router>
     </Provider>
   );
