@@ -54,7 +54,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
     <Fragment>
       <SectionContainer header="" noBorder>
         <MDBRow className="d-flex flex-row justify-content-center row">
-          <MDBCol md="6">
+          <MDBCol md="7" lg="4">
             <MDBCard>
               <MDBCardBody className="mx-4">
                 <form onSubmit={e => onSubmit(e)}>

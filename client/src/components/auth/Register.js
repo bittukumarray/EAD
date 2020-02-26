@@ -48,7 +48,7 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
     <Fragment>
       <SectionContainer header="" noBorder>
         <MDBRow className="d-flex flex-row justify-content-center row">
-          <MDBCol md="6">
+          <MDBCol md="7" lg="4">
             <SectionContainer>
               <form onSubmit={e => onSubmit(e)}>
                 <p className="h4 text-center mb-4">Sign up</p>
