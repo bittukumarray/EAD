@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import { MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
+import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBContainer } from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
 import { setAlert } from "../../actions/alert";
 import { registerFarmer } from "../../actions/auth";
@@ -30,7 +30,7 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    e.target.className += " was-validated"; //this line is added to the form class = needs validation -was-validated
+    // e.target.className += " was-validated"; //this line is added to the form class = needs validation -was-validated
 
     if (password !== password2) {
       setAlert("password not match", "danger");
@@ -46,69 +46,73 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <SectionContainer header="Sign in -" noBorder>
+      <SectionContainer header="" noBorder>
         <MDBRow className="d-flex flex-row justify-content-center row">
           <MDBCol md="6">
             <SectionContainer>
-              <form onSubmit={e => onSubmit(e)} className="needs-validation">
-                <p className="h5 text-center mb-4">Sign inn</p>
-                <div className="grey-text">
-                  <MDBInput
-                    value={name}
-                    name="name"
-                    onChange={e => onChange(e)}
-                    type="text"
-                    id="materialFormRegisterNameEx"
-                    label="First name"
-                    required
-                  >
-                    <div className="valid-feedback">Looks good!</div>
-                  </MDBInput>
-                  <MDBInput
-                    label="Type your email"
-                    icon="lock"
-                    group
-                    name="email"
-                    // type="password"
-                    onChange={e => onChange(e)}
-                    validate
-                    // required
-                  />
-                  <MDBInput
-                    label="Type your name"
-                    icon="lock"
-                    group
-                    name="name"
-                    // type="password"
-                    onChange={e => onChange(e)}
-                    validate
-                  />
+              {/* //fasdfaskdjfform */}
 
-                  <MDBInput
-                    label="Type your password"
-                    icon="lock"
-                    group
-                    name="password"
-                    type="password"
-                    onChange={e => onChange(e)}
-                    validate
-                  />
-                  <MDBInput
-                    label="Retype your password"
-                    icon="lock"
-                    group
-                    name="password2"
-                    type="password"
-                    onChange={e => onChange(e)}
-                    validate
-                  />
-                  <div className="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <MDBBtn type="submit">Login</MDBBtn>
+              <form onSubmit={e => onSubmit(e)}>
+                <p className="h4 text-center mb-4">Sign up</p>
+                <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+                  Your name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  onChange={e => onChange(e)}
+                />
+                <br />
+                <label
+                  htmlFor="defaultFormRegisterEmailEx"
+                  className="grey-text"
+                >
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="defaultFormRegisterEmailEx"
+                  className="form-control"
+                  onChange={e => onChange(e)}
+                />
+                <br />
+                <label
+                  htmlFor="defaultFormRegisterConfirmEx"
+                  className="grey-text"
+                >
+                  Confirm your pass
+                </label>
+                <input
+                  type="type"
+                  name="password"
+                  id="defaultFormRegisterConfirmEx"
+                  className="form-control"
+                  onChange={e => onChange(e)}
+                />
+                <br />
+                <label
+                  htmlFor="defaultFormRegisterPasswordEx"
+                  className="grey-text"
+                >
+                  Your password
+                </label>
+                <input
+                  type="password"
+                  name="password2"
+                  id="defaultFormRegisterPasswordEx"
+                  className="form-control"
+                  onChange={e => onChange(e)}
+                />
+                <div className="text-center mt-4">
+                  <MDBBtn color="unique" type="submit">
+                    Register
+                  </MDBBtn>
                 </div>
               </form>
             </SectionContainer>
