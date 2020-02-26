@@ -1,5 +1,15 @@
 import React, { Fragment, useState } from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCol,
+  MDBInput,
+  MDBCardBody,
+  MDBCardHeader,
+  MDBIcon,
+  MDBBtn
+} from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -41,45 +51,52 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <SectionContainer header="Sign in -" noBorder>
-        <MDBRow className="d-flex flex-row justify-content-center row">
-          <MDBCol md="6">
-            {" "}
-            setAlert: PropTypes.func.isRequired,
-            <SectionContainer>
-              <form onSubmit={e => onSubmit(e)}>
-                <p className="h5 text-center mb-4">Sign inn</p>
-                <div className="grey-text">
-                  <MDBInput
-                    label="Type your email"
-                    icon="lock"
-                    group
-                    name="email"
-                    // type="password"
-                    onChange={e => onChange(e)}
-                    validate
-                    // required
-                  />
+      <div className="container">
+        <MDBContainer>
+          <MDBRow>
+            <MDBCol md="6">
+              <MDBCard>
+                <MDBCardBody>
+                  <MDBCardHeader className="form-header deep-blue-gradient rounded">
+                    <h3 className="my-3">
+                      <MDBIcon icon="lock" /> Login:
+                    </h3>
+                  </MDBCardHeader>
+                  <form onSubmit={e => onSubmit(e)}>
+                    <p className="h5 text-center mb-4">Sign inn</p>
+                    <div className="grey-text">
+                      <MDBInput
+                        label="Type your email"
+                        icon="lock"
+                        group
+                        name="email"
+                        // type="password"
+                        onChange={e => onChange(e)}
+                        validate
+                        // required
+                      />
 
-                  <MDBInput
-                    label="Type your password"
-                    icon="lock"
-                    group
-                    name="password"
-                    type="password"
-                    onChange={e => onChange(e)}
-                    validate
-                  />
-                </div>
+                      <MDBInput
+                        label="Type your password"
+                        icon="lock"
+                        group
+                        name="password"
+                        type="password"
+                        onChange={e => onChange(e)}
+                        validate
+                      />
+                    </div>
 
-                <div className="text-center">
-                  <MDBBtn type="submit">Login</MDBBtn>
-                </div>
-              </form>
-            </SectionContainer>
-          </MDBCol>
-        </MDBRow>
-      </SectionContainer>
+                    <div className="text-center">
+                      <MDBBtn type="submit">Login</MDBBtn>
+                    </div>
+                  </form>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </div>
     </Fragment>
   );
 };

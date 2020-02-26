@@ -9,18 +9,20 @@ const config = require("config");
 const User = require("../../../models/farmer/farmer");
 
 //get user api , post , public
-router.get("/", async (req, res, next) => {
-  // console.log("body");
+// router.get("/", async (req, res, next) => {
+//   // console.log("body");
 
-  try {
-    const user = await User.findById(req.user.id).select("-password");
+//   try {
+//     console.log(res);
+//     const user = await User.findById(req.user.id).select("-password");
+//     console.error("fasdfads");
 
-    return res.json(user);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send("server error");
-  }
-});
+//     return res.json(user);
+//   } catch (err) {
+//     console.error("fasdfads");
+//     return res.status(500).send("server error");
+//   }
+// });
 
 //
 router.post(
