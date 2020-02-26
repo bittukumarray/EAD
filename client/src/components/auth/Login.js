@@ -1,14 +1,19 @@
 import React, { Fragment, useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
-import axios from "axios";
-const Login = () => {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { setAlert } from "../../actions/alert";
+import { Redirect } from "react-router-dom";
+import { loginFarmer } from "../../actions/auth";
+
+const Login = ({ loginFarmer, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
 
-  const { name, email, password, password2 } = formData;
+  const { password, email } = formData;
 
   //if we had class we had something like this
   // state = {
@@ -24,13 +29,23 @@ const Login = () => {
   const onSubmit = async e => {
     e.preventDefault();
     console.log("Succes sbmit");
+    console.log(email, password);
+    loginFarmer(email, password);
   };
+
+  //redirect if logged in
+
+  if (isAuthenticated) {
+    return <Redirect to="/"></Redirect>;
+  }
 
   return (
     <Fragment>
       <SectionContainer header="Sign in -" noBorder>
         <MDBRow className="d-flex flex-row justify-content-center row">
           <MDBCol md="6">
+            {" "}
+            setAlert: PropTypes.func.isRequired,
             <SectionContainer>
               <form onSubmit={e => onSubmit(e)}>
                 <p className="h5 text-center mb-4">Sign inn</p>
@@ -69,4 +84,14 @@ const Login = () => {
   );
 };
 
-export default Login;
+loginFarmer.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  loginFarmer: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { loginFarmer })(Login);

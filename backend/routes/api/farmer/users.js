@@ -8,6 +8,24 @@ const config = require("config");
 const FarmerUser = require("../../../models/farmer/farmer");
 const Role = require("../../../helpers/roles");
 const User = require("../../../models/User");
+const auth = require("../../../middleware/farmer/auth");
+
+//get user api , post , public
+router.get("/", auth, async (req, res, next) => {
+  // console.log("body");
+
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+
+    if (!user.role || user.role != Role.Farmer) {
+      return res.status(401).json({ msg: "Not authorized as a Farmer" });
+    }
+    return res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("server error");
+  }
+});
 
 router.post(
   "/",
@@ -85,18 +103,22 @@ router.post(
   }
 );
 
-
-router.post('/print',[
-  // check('email',"not a valid email").isEmail(),
-  check('name',"name is not there").not().isEmpty()
-],async (req, res, next)=>{
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+router.post(
+  "/print",
+  [
+    // check('email',"not a valid email").isEmail(),
+    check("name", "name is not there")
+      .not()
+      .isEmpty()
+  ],
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    console.log(req.body);
+    return res.status(200).json({ print: "printed" });
   }
-  console.log(req.body);
-  return res.status(200).json({print:"printed"});
-})
+);
 
 module.exports = router;
