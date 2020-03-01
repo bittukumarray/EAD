@@ -8,6 +8,8 @@ import ChartSection1 from './sections/ChartSection1';
 import ChartSection2 from './sections/ChartSection2';
 import MapSection from './sections/MapSection';
 import ModalSection from './sections/ModalSection';
+// import '../index.css';
+
 
 const DashboardPage =  () => {
   return (
