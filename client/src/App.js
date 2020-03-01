@@ -42,6 +42,7 @@ const App = () => {
             <Route exact path="/company-register" component={CompanyRegister} />
             <Route exact path="/company-login" component={CompanyLogin} />
             <Route exact path="/dashboard" component={Dashboard} />
+          
             <Route exact path="/" component={Landing} />
           </Switch>
         </main>
