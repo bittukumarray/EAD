@@ -8,6 +8,9 @@ import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Dashboard from './components/dashboard/Dashboard'
+
+import TopNavigation from './components/dashboard/topNavigation'
+
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -31,7 +34,9 @@ const App = () => {
     <Provider store={store}>
       <Router>
         {/* <div className="flyout"> */}
-        <Navbar />
+        {/* <Navbar /> */}
+
+        <TopNavigation />
 
         <main style={{ marginTop: "4rem" }}>
           <Alert />
