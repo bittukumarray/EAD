@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
 import alert from "./alert";
 import auth from "./auth";
+import cropsInfo from "./cropsInfo";
 export default combineReducers({
   alert,
-  auth
+  auth,
+  cropsInfo:cropsInfo
 });
