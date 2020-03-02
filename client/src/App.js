@@ -7,6 +7,9 @@ import CompanyRegister from "./components/auth/CompanyRegister";
 import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
+import Dashboard from './components/dashboard/Dashboard'
+
+import TopNavigation from './components/dashboard/topNavigation'
 
 //Redux
 import { Provider } from "react-redux";
@@ -31,7 +34,9 @@ const App = () => {
     <Provider store={store}>
       <Router>
         {/* <div className="flyout"> */}
-        <Navbar />
+        {/* <Navbar /> */}
+
+        <TopNavigation />
 
         <main style={{ marginTop: "4rem" }}>
           <Alert />
@@ -41,6 +46,8 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/company-register" component={CompanyRegister} />
             <Route exact path="/company-login" component={CompanyLogin} />
+            <Route exact path="/dashboard" component={Dashboard} />
+          
             <Route exact path="/" component={Landing} />
           </Switch>
         </main>
