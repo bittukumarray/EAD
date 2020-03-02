@@ -23,6 +23,8 @@ app.use(
   "/api/profile/company",
   require("./routes/api/delivery/companyProfile")
 );
+app.use("/restricted", require("./routes/api/info"));
+app.use("/api/crops", require("./routes/api/farmer/get_info"));
 
 const PORT = process.env.PORT || 5000;
 
