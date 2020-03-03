@@ -3,21 +3,31 @@ const router = express.Router();
 const Crops = require("../../models/farmer/cropInfo");
 const fs = require('fs');
 
-router.get("/upload-data", async(req, res, next) => {
+
+
+router.get("/upload-data", async (req, res, next) => {
 
     const rawdata = fs.readFileSync('/home/bittu/EAD/backend/externalFiles/crops.json');
     const cropsData = await JSON.parse(rawdata);
+    // console.log("length is ", cropsData.length);
+    let count = 0, datacount = 0,test=999;
     try {
-        cropsData.forEach(async(element )=> {
-            crop = new Crops({
-                details: element["p_tag_list"],
-                name: element["title"],
-                img: element["image"]
-            });
-            const crops = await crop.save();
-                
+        // console.log(cropsData);
+        const abc = await cropsData.forEach(async (element) => {
+            const cropdata = await Crops.findOne({ name: element["title"] })
+            count++;
+            if (!cropdata) {
+                crop = new Crops({
+                    details: element["p_tag_list"],
+                    name: element["title"],
+                    img: element["image"]
+                });
+                datacount++;
+                const crops = await crop.save();
+            }
+
         })
-        return res.status(200).json({ "msg": "successful" });
+        return res.status(200).json({ "msg": "successful", "data-inserted": datacount });
     }
     catch (err) {
         console.log("catch");
