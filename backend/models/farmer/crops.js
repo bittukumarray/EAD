@@ -24,7 +24,7 @@ const CropsSchema = new mongoose.Schema({
       type:double,
       required:true
   },
-  Total:{
+  quantity:{
       type:double,
       required:true
   }
