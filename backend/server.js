@@ -16,6 +16,8 @@ app.use("/api/check-user", require("./routes/api/users"));
 
 app.use("/api/signup/farmer", require("./routes/api/farmer/users"));
 app.use("/api/signup/company", require("./routes/api/delivery/companyuser"));
+app.use("/api/signup/user", require("./routes/api/genuser/user"));
+app.use("/api/login/user", require("./routes/api/genuser/auth"));
 app.use("/api/login/farmer", require("./routes/api/farmer/auth"));
 app.use("/api/login/company", require("./routes/api/delivery/companyLogin"));
 app.use("/api/profile/farmer", require("./routes/api/farmer/profile"));
@@ -26,6 +28,7 @@ app.use(
 app.use("/restricted", require("./routes/api/info"));
 app.use("/api/crops", require("./routes/api/farmer/get_info"));
 app.use("/api/farmer", require("./routes/api/farmer/activity"));
+app.use("/api/user", require("./routes/api/genuser/activity"));
 
 const PORT = process.env.PORT || 5000;
 
