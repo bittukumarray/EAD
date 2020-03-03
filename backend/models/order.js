@@ -16,10 +16,6 @@ const OrderSchema = new Schema({
       ref: "User"
     }
   },
-  farmer: {
-    type: Schema.Types.ObjectId,
-    ref: "farmer"
-  },
   date: {
     type: Date,
     default: Date.now
