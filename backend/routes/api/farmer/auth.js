@@ -32,7 +32,8 @@ router.post(
     check("password", "please is required").exists()
   ],
   async (req, res, next) => {
-    // console.log(req.body);
+    console.log("in farmer login ");
+    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
