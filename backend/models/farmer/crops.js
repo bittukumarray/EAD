@@ -11,7 +11,8 @@ const CropsSchema = new mongoose.Schema({
     ref: "farmer"
   },
   img: {
-    type: String
+    type: String,
+    default:"https://cdn.downtoearth.org.in/library/large/2019-06-03/0.62901000_1559538844_maize_gettyimages-.jpg"
   },
   date: {
     type: Date,
