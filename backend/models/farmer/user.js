@@ -19,4 +19,4 @@ var GenUserSchema = User.discriminator('genuser', new mongoose.Schema({
     
 }, options));
 
-module.exports= Farmer = mongoose.model("genuser");
+module.exports= GenUser = mongoose.model("genuser");

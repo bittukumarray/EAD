@@ -26,4 +26,4 @@ const OrderSchema = new Schema({
   }
 });
 
-module.exports = Crops = mongoose.model("order", OrderSchema);
+module.exports = mongoose.model("order", OrderSchema);
