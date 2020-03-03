@@ -6,29 +6,28 @@ const CropsSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  farmer :{
-      type:Schema.Types.ObjectId,
-      ref:'farmer'
+  farmer: {
+    type: Schema.Types.ObjectId,
+    ref: "farmer"
   },
   img: {
-    type: String,
+    type: String
   },
   date: {
     type: Date,
     default: Date.now
   },
-  details:{
-      type:String
+  details: {
+    type: String
   },
-  price:{
-      type:double,
-      required:true
+  price: {
+    type: double,
+    required: true
   },
-  quantity:{
-      type:double,
-      required:true
+  quantity: {
+    type: double,
+    required: true
   }
-  
 });
 
 module.exports = Crops = mongoose.model("crops", CropsSchema);

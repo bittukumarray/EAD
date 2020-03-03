@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Role = require("../../helpers/roles");
 const User = require("../User");
+// const Order = require("../order");
+const Schema = mongoose.Schema;
 
 var options = { discriminatorKey: 'genuser' };
 var GenUserSchema = User.discriminator('genuser', new mongoose.Schema({
@@ -9,9 +11,12 @@ var GenUserSchema = User.discriminator('genuser', new mongoose.Schema({
         default:Role.GenUser
     },
     cart:[
-        
+        {
+            type:Schema.Types.ObjectId,
+            ref:'order'
+        }
     ]
     
 }, options));
 
-module.exports= Farmer = mongoose.model("farmer");
+module.exports= Farmer = mongoose.model("genuser");
