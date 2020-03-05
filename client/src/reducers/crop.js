@@ -2,7 +2,7 @@ import {GET_CROPS,CROP_ERROR } from '../actions/types';
 const initialState = {
     crops:[],
     crop:null,
-    error={}
+    error:{}
 }
 
 export default function(state = initialState, action){
