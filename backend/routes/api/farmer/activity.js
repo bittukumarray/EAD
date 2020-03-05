@@ -7,15 +7,25 @@ const Crops = require("../../../models/farmer/crops");
 
 //get crops
 router.get("/get-crops", async (req, res, next) => {
+  try{
   const crops = await Crops.find();
   res.status(200).json({ messege: "Crops fetched successfully", crops: crops });
+  }catch(err){
+    console.log(err.message);
+    res.status.send('server Error');
+  }
 });
+
+
 
 //get a single crop
 router.get("get-crop/:cropId", async (req, res, next) => {
   const cropId = await Crops.findById(req.params.cropId);
   res.status(200).json({ message: "Fetched a single crop", crop: cropId });
 });
+
+
+
 // crops adding api
 router.post("/add-crops", auth, async (req, res, next) => {
   const errors = validationResult(req);
