@@ -22,11 +22,11 @@ const CropsSchema = new mongoose.Schema({
     type: String
   },
   price: {
-    type: double,
+    type: Number,
     required: true
   },
   quantity: {
-    type: double,
+    type: Number,
     required: true
   }
 });

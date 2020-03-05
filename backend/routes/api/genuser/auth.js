@@ -2,29 +2,12 @@ const express = require("express");
 const router = express.Router();
 const jwtDecode = require("jwt-decode");
 const bcrypt = require("bcryptjs");
-const auth = require("../../../middleware/farmer/auth");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const User = require("../../../models/farmer/farmer");
+const User = require("../../../models/farmer/user");
 
-//get user api , post , public
-// router.get("/", async (req, res, next) => {
-//   // console.log("body");
 
-//   try {
-//     console.log(res);
-//     const user = await User.findById(req.user.id).select("-password");
-//     console.error("fasdfads");
-
-//     return res.json(user);
-//   } catch (err) {
-//     console.error("fasdfads");
-//     return res.status(500).send("server error");
-//   }
-// });
-
-//
 router.post(
   "/",
   [
@@ -32,8 +15,6 @@ router.post(
     check("password", "please is required").exists()
   ],
   async (req, res, next) => {
-    console.log("in farmer login ");
-    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });

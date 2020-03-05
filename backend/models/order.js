@@ -1,24 +1,18 @@
 const mongoose = require("mongoose");
 
-const schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
-const OrderSchema = new Schema({
+const OrderSchema = new mongoose.Schema({
   crops: [
     {
-      crop: { type: Object, required: true, ref: "Crop" },
+      crop: { type: Schema.Types.ObjectId, required: true, ref: "crops" },
       quantity: { type: Number, required: true }
     }
   ],
   user: {
-    userId: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "User"
-    }
-  },
-  farmer: {
-    type: Schema.Types.ObjectId,
-    ref: "farmer"
+      ref: "genuser"
   },
   date: {
     type: Date,
