@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
+import { MDBNavbar, MDBMask, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBView } from 'mdbreact';
+
+import './topNav.css';
 
 class TopNavigation extends Component {
     state = {
@@ -17,41 +19,34 @@ class TopNavigation extends Component {
             dropdownOpen: !this.state.dropdownOpen
         });
     }
-
     render() {
         return (
-            <MDBNavbar className="flexible-navbar" light expand="md"  fixed="top"> 
-                <MDBNavbarBrand href="/">
-                    <strong>MDB</strong>
-                </MDBNavbarBrand>
+            <MDBNavbar style={{height:"59px"}} className="flexible-navbar border navbar-dark success-color" light expand="md"  fixed="top">
                 <MDBNavbarToggler onClick = { this.onClick } />
                 <MDBCollapse isOpen = { this.state.collapse } navbar>
                     <MDBNavbarNav left>
                         <MDBNavItem active>
                             <MDBNavLink to="#">Home</MDBNavLink>
                         </MDBNavItem>
-                        <MDBNavItem>
-                            <a rel="noopener noreferrer" className="nav-link Ripple-parent" href="https://mdbootstrap.com/docs/react/" target="_blank">About MDB</a>
+                        <MDBNavItem className="nav-item">
+                            <a className="nav-link" rel="noopener noreferrer" className="nav-link Ripple-parent" href="#" target="_blank">Crops</a>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <a rel="noopener noreferrer" className="nav-link Ripple-parent" href="https://mdbootstrap.com/docs/react/getting-started/download/" target="_blank">Free download</a>
+                            <a rel="noopener noreferrer" className="nav-link Ripple-parent" href="#" target="_blank">Sales</a>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <a rel="noopener noreferrer"  className="nav-link Ripple-parent" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
+                            <a rel="noopener noreferrer" className="nav-link Ripple-parent" href="#" target="_blank">Farmers</a>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <a rel="noopener noreferrer"  className="nav-link Ripple-parent" href="#" target="_blank">History</a>
                         </MDBNavItem>
                     </MDBNavbarNav>
                     <MDBNavbarNav right>
                         <MDBNavItem>
-                            <a className="nav-link navbar-link" rel="noopener noreferrer" target="_blank" href="https://pl-pl.facebook.com/mdbootstrap/"><MDBIcon fab icon="facebook" /></a>
+                            <a href="#" target="_blank"><button type="button" class="btn btn-primary btn-md">Login</button></a>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <a className="nav-link navbar-link" rel="noopener noreferrer" target="_blank" href="https://twitter.com/mdbootstrap"><MDBIcon fab icon="twitter" /></a>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <a className="border border-light rounded mr-1 nav-link Ripple-parent" rel="noopener noreferrer" href="https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design" target="_blank"><MDBIcon fab icon="github" className="mr-2"/>MDB GitHub</a>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <a className="border border-light rounded mr-1 nav-link Ripple-parent" rel="noopener noreferrer" href="https://mdbootstrap.com/products/react-ui-kit/" target="_blank"><MDBIcon fab icon="github" className="mr-2"/>Go Pro</a>
+                            <a href="#" target="_blank"><button type="button" class="btn btn-primary btn-md">Sign Up</button></a>
                         </MDBNavItem>
                     </MDBNavbarNav>
                 </MDBCollapse>

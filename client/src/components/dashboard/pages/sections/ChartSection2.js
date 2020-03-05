@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MDBCol, MDBCard, MDBCardBody, MDBCardHeader, MDBRow } from 'mdbreact';
-import { Line, Doughnut, Radar } from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2';
 
 class ChartSection2 extends Component {
     render(){
@@ -8,7 +8,7 @@ class ChartSection2 extends Component {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
               {
-                label: 'My First dataset',
+                label: 'Crops(in %)',
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,0.4)',
@@ -26,34 +26,13 @@ class ChartSection2 extends Component {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: [65, 59, 80, 81, 56, 55, 70]
               }
             ]
         };
 
-        const dataRadar = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [
-                {
-                  label: '#1',
-                  backgroundColor: 'rgba(245, 74, 85, 0.5)',
-                  data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                  label: '#2',
-                  backgroundColor: 'rgba(90, 173, 246, 0.5)',
-                  data: [12, 42, 121, 56, 24, 12, 2]
-                },
-                {
-                  label: '#3',
-                  backgroundColor: 'rgba(245, 192, 50, 0.5)',
-                  data: [2, 123, 154, 76, 54, 23, 5]
-                }
-              ]
-        };
-
         const dataDoughnut = {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+            labels: ["Wheat", "Rice", "Maize", "Millet", "Pulses"],
             datasets: [{
                 data: [300, 50, 100, 40, 120],
                 backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
@@ -65,7 +44,7 @@ class ChartSection2 extends Component {
             <MDBRow className="mb-4">
                 <MDBCol md="12" lg="4" className="mb-4">
                     <MDBCard className="mb-4">
-                    <MDBCardHeader>Line chart</MDBCardHeader>
+                    <MDBCardHeader>Sales</MDBCardHeader>
                     <MDBCardBody>
                         <Line data={dataLine} options={{responsive: true }} />
                     </MDBCardBody>
@@ -73,15 +52,7 @@ class ChartSection2 extends Component {
                 </MDBCol>
                 <MDBCol md="12" lg="4" className="mb-4">
                     <MDBCard className="mb-4">
-                    <MDBCardHeader>Radar chart</MDBCardHeader>
-                    <MDBCardBody>
-                        <Radar data={dataRadar}  height={300} options={{responsive: true }} />
-                    </MDBCardBody>
-                    </MDBCard>
-                </MDBCol>
-                <MDBCol md="12" lg="4" className="mb-4">
-                    <MDBCard className="mb-4">
-                    <MDBCardHeader>Doughnut chart</MDBCardHeader>
+                    <MDBCardHeader>Number of Crops</MDBCardHeader>
                     <MDBCardBody >
                         <Doughnut data={dataDoughnut}  height={300} options={{responsive: true }} />
                     </MDBCardBody>

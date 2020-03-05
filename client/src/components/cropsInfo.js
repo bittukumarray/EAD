@@ -17,7 +17,7 @@ class BlogPage extends Component {
         return(
             <MDBCard className="my-5 px-5 pb-5">
       <MDBCardBody className="text-left">
-        <h2 className="h1-responsive font-weight-bold text-center my-5">
+        <h2 style={{color: 'green'}} className="h1-responsive font-weight-bold text-center my-5">
           Information About Crops
         </h2>
             {this.props.cropsInfo[0] ? this.props.cropsInfo[0].map((element)=>
