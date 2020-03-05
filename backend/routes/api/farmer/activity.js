@@ -7,8 +7,15 @@ const Crops = require("../../../models/farmer/crops");
 
 //get crops
 router.get("/get-crops", async (req, res, next) => {
-  const crops = await Crops.find();
-  res.status(200).json({ messege: "Crops fetched successfully", crops: crops });
+  try {
+    const crops = await Crops.find();
+    res
+      .status(200)
+      .json({ messege: "Crops fetched successfully", crops: crops });
+  } catch (err) {
+    console.log(err.message);
+    res.status.send("server Error");
+  }
 });
 
 //get a single crop
