@@ -7,7 +7,6 @@ const { check, validationResult } = require("express-validator");
 const config = require("config");
 const User = require("../../../models/farmer/user");
 
-
 router.post(
   "/",
   [

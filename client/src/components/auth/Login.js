@@ -152,7 +152,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
   );
 };
 
-loginFarmer.propTypes = {
+Login.propTypes = {
   setAlert: PropTypes.func.isRequired,
   loginFarmer: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
