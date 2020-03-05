@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import "./HomePage.css";
 import SideNavigation from './sideNavigation';
 import TopNavigation from './topNavigation';
-import Footer from './Footer';
-import Navbar from '../../components/layout/Navbar'
+// import Footer from './Footer';
+// import Navbar from '../../components/layout/Navbar'
 
 // import { Route, Switch } from 'react-router-dom';
 import DashboardPage from './pages/DashboardPage';
@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
         
         
         </main>
-        <Footer />
+        {/* <Footer /> */}
         </Router>
       </Fragment>
     );

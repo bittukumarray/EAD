@@ -1,10 +1,16 @@
 import React from 'react';
-import logo from "../../assets/mdb-react.png";
+import logo from "../../assets/farmer-logo.png";
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from 'mdbreact';
 import { NavLink } from 'react-router-dom';
 
 
 import './sideNav.css';
+
+// const sidebarStyles = {
+//     sidebar: {
+//       width: 300
+//     }
+//   };
 
 const TopNavigation = () => {
     return (
