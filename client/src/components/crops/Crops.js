@@ -11,10 +11,16 @@ const Crops = ({getCrops,crop:{crops}})=>{
     return (
         <Fragment>
             <div>crops </div>
+            <hr/>
             <div className='crops'>
         {crops.map(crop => (
-          <div >{crop.name}</div>
-        ))}
+          <div >
+              <div>{crop.name}</div>
+              <div>{crop.price}</div>
+              <div>{crop.quantiy}</div>
+              <hr/>
+          </div>
+          ))}
       </div>
         </Fragment>
     )
