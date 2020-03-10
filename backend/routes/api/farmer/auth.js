@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const jwtDecode = require("jwt-decode");
 const bcrypt = require("bcryptjs");
-const auth = require("../../../middleware/farmer/auth");
+const auth = require("../../../middleware/farmerAuth");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const User = require("../../../models/farmer/farmer");
+const User = require("../../../models/farmer");
 
 //get user api , post , public
 // router.get("/", async (req, res, next) => {

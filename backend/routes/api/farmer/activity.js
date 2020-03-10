@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../../../middleware/farmer/auth");
+const auth = require("../../../middleware/farmerAuth");
 const { check, validationResult } = require("express-validator");
-const Farmer = require("../../../models/farmer/farmer");
-const Crops = require("../../../models/farmer/crops");
+const Farmer = require("../../../models/farmer");
+const Crops = require("../../../models/crops");
 
 //get crops
 router.get("/get-crops", async (req, res, next) => {

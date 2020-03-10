@@ -5,10 +5,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const CompanyUser = require("../../../models/company/company");
+const CompanyUser = require("../../../models/company");
 // const Role = require("../../../helpers/roles");
 const User = require("../../../models/User");
-const auth = require("../../../middleware/farmer/auth");
+const auth = require("../../../middleware/farmerAuth");
 
 const Role = require("../../../helpers/roles");
 

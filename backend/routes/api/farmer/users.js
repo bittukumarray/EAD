@@ -5,10 +5,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const FarmerUser = require("../../../models/farmer/farmer");
+const FarmerUser = require("../../../models/farmer");
 const Role = require("../../../helpers/roles");
 const User = require("../../../models/User");
-const auth = require("../../../middleware/farmer/auth");
+const auth = require("../../../middleware/farmerAuth");
 
 //get user api , post , public
 router.get("/", auth, async (req, res, next) => {
