@@ -53,7 +53,7 @@ class WheatherPage extends Component {
         })}</p>
         
   <div class="d-flex justify-content-between">
-      <p class="display-1 degree">{this.state.data.main.temp-273.15}°C</p>
+      <p class="display-1 degree">{this.state.data.main.temp -273.15}.°C</p>
     <i class="fas fa-sun-o fa-5x pt-3 amber-text"></i>
   </div>
   <div class="d-flex justify-content-between mb-4">
