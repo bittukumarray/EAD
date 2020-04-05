@@ -32,7 +32,7 @@ router.post("/add-crops", auth, async (req, res, next) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { name, farmer, img, details, price, quantity } = req.body;
+  const { name, farmer, img, details, price, quantity,city } = req.body;
   const farmer_obj =await Farmer.findById(farmer);
 
   console.log(farmer_obj);
@@ -47,6 +47,7 @@ router.post("/add-crops", auth, async (req, res, next) => {
     details,
     price,
     quantity,
+    city
   });
   const data = await crop.save();
   return res.status(201).json({ msg: "successful", crops: data });
