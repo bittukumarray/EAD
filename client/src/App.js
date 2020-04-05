@@ -22,6 +22,7 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 // import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import Payment from "./components/payment/Payment";
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -56,6 +57,7 @@ const App = () => {
             <Route exact path="/crops" component={Crops} />
             <Route exact path="/weather-report" component={WeatherPage} />
             <Route exact path="/catalog" component={CatalogPage} />
+            <Route exact path="/payment" component={Payment} />
 
 
             <Route exact path="/" component={Landing} />
