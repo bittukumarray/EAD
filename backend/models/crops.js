@@ -8,7 +8,8 @@ const CropsSchema = new mongoose.Schema({
   },
   farmer: {
     type: Schema.Types.ObjectId,
-    ref: "farmer"
+    ref: "farmer",
+    required: true
   },
   img: {
     type: String,
@@ -28,6 +29,10 @@ const CropsSchema = new mongoose.Schema({
   quantity: {
     type: Number,
     required: true
+  },
+  city:{
+    type:String,
+    required:true
   }
 });
 
