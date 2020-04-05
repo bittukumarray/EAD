@@ -100,7 +100,7 @@ this.state.data.map((element)=>{
     {/* <!--Description--> */}
     <p class="card-text">{element.details}
     </p>
-
+    </div>
     {/* <!--Card footer--> */}
     <div class="card-footer">
       <span class="float-left">Rs. {element.price}/kg</span>
@@ -114,7 +114,6 @@ this.state.data.map((element)=>{
         </div>
         </div>
         </div>
-      </div>
       
 })
 
