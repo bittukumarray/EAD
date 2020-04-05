@@ -10,6 +10,7 @@ module.exports = function(req, res, next) {
     return res.status(401).json({ msg: "no token , authorization denied" });
   }
   if (!role || role != Role.Farmer) {
+    console.log(role);
     return res.status(401).json({ msg: "Not authorized as a farmer" });
   }
   try {

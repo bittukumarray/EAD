@@ -10,6 +10,10 @@ const CropsSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "farmer"
   },
+  farmer_name:{
+    type:String,
+    required:true
+  },
   img: {
     type: String,
     default:"https://cdn.downtoearth.org.in/library/large/2019-06-03/0.62901000_1559538844_maize_gettyimages-.jpg"
