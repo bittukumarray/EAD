@@ -10,7 +10,8 @@ import Alert from "./components/layout/Alert";
 import Dashboard from './components/dashboard/Dashboard';
 import BlogPage from './components/cropsInfo';
 import Crops from './components/crops/Crops'
-import WheatherPage from './components/wheather';
+import WeatherPage from './components/wheather';
+import CatalogPage from './components/catalog';
 
 
 import TopNavigation from './components/dashboard/topNavigation'
@@ -53,7 +54,8 @@ const App = () => {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crops-info" component={BlogPage} />
             <Route exact path="/crops" component={Crops} />
-            <Route exact path="/wheather-report" component={WheatherPage} />
+            <Route exact path="/weather-report" component={WeatherPage} />
+            <Route exact path="/catalog" component={CatalogPage} />
 
 
             <Route exact path="/" component={Landing} />

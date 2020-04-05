@@ -1,30 +1,28 @@
 import React, { Component } from "react";
-import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn } from "mdbreact";
+import { MDBCard, MDBCardBody } from "mdbreact";
 import { connect } from "react-redux";
 import axios from "axios";
 
 
 
-class WheatherPage extends Component {
+class WeatherPage extends Component {
 
     state = {
         "data": "",
         "city":"patna"
     }
-    componentDidMount() {
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`).then((data) => {
-            this.setState({ data: data.data });
-        })
+    async componentDidMount() {
+      const data = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
+      this.setState({ data: data.data });
     }
 
     onChangeHandler = (e)=>{
       this.setState({city:e.target.value});
     }
 
-    onClickHandler = (e)=>{
-      axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`).then((data) => {
+    onClickHandler = async (e)=>{
+      const data = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
             this.setState({ data: data.data });
-        })
     }
 
 
@@ -153,4 +151,4 @@ class WheatherPage extends Component {
 }
 
 
-export default connect(null, null)(WheatherPage);
+export default connect(null, null)(WeatherPage);
