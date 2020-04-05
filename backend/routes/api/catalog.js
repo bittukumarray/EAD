@@ -24,6 +24,18 @@ router.get("/city/:city", async (req, res, next) => {
     }
 });
 
+router.get("/anydata/:data", async (req, res, next) => {
+    const reqData = req.params.data;
+    try {
+        const data = await Crops.find({ $or: [{ city: { $regex: reqData, $options: "i" } }, { name: { $regex: reqData, $options: "i" } }, { farmer_name: { $regex: reqData, $options: "i" } }] }, null, { sort: '-date' }, function (err, docs) { });
+        return res.status(200).json(data);
+    }
+    catch (e) {
+        return res.json(e);
+    }
+});
+
+
 router.get("/all", async (req, res, next) => {
     try {
         const data = await Crops.find({}, null, { sort: '-date' }, function (err, docs) { });

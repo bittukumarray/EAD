@@ -93,27 +93,27 @@ this.state.data.map((element)=>{
           <a href="#!">
             <div class="mask rgba-white-slight"></div>
           </a>
-          <p class="card-text">@{element.city}</p>
-          <div class="card-body card-body-cascade text-center">
-<h4 class="card-title"><strong><a href="">{element.name}</a></strong></h4>
+        </div>
+        {/* <!--Card image--> */}
 
-    {/* <!--Description--> */}
-    <p class="card-text">{element.details}
-    </p>
+        {/* <!--Card content--> */}
+        <div class="card-body">
+          {/* <!--Title--> */}
+          <a>
+<h4 class="card-title">{element.name}</h4>
+          </a>
+<a class="card-meta">{element.details}</a>
 
-    {/* <!--Card footer--> */}
-    <div class="card-footer">
-      <span class="float-left">Rs. {element.price}/kg</span>
-      <span class="float-right">
-      <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart mr-3"></i></a>
-        <a data-toggle="tooltip" data-placement="top" title="Share"><i class="fas fa-share-alt mr-3"></i></a>
-        <a class="active" data-toggle="tooltip" data-placement="top" title="Added to Wishlist"><i class="fas fa-heart"></i></a>
-        </span>
+          {/* <!--Text--> */}
+          <hr></hr>
+<a class="card-meta"><span><i class="fas fa-user"></i>{element.farmer_name}</span></a>
+<p class="card-meta float-right">{element.city}</p>
+<p class="card-text float-right">{element.date}</p>
         </div>
-    </div>
-        </div>
-        </div>
-        </div>
+        {/* <!--Card content--> */}
+
+      </div>
+      </div>
       </div>
       
 })
