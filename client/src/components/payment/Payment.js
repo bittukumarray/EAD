@@ -55,12 +55,12 @@ export default class Payment extends Component {
               </div>
 
               <div class="md-form mb-5">
-                <input type="text" id="email" class="form-control" placeholder="rohit@bot.com"></input>
+                <input type="text" id="email" class="form-control" placeholder="mi@gmail.com"></input>
                 <label for="email" class=""> </label>
               </div>
 
               <div class="md-form mb-5">
-                <input type="text" id="address" class="form-control" placeholder="rohit bot street"></input>
+                <input type="text" id="address" class="form-control" placeholder="street"></input>
                 <label for="address" class=""></label>
               </div>
 
