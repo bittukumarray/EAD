@@ -88,33 +88,34 @@ this.state.data.map((element)=>{
       <div class="card card-personal mb-4">
 
         {/* <!--Card image--> */}
-        <div class="view">
+        <div class="view" style={{backgroundColor:"rgba(123,231,200,1)"}}>
           <img class="card-img-top" src={element.img} alt="Card image cap"></img>
           <a href="#!">
             <div class="mask rgba-white-slight"></div>
           </a>
           <p class="card-text">@{element.city}</p>
-          <div class="card-body card-body-cascade text-center">
+ <div class="card-body card-body-cascade text-center">
 <h4 class="card-title"><strong><a href="">{element.name}</a></strong></h4>
 
     {/* <!--Description--> */}
     <p class="card-text">{element.details}
     </p>
-
+    </div>
     {/* <!--Card footer--> */}
-    <div class="card-footer">
+    <div class="card card-cascade card-ecommerce wider">
+    <div class="card-footer ">
       <span class="float-left">Rs. {element.price}/kg</span>
       <span class="float-right">
-      <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart mr-3"></i></a>
-        <a data-toggle="tooltip" data-placement="top" title="Share"><i class="fas fa-share-alt mr-3"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i style={{color:"rgba(234, 111,123)"}} class="fas fa-shopping-cart mr-3"></i></a>
+        <a data-toggle="tooltip" data-placement="top" title="Share"><i style={{color:"green"}} class="fas fa-share-alt mr-3"></i></a>
         <a class="active" data-toggle="tooltip" data-placement="top" title="Added to Wishlist"><i class="fas fa-heart"></i></a>
         </span>
         </div>
+        </div>
+    </div>
     </div>
         </div>
         </div>
-        </div>
-      </div>
       
 })
 
