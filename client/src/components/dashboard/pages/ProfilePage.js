@@ -1,7 +1,11 @@
 import React from 'react'
 
+
 const ProfilePage =  () => {
   return (
+    <div>
+    
+
         <div class="container py-2">
           <div class="row my-2">
               <div class="col-lg-4">
@@ -88,6 +92,7 @@ const ProfilePage =  () => {
               </div>
           </div>
       </div>
+    </div>
   );
 }
 
