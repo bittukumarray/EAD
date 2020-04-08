@@ -14,7 +14,7 @@ import './sideNav.css';
 
 const TopNavigation = () => {
     return (
-        <div className="sidebar-fixed position-fixed border-right">
+        <div style={{backgroundColor:"white"}} className="sidebar-fixed position-fixed border-right">
             <a href="#!" className="logo-wrapper waves-effect">
                 <img alt="MDB React Logo" className="img-fluid" src={logo}/>
             </a>
@@ -31,22 +31,28 @@ const TopNavigation = () => {
                         Profile
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/tables" activeClassName="activeClass">
+                <NavLink to="/crops" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="table" className="mr-3"/>
-                        Tables
+                        crops
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/maps" activeClassName="activeClass">
+                <NavLink to="/deliverable" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="map" className="mr-3"/>
-                        Maps
+                        deliverable
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/404" activeClassName="activeClass">
+                <NavLink to="/setting" activeClassName="activeClass">
                     <MDBListGroupItem>
-                        <MDBIcon icon="exclamation" className="mr-3"/>
-                        404
+                        <MDBIcon icon="map" className="mr-3"/>
+                        setting
+                    </MDBListGroupItem>
+                </NavLink>
+                <NavLink to="/password reset" activeClassName="activeClass">
+                    <MDBListGroupItem>
+                        <MDBIcon icon="map" className="mr-3"/>
+                        password reset
                     </MDBListGroupItem>
                 </NavLink>
             </MDBListGroup>

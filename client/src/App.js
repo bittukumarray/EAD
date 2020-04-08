@@ -10,6 +10,9 @@ import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import BlogPage from "./components/cropsInfo";
 import Crops from "./components/crops/Crops";
+import WeatherPage from "./components/wheather";
+import CatalogPage from "./components/catalog";
+import Crop from "./components/crop/Crop";
 
 import TopNavigation from "./components/dashboard/topNavigation";
 
@@ -19,6 +22,7 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 // import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import Payment from "./components/payment/Payment";
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -51,6 +55,10 @@ const App = () => {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crops-info" component={BlogPage} />
             <Route exact path="/crops" component={Crops} />
+            <Route exact path="/crop/:id" component={Crop} />
+            <Route exact path="/weather-report" component={WeatherPage} />
+            <Route exact path="/catalog" component={CatalogPage} />
+            <Route exact path="/payment" component={Payment} />
 
             <Route exact path="/" component={Landing} />
           </Switch>

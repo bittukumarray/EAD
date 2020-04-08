@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Role = require("../../helpers/roles");
-const User = require("../User");
+const Role = require("../helpers/roles");
+const User = require("./User");
 // const Order = require("../order");
 const Schema = mongoose.Schema;
 const genSchema = new mongoose.Schema({

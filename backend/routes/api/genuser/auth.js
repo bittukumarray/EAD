@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
-const User = require("../../../models/farmer/user");
+const User = require("../../../models/genuser");
 
 router.post(
   "/",

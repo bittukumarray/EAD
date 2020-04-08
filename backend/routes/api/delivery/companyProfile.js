@@ -1,7 +1,7 @@
-const auth=require("../../../middleware/company/auth");
+const auth=require("../../../middleware/companyAuth");
 const express = require("express");
 const router = express.Router();
-const CompanyUser = require("../../../models/company/company");
+const CompanyUser = require("../../../models/company");
 
 router.post("/", auth, async(req, res, next)=>{
 

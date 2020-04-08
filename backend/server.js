@@ -29,6 +29,7 @@ app.use("/restricted", require("./routes/api/info"));
 app.use("/api/crops", require("./routes/api/farmer/get_info"));
 app.use("/api/farmer", require("./routes/api/farmer/activity"));
 app.use("/api/user", require("./routes/api/genuser/activity"));
+app.use("/api/filter", require("./routes/api/catalog"));
 
 const PORT = process.env.PORT || 5000;
 

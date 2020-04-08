@@ -1,7 +1,7 @@
-const auth=require("../../../middleware/farmer/auth");
+const auth=require("../../../middleware/farmerAuth");
 const express = require("express");
 const router = express.Router();
-const Farmer = require("../../../models/farmer/farmer");
+const Farmer = require("../../../models/farmer");
 
 router.post("/", auth, async(req, res, next)=>{
 

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Role = require("../../helpers/roles");
-const User = require("../User");
+const Role = require("../helpers/roles");
+const User = require("./User");
 
 var options = { discriminatorKey: 'company' };
 
