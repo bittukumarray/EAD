@@ -7,12 +7,11 @@ import CompanyRegister from "./components/auth/CompanyRegister";
 import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
-import Dashboard from './components/dashboard/Dashboard';
-import BlogPage from './components/cropsInfo';
-import Crops from './components/crops/Crops'
+import Dashboard from "./components/dashboard/Dashboard";
+import BlogPage from "./components/cropsInfo";
+import Crops from "./components/crops/Crops";
 
-
-import TopNavigation from './components/dashboard/topNavigation'
+import TopNavigation from "./components/dashboard/topNavigation";
 
 //Redux
 import { Provider } from "react-redux";
