@@ -3,23 +3,38 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {getCrops} from '../../actions/crops';
+import {getCrop} from '../../actions/crops';
 
-const Crop = ({getCrops, crop:{crop},match})=>{
-    useEffect(()=>{
-        getCrops(match.params.id);
-    });
+const Crop = ({ getCrop, crop: { crop,loading }, match }) => {
+    useEffect(() => {
+    console.log("crop detail");
 
-    return (
+      getCrop(match.params.id);
+      console.log(crop);
+
+    },[getCrop, match.params.id]);
+  
+    return loading || crop === null ? (
+        <div>loading</div>
+      ) : (
         <Fragment>
-            <div>laj;slkfjas</div>
+         name = {crop.name}
+         <hr/>
+         farmer = name {crop.farmer_name}
+         <hr/>
+         quantity : {crop.quantity}
+         <hr/>
+         price  = {crop.price}
+         <hr/>
+        city =  {crop.city}
+         <hr/>
+         details  = {crop.details}
         </Fragment>
-    )
-};
-
+      );
+  };
 
 Crop.propTypes = {
-    getCrops: PropTypes.func.isRequired,
+    getCrop: PropTypes.func.isRequired,
     crop: PropTypes.object.isRequired
   };
   
@@ -27,4 +42,4 @@ Crop.propTypes = {
     crop: state.crop
   });
 
-  export default connect(mapStateToProps,{getCrops})(Crop);
+  export default connect(mapStateToProps, { getCrop })(Crop);

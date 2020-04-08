@@ -9,5 +9,6 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const CROPSINFO="CROPSINFO";
 export const GET_CROPS = "GET_CROPS";
+export const GET_CROP = 'GET_CROP';
 export const CROP_ERROR = "CROP_ERROR";
 
