@@ -78,44 +78,19 @@ class TopNavigation extends Component {
         <MDBCollapse isOpen={this.state.collapse} navbar>
           <MDBNavbarNav left>
             <MDBNavItem active>
-              <MDBNavLink to="#">Home</MDBNavLink>
+              <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <Link
-                className="nav-link"
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                to="/crops"
-              >
-                Crops
-              </Link>
+              <MDBNavLink to="/crops">Crops</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <Link
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                to="/sales"
-              >
-                Sales
-              </Link>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/sales">Sales</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <Link
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                to="/dashboard"
-              >
-                Farmer Dashboard
-              </Link>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <Link
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                to="/weather-report"
-              >
-                Weather-Report
-              </Link>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/weather-report"> Weather-Report</MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
