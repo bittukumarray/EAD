@@ -1,10 +1,9 @@
-import React from 'react';
+import React from "react";
 import logo from "../../assets/farmer-logo.png";
-import { MDBListGroup, MDBListGroupItem, MDBIcon } from 'mdbreact';
-import { NavLink } from 'react-router-dom';
+import { MDBListGroup, MDBListGroupItem, MDBIcon } from "mdbreact";
+import { NavLink } from "react-router-dom";
 
-
-import './sideNav.css';
+import "./sideNav.css";
 
 // const sidebarStyles = {
 //     sidebar: {
@@ -13,51 +12,54 @@ import './sideNav.css';
 //   };
 
 const TopNavigation = () => {
-    return (
-        <div style={{backgroundColor:"white"}} className="sidebar-fixed position-fixed border-right">
-            <a href="#!" className="logo-wrapper waves-effect">
-                <img alt="MDB React Logo" className="img-fluid" src={logo}/>
-            </a>
-            <MDBListGroup className="list-group-flush">
-                <NavLink exact={true} to="/" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="chart-pie" className="mr-3"/>
-                        Dashboard
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/profile" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="user" className="mr-3"/>
-                        Profile
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/crops" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="table" className="mr-3"/>
-                        crops
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/deliverable" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="map" className="mr-3"/>
-                        deliverable
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/setting" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="map" className="mr-3"/>
-                        setting
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/password reset" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="map" className="mr-3"/>
-                        password reset
-                    </MDBListGroupItem>
-                </NavLink>
-            </MDBListGroup>
-        </div>
-    );
-}
+  return (
+    <div
+      style={{ backgroundColor: "white" }}
+      className="sidebar-fixed position-fixed border-right"
+    >
+      <a href="#!" className="logo-wrapper waves-effect">
+        <img alt="MDB React Logo" className="img-fluid" src={logo} />
+      </a>
+      <MDBListGroup className="list-group-flush">
+        <NavLink exact={true} to="/dashboard" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="chart-pie" className="mr-3" />
+            Dashboard
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/profile" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="user" className="mr-3" />
+            Profile
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/crops" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="table" className="mr-3" />
+            crops
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/deliverable" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="map" className="mr-3" />
+            deliverable
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/setting" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="map" className="mr-3" />
+            setting
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/password reset" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="map" className="mr-3" />
+            password reset
+          </MDBListGroupItem>
+        </NavLink>
+      </MDBListGroup>
+    </div>
+  );
+};
 
 export default TopNavigation;
