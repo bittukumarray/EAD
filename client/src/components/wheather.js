@@ -77,7 +77,7 @@ class WeatherPage extends Component {
 
                 <div class="d-flex justify-content-between">
                   <p class="display-1 degree">
-                    {this.state.data.main.temp - 273.15}.°C
+                    {this.state.data.main.temp - 273.15}°C
                   </p>
                   <i class="fas fa-sun-o fa-5x pt-3 amber-text"></i>
                 </div>
