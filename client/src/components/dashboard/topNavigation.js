@@ -81,45 +81,33 @@ class TopNavigation extends Component {
               <MDBNavLink to="#">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <a
+              <Link
                 className="nav-link"
                 rel="noopener noreferrer"
                 className="nav-link Ripple-parent"
-                href="#"
-                target="_blank"
+                to="/crops"
               >
                 Crops
-              </a>
+              </Link>
             </MDBNavItem>
             <MDBNavItem>
-              <a
+              <Link
                 rel="noopener noreferrer"
                 className="nav-link Ripple-parent"
-                href="#"
-                target="_blank"
+                to="/sales"
               >
                 Sales
-              </a>
+              </Link>
             </MDBNavItem>
             <MDBNavItem>
-              <a
+              <Link
                 rel="noopener noreferrer"
                 className="nav-link Ripple-parent"
-                href="#"
+                to="/dashboard"
                 target="_blank"
               >
-                Farmers
-              </a>
-            </MDBNavItem>
-            <MDBNavItem>
-              <a
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                href="#"
-                target="_blank"
-              >
-                History
-              </a>
+                Farmer dashboard
+              </Link>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
