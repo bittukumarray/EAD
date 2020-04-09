@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import "./topNav.css";
+import { Link } from "react-router-dom";
 
 class TopNavigation extends Component {
   state = {
@@ -37,11 +38,11 @@ class TopNavigation extends Component {
     const authLinks = (
       <React.Fragment>
         <MDBNavItem>
-          <a href="#" target="_blank">
+          <Link href="/logout" target="_blank">
             <button type="button" class="btn btn-primary btn-md">
               logout
             </button>
-          </a>
+          </Link>
         </MDBNavItem>
       </React.Fragment>
     );
@@ -49,18 +50,18 @@ class TopNavigation extends Component {
     const guestLinks = (
       <React.Fragment>
         <MDBNavItem>
-          <a href="#" target="_blank">
+          <Link to="/login">
             <button type="button" class="btn btn-primary btn-md">
               Login
             </button>
-          </a>
+          </Link>
         </MDBNavItem>
         <MDBNavItem>
-          <a href="#" target="_blank">
+          <Link to="/register">
             <button type="button" class="btn btn-primary btn-md">
               signup
             </button>
-          </a>
+          </Link>
         </MDBNavItem>
       </React.Fragment>
     );
