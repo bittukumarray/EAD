@@ -7,14 +7,14 @@ import CompanyRegister from "./components/auth/CompanyRegister";
 import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
-import Dashboard from './components/dashboard/Dashboard';
-import BlogPage from './components/cropsInfo';
-import Crops from './components/crops/Crops'
-import WeatherPage from './components/wheather';
-import CatalogPage from './components/catalog';
-import Crop from './components/crop/Crop';
+import Dashboard from "./components/dashboard/Dashboard";
+import BlogPage from "./components/cropsInfo";
+import Crops from "./components/crops/Crops";
+import WeatherPage from "./components/wheather";
+import CatalogPage from "./components/catalog";
+import Crop from "./components/crop/Crop";
 
-import TopNavigation from './components/dashboard/topNavigation'
+import TopNavigation from "./components/dashboard/topNavigation";
 
 //Redux
 import { Provider } from "react-redux";
@@ -59,7 +59,6 @@ const App = () => {
             <Route exact path="/weather-report" component={WeatherPage} />
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/payment" component={Payment} />
-
 
             <Route exact path="/" component={Landing} />
           </Switch>
