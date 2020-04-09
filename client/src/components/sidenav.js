@@ -1,9 +1,9 @@
 import React from "react";
-import logo from "../../assets/farmer-logo.png";
+import logo from "../assets/farmer-logo.png";
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from "mdbreact";
 import { NavLink } from "react-router-dom";
 
-import "./sideNav.css";
+import "./dashboard/sideNav.css";
 
 // const sidebarStyles = {
 //     sidebar: {
@@ -21,40 +21,28 @@ const TopNavigation = () => {
         <img alt="MDB React Logo" className="img-fluid" src={logo} />
       </a>
       <MDBListGroup className="list-group-flush">
-        <NavLink exact={true} to="/" activeClassName="activeClass">
+        <NavLink exact={true} to="/crops-info" activeClassName="activeClass">
           <MDBListGroupItem>
-            <MDBIcon icon="chart-pie" className="mr-3" />
-            Dashboard
+            <MDBIcon icon="air-freshener" className="mr-3" />
+            Crops
           </MDBListGroupItem>
         </NavLink>
         <NavLink to="/profile" activeClassName="activeClass">
           <MDBListGroupItem>
-            <MDBIcon icon="user" className="mr-3" />
-            Profile
+            <MDBIcon fab icon="apple" className="mr-3" />
+            Fertilizers
           </MDBListGroupItem>
         </NavLink>
         <NavLink to="/crops" activeClassName="activeClass">
           <MDBListGroupItem>
-            <MDBIcon icon="apple-alt" />
-            Crops
+            <MDBIcon icon="bug" className="mr-3" />
+            Pesticides
           </MDBListGroupItem>
         </NavLink>
         <NavLink to="/deliverable" activeClassName="activeClass">
           <MDBListGroupItem>
-            <MDBIcon icon="chart-bar" />
+            <MDBIcon icon="chart-bar" className="mr-3" />
             Weather Report
-          </MDBListGroupItem>
-        </NavLink>
-        <NavLink to="/setting" activeClassName="activeClass">
-          <MDBListGroupItem>
-            <MDBIcon icon="wrench" />
-            Settings
-          </MDBListGroupItem>
-        </NavLink>
-        <NavLink to="/password reset" activeClassName="activeClass">
-          <MDBListGroupItem>
-            <MDBIcon icon="unlock" />
-            Password Reset
           </MDBListGroupItem>
         </NavLink>
       </MDBListGroup>
