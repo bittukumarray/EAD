@@ -30,12 +30,13 @@ class WeatherPage extends Component {
     console.log(this.state.data.weather);
     return (
       <MDBCard className="my-5 px-5 pb-5">
-        <MDBCardBody className="text-left">
+        <MDBCardBody className="text-left" >
           <div
             style={{
               color: "black",
               backgroundColor: "#e0e0e0",
-              fontFamily: "didot"
+              fontFamily: "didot",
+              backgroundImage: "url(" + "https://images.pexels.com/photos/186980/pexels-photo-186980.jpeg?auto=compress&cs=tinysrgb&dpr=1" + ")"
             }}
             className="card h1-responsive font-weight-bold text-center my-5"
           >
@@ -63,7 +64,7 @@ class WeatherPage extends Component {
             ></input>
           </div>
           {this.state.data ? (
-            <div class="card weather-card">
+            <div class="card weather-card" style={{ backgroundImage: "url(" + "https://rekordeast.co.za/wp-content/uploads/sites/85/2019/06/cool-weather.jpeg" + ")", backgroundRepeat: "no-repeat", backgroundSize: "cover", }}>
               <div class="card-body pb-3">
                 <h4 class="card-title font-weight-bold">
                   {this.state.data.name}
@@ -85,7 +86,7 @@ class WeatherPage extends Component {
                     <i class="fas fa-tint fa-lg text-info pr-2"></i>
                     {this.state.data.clouds.all}% Cloud
                   </p>
-                  <p>
+                  <p style={{color:"cyan"}}>
                     <i class="fas fa-leaf fa-lg grey-text pr-2"></i>
                     {(this.state.data.wind.speed * 3600) / 1000} km/h Winds
                   </p>
