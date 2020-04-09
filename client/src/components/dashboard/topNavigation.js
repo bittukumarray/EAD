@@ -104,9 +104,17 @@ class TopNavigation extends Component {
                 rel="noopener noreferrer"
                 className="nav-link Ripple-parent"
                 to="/dashboard"
-                target="_blank"
               >
-                Farmer dashboard
+                Farmer Dashboard
+              </Link>
+            </MDBNavItem>
+            <MDBNavItem>
+              <Link
+                rel="noopener noreferrer"
+                className="nav-link Ripple-parent"
+                to="/weather-report"
+              >
+                Weather-Report
               </Link>
             </MDBNavItem>
           </MDBNavbarNav>
