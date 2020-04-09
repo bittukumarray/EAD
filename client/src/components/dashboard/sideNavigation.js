@@ -11,7 +11,7 @@ import "./sideNav.css";
 //     }
 //   };
 
-const TopNavigation = () => {
+const SideNavigation = () => {
   return (
     <div
       style={{ backgroundColor: "white" }}
@@ -57,4 +57,4 @@ const TopNavigation = () => {
   );
 };
 
-export default TopNavigation;
+export default SideNavigation;

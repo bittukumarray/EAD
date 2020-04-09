@@ -21,9 +21,6 @@ class Dashboard extends React.Component {
     return (
       <Fragment>
         <Router>
-          <TopNavigation />
-          {/* <Navbar /> */}
-
           <SideNavigation />
           <main id="content" className="p-5">
             {/* <Routes /> */}
