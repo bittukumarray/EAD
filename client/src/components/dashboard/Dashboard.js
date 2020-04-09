@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
               {/* <Route path="/" exact component={DashboardPage} /> */}
               <Route path="/dashboard" component={DashboardPage} />
               <Route path="/profile" component={ProfilePage} />
-              <Route path="/crops" component={CropsPage} />
               <Route path="/deliverable" component={DeliverablesPage} />
               <Route path="/settings" component={NotFoundPage} />
               <Route path="/passwordreset" component={NotFoundPage} />

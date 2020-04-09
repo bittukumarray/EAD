@@ -33,12 +33,7 @@ const TopNavigation = () => {
             Profile
           </MDBListGroupItem>
         </NavLink>
-        <NavLink to="/crops" activeClassName="activeClass">
-          <MDBListGroupItem>
-            <MDBIcon icon="table" className="mr-3" />
-            crops
-          </MDBListGroupItem>
-        </NavLink>
+
         <NavLink to="/deliverable" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />
