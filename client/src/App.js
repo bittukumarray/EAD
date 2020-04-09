@@ -15,6 +15,7 @@ import CatalogPage from "./components/catalog";
 import Crop from "./components/crop/Crop";
 
 import TopNavigation from "./components/dashboard/topNavigation";
+import PrivateRoute from "./components/common/PrivateRoute";
 
 //Redux
 import { Provider } from "react-redux";
@@ -47,20 +48,23 @@ const App = () => {
         <main style={{ marginTop: "4rem" }}>
           <Alert />
 
-          <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/company-register" component={CompanyRegister} />
-            <Route exact path="/company-login" component={CompanyLogin} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/crops-info" component={BlogPage} />
-            <Route exact path="/crops" component={Crops} />
-            <Route exact path="/crop/:id" component={Crop} />
-            <Route exact path="/weather-report" component={WeatherPage} />
-            <Route exact path="/catalog" component={CatalogPage} />
-            <Route exact path="/payment" component={Payment} />
+          {/* <Switch> */}
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/company-register" component={CompanyRegister} />
+          <Route exact path="/company-login" component={CompanyLogin} />
+          {/* <Route exact path="/dashboard" component={Dashboard} /> */}
+          <Route exact path="/crops-info" component={BlogPage} />
+          <Route exact path="/crops" component={Crops} />
+          <Route exact path="/crop/:id" component={Crop} />
+          <Route exact path="/weather-report" component={WeatherPage} />
+          <Route exact path="/catalog" component={CatalogPage} />
+          <Route exact path="/payment" component={Payment} />
 
-            <Route exact path="/" component={Landing} />
+          <Route exact path="/" component={Landing} />
+          {/* </Switch> */}
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </main>
         {/* </div> */}
