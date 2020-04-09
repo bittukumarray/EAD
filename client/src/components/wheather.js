@@ -36,7 +36,6 @@ class WeatherPage extends Component {
               color: "black",
               backgroundColor: "#e0e0e0",
               fontFamily: "didot",
-              backgroundImage: "url(" + "https://images.pexels.com/photos/186980/pexels-photo-186980.jpeg?auto=compress&cs=tinysrgb&dpr=1" + ")"
             }}
             className="card h1-responsive font-weight-bold text-center my-5"
           >
