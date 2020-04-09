@@ -100,16 +100,16 @@ class TopNavigation extends Component {
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <a
+              <Link
                 className="nav-link"
                 rel="noopener noreferrer"
                 className="nav-link Ripple-parent"
-                href="#"
+                to="/dashboard"
                 target="_blank"
                 style={{ color: "#212121", fontWeight: "bolder" }}
               >
-                Crops
-              </a>
+                Dashboard
+              </Link>
             </MDBNavItem>
             <MDBNavItem>
               <a
