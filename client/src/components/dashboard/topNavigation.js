@@ -8,28 +8,64 @@ import {
   MDBNavItem,
   MDBNavLink,
   MDBView,
-  MDBBtn
+  MDBBtn,
 } from "mdbreact";
-
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "./topNav.css";
+import { Link } from "react-router-dom";
 
 class TopNavigation extends Component {
   state = {
-    collapse: false
+    collapse: false,
   };
 
   onClick = () => {
     this.setState({
-      collapse: !this.state.collapse
+      collapse: !this.state.collapse,
     });
   };
 
   toggle = () => {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
     });
   };
   render() {
+    console.log(this.props.auth);
+    const { isAuthenticated } = this.props.auth;
+
+    const authLinks = (
+      <React.Fragment>
+        <MDBNavItem>
+          <Link href="/logout" target="_blank">
+            <button type="button" class="btn btn-primary btn-md">
+              logout
+            </button>
+          </Link>
+        </MDBNavItem>
+      </React.Fragment>
+    );
+
+    const guestLinks = (
+      <React.Fragment>
+        <MDBNavItem>
+          <Link to="/login">
+            <button type="button" class="btn btn-primary btn-md">
+              Login
+            </button>
+          </Link>
+        </MDBNavItem>
+        <MDBNavItem>
+          <Link to="/register">
+            <button type="button" class="btn btn-primary btn-md">
+              signup
+            </button>
+          </Link>
+        </MDBNavItem>
+      </React.Fragment>
+    );
+
     return (
       <MDBNavbar
         style={{ height: "59px" }}
@@ -49,7 +85,7 @@ class TopNavigation extends Component {
                   marginRight: "5rem",
                   color: "black",
                   fontWeight: "bolder",
-                  fontSize: "20px"
+                  fontSize: "20px",
                 }}
               >
                 Agventure
@@ -110,12 +146,12 @@ class TopNavigation extends Component {
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
-            <MDBNavItem
+            {/* <MDBNavItem
               style={{
                 marginTop: "0.8rem",
                 fontSize: "20px",
                 marginRight: "2rem",
-                fontWeight: "bolder"
+                fontWeight: "bolder",
               }}
             >
               Hello, Wilson
@@ -125,11 +161,12 @@ class TopNavigation extends Component {
                 marginTop: "6px",
                 fontSize: "25px",
                 marginRight: "1rem",
-                fontWeight: "bolder"
+                fontWeight: "bolder",
               }}
             >
               Logout
-            </MDBNavItem>
+            </MDBNavItem> */}
+            {isAuthenticated ? authLinks : guestLinks}
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
@@ -138,11 +175,11 @@ class TopNavigation extends Component {
 }
 TopNavigation.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
-export default TopNavigation;
+export default connect(mapStateToProps, {})(TopNavigation);
