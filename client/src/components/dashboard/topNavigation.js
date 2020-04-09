@@ -91,58 +91,21 @@ class TopNavigation extends Component {
                 Agventure
               </MDBNavLink>
             </MDBNavItem>
+
             <MDBNavItem active>
-              <MDBNavLink
-                to="#"
-                style={{ color: "#212121", fontWeight: "bolder" }}
-              >
-                Home
-              </MDBNavLink>
+              <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <Link
-                className="nav-link"
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                to="/dashboard"
-                target="_blank"
-                style={{ color: "#212121", fontWeight: "bolder" }}
-              >
-                Dashboard
-              </Link>
+              <MDBNavLink to="/crops">Crops</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <a
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                href="#"
-                target="_blank"
-                style={{ color: "#212121", fontWeight: "bolder" }}
-              >
-                Sales
-              </a>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/sales">Sales</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <a
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                href="#"
-                target="_blank"
-                style={{ color: "#212121", fontWeight: "bolder" }}
-              >
-                Farmers
-              </a>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <a
-                rel="noopener noreferrer"
-                className="nav-link Ripple-parent"
-                href="#"
-                target="_blank"
-                style={{ color: "#212121", fontWeight: "bolder" }}
-              >
-                History
-              </a>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/weather-report"> Weather-Report</MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
