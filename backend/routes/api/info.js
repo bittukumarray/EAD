@@ -10,6 +10,7 @@ router.get("/upload-data", async (req, res, next) => {
     const rawdata = fs.readFileSync('/home/bittu/EAD/backend/externalFiles/crops.json');
     const cropsData = await JSON.parse(rawdata);
     // console.log("length is ", cropsData.length);
+    //this comment is for jenkins
     let count = 0, datacount = 0,test=999;
     try {
         // console.log(cropsData);
