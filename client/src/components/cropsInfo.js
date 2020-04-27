@@ -12,13 +12,19 @@ import {
 import { GetCropsInfo } from "../actions/cropsInfo";
 import { connect } from "react-redux";
 import SideNavigation from "./sidenav";
+import store from '../store';
 
 class BlogPage extends Component {
   componentDidMount() {
     this.props.GetCropsInfo();
+    // this.setState({"name":"Bittu"});
   }
 
+
   render() {
+    console.log("state is ",this.state);
+    console.log("props is ",this.props);
+    console.log("store is ", store.getState());
     return (
       <React.Fragment>
         <SideNavigation />
