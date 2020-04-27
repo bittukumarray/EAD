@@ -30,12 +30,12 @@ class WeatherPage extends Component {
     console.log(this.state.data.weather);
     return (
       <MDBCard className="my-5 px-5 pb-5">
-        <MDBCardBody className="text-left" >
+        <MDBCardBody className="text-left">
           <div
             style={{
               color: "black",
               backgroundColor: "#e0e0e0",
-              fontFamily: "didot",
+              fontFamily: "didot"
             }}
             className="card h1-responsive font-weight-bold text-center my-5"
           >
@@ -63,7 +63,17 @@ class WeatherPage extends Component {
             ></input>
           </div>
           {this.state.data ? (
-            <div class="card weather-card" style={{ backgroundImage: "url(" + "https://rekordeast.co.za/wp-content/uploads/sites/85/2019/06/cool-weather.jpeg" + ")", backgroundRepeat: "no-repeat", backgroundSize: "cover", }}>
+            <div
+              class="card weather-card"
+              style={{
+                backgroundImage:
+                  "url(" +
+                  "https://rekordeast.co.za/wp-content/uploads/sites/85/2019/06/cool-weather.jpeg" +
+                  ")",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover"
+              }}
+            >
               <div class="card-body pb-3">
                 <h4 class="card-title font-weight-bold">
                   {this.state.data.name}
@@ -85,7 +95,7 @@ class WeatherPage extends Component {
                     <i class="fas fa-tint fa-lg text-info pr-2"></i>
                     {this.state.data.clouds.all}% Cloud
                   </p>
-                  <p style={{color:"cyan"}}>
+                  <p style={{ color: "cyan" }}>
                     <i class="fas fa-leaf fa-lg grey-text pr-2"></i>
                     {(this.state.data.wind.speed * 3600) / 1000} km/h Winds
                   </p>
@@ -100,12 +110,22 @@ class WeatherPage extends Component {
                     aria-valuemax="100"
                   ></div>
                 </div>
-                <ul class="list-unstyled d-flex justify-content-between font-small text-muted mb-4">
-                  <li class="pl-4">8AM</li>
-                  <li>11AM</li>
-                  <li>2PM</li>
-                  <li>5PM</li>
-                  <li class="pr-4">8PM</li>
+                <ul class="list-unstyled d-flex justify-content-between font-small text-muted mb-4 ">
+                  <li
+                    class="pl-4"
+                    style={{ color: "black", fontWeight: "bolder" }}
+                  >
+                    8AM
+                  </li>
+                  <li style={{ color: "black", fontWeight: "bolder" }}>11AM</li>
+                  <li style={{ color: "black", fontWeight: "bolder" }}>2PM</li>
+                  <li style={{ color: "black", fontWeight: "bolder" }}>5PM</li>
+                  <li
+                    class="pr-4"
+                    style={{ color: "black", fontWeight: "bolder" }}
+                  >
+                    8PM
+                  </li>
                 </ul>
 
                 <div class="collapse-content">
