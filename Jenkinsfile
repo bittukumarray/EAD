@@ -16,18 +16,22 @@ pipeline {
    stage('Deploy Nodejs') {
      steps {
        echo 'Deploying Nodejs...'
-       sh 'cd backend/'
-       sh 'ls -l'
-       sh 'npm i'
-       sh 'npm run server'
+       sh """
+        'cd backend/'
+       'ls -l'
+       'npm i'
+       'npm run server'
+       """.stripIndent().trim()
      }
    }
    stage('Deploy Reactjs') {
      steps {
        echo 'Deploying Reactjs...'
-       sh 'cd client/'
-       sh 'npm i'
-       sh 'npm start'
+       sh """ 
+        'cd client/'
+       'npm i'
+       'npm start'
+       """..stripIndent().trim()
      }
    }
   }
