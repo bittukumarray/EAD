@@ -19,8 +19,7 @@ pipeline {
        sh """ 
         ls -l
         cd client
-        npm i
-        npm start
+        ls -l
        """
      }
    }
