@@ -16,7 +16,8 @@ pipeline {
    stage('Deploy Nodejs') {
      steps {
        echo 'Deploying Nodejs...'
-       sh 'cd backend'
+       sh 'cd backend/'
+       sh 'ls -l'
        sh 'npm i'
        sh 'npm run server'
      }
@@ -24,7 +25,7 @@ pipeline {
    stage('Deploy Reactjs') {
      steps {
        echo 'Deploying Reactjs...'
-       sh 'cd client'
+       sh 'cd client/'
        sh 'npm i'
        sh 'npm start'
      }
