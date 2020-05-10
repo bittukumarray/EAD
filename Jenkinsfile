@@ -19,8 +19,7 @@ pipeline {
        sh """
        ls -l
        cd backend
-       npm i
-       npm run server
+       ls -l
        """
      }
    }
