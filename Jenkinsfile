@@ -16,13 +16,17 @@ pipeline {
    stage('Deploy Nodejs') {
      steps {
        echo 'Deploying Nodejs...'
-       pwd
+       cd backend
+       npm i
+       npm runserver
      }
    }
    stage('Deploy Reactjs') {
      steps {
        echo 'Deploying Reactjs...'
-       pwd
+       cd client
+       npm i
+       npm start
      }
    }
   }
