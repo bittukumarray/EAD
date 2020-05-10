@@ -17,10 +17,8 @@ pipeline {
      steps {
        echo 'Deploying Nodejs...'
        sh """
-        'cd backend/'
        'ls -l'
-       'npm i'
-       'npm run server'
+       'ls -la'
        """.stripIndent().trim()
      }
    }
@@ -28,9 +26,8 @@ pipeline {
      steps {
        echo 'Deploying Reactjs...'
        sh """ 
-        'cd client/'
-       'npm i'
-       'npm start'
+        'ls -ls'
+        'ls -la'
        """..stripIndent().trim()
      }
    }
