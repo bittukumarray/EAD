@@ -18,17 +18,19 @@ pipeline {
        echo 'Deploying Nodejs...'
        sh """
        ls -l
-       ls -la
-       """.stripIndent().trim()
+       cd backend
+       ls -l
+       """
      }
    }
    stage('Deploy Reactjs') {
      steps {
        echo 'Deploying Reactjs...'
        sh """ 
-        ls -ls
-        ls -la
-       """..stripIndent().trim()
+        ls -l
+        cd client
+        ls -l
+       """
      }
    }
   }
