@@ -16,6 +16,7 @@ pipeline {
    stage('Deploy Nodejs') {
      steps {
        echo 'Deploying Nodejs...'
+       sh 'pwd'
      }
    }
    stage('Deploy Reactjs') {
