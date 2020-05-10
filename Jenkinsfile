@@ -24,16 +24,5 @@ pipeline {
        """
      }
    }
-   stage('Deploy Reactjs') {
-     steps {
-       echo 'Deploying Reactjs...'
-       sh """ 
-        ls -l
-        cd client
-        npm i
-        npm start
-       """
-     }
-   }
   }
 }
