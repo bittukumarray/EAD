@@ -17,8 +17,8 @@ pipeline {
      steps {
        echo 'Deploying Nodejs...'
        sh """
-       'ls -l'
-       'ls -la'
+       ls -l
+       ls -la
        """.stripIndent().trim()
      }
    }
@@ -26,8 +26,8 @@ pipeline {
      steps {
        echo 'Deploying Reactjs...'
        sh """ 
-        'ls -ls'
-        'ls -la'
+        ls -ls
+        ls -la
        """..stripIndent().trim()
      }
    }
