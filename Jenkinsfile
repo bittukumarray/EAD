@@ -19,7 +19,8 @@ pipeline {
        sh """
        ls -l
        cd backend
-       ls -l
+       npm i
+       npm run server
        """
      }
    }
@@ -29,7 +30,8 @@ pipeline {
        sh """ 
         ls -l
         cd client
-        ls -l
+        npm i
+        npm start
        """
      }
    }
