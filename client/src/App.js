@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Landing from "./components/layout/Landing";
+// import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
 import CompanyRegister from "./components/auth/CompanyRegister";
@@ -13,7 +13,7 @@ import Crops from "./components/crops/Crops";
 import WeatherPage from "./components/wheather";
 import CatalogPage from "./components/catalog";
 import Crop from "./components/crop/Crop";
-
+import Landing from "./components/landing";
 import TopNavigation from "./components/dashboard/topNavigation";
 import PrivateRoute from "./components/common/PrivateRoute";
 
@@ -42,9 +42,8 @@ const App = () => {
       <Router>
         {/* <div className="flyout"> */}
         {/* <Navbar /> */}
-
+        <Route exact path="/" component={Landing} />
         <TopNavigation />
-
         <main style={{ marginTop: "4rem" }}>
           <Alert />
 
@@ -61,8 +60,6 @@ const App = () => {
             <Route exact path="/weather-report" component={WeatherPage} />
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/payment" component={Payment} />
-
-            <Route exact path="/" component={Landing} />
           </Switch>
         </main>
         {/* </div> */}
