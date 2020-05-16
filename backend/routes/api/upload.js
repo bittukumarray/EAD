@@ -12,7 +12,7 @@ router.post("/image-upload", function (req, res) {
       });
     }
     console.log(req.file);
-    return res.json({ imageUrl: "Wilson" });
+    return res.json({ imageUrl: req.file.location });
   });
 });
 
