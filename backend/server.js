@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // Init Middleware
 app.use(express.json({ extended: false }));
 // app.get("/", (req, res, next) => res.send("API running"));
-app.use(busboyBodyParser());
+// app.use(busboyBodyParser());
 //define routes
 
 app.use("/api/check-user", require("./routes/api/users"));
@@ -33,7 +33,7 @@ app.use("/api/crops", require("./routes/api/farmer/get_info"));
 app.use("/api/farmer", require("./routes/api/farmer/activity"));
 app.use("/api/user", require("./routes/api/genuser/activity"));
 app.use("/api/filter", require("./routes/api/catalog"));
-app.use("/api/upload", require("./routes/api/upload"));
+// app.use("/api/upload", require("./routes/api/upload"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`server start on post ${PORT}`));
