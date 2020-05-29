@@ -1,16 +1,16 @@
 const express = require("express");
 const connectDB = require("./config/db");
-const busboy = require("connect-busboy");
-const busboyBodyParser = require("busboy-body-parser");
+//const busboy = require("connect-busboy");
+//const busboyBodyParser = require("busboy-body-parser");
 const app = express();
-app.use(busboy());
+//app.use(busboy());
 //connect databse
 connectDB();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 // Init Middleware
-app.use(express.json({ extended: false }));
+//app.use(express.json({ extended: false }));
 // app.get("/", (req, res, next) => res.send("API running"));
 // app.use(busboyBodyParser());
 //define routes

@@ -39,7 +39,7 @@ class TopNavigation extends Component {
       <React.Fragment>
         <MDBNavItem>
           <Link href="/logout" target="_blank">
-            <button type="button" class="btn btn-primary btn-md">
+            <button type="button" class="btn btn-outline btn-md">
               logout
             </button>
           </Link>
@@ -51,14 +51,14 @@ class TopNavigation extends Component {
       <React.Fragment>
         <MDBNavItem>
           <Link to="/login">
-            <button type="button" class="btn btn-primary btn-md">
+            <button type="button" class="btn btn-outline btn-md" >
               Login
             </button>
           </Link>
         </MDBNavItem>
         <MDBNavItem>
           <Link to="/register">
-            <button type="button" class="btn btn-primary btn-md">
+            <button type="button" class="btn btn-outline btn-md">
               signup
             </button>
           </Link>
