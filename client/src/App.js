@@ -12,6 +12,7 @@ import BlogPage from "./components/cropsInfo";
 import Crops from "./components/crops/Crops";
 import WeatherPage from "./components/wheather";
 import CatalogPage from "./components/catalog";
+import DetailcropsPage from "./components/detail-crops";
 import Crop from "./components/crop/Crop";
 import Landing from "./components/landing";
 import TopNavigation from "./components/dashboard/topNavigation";
@@ -61,6 +62,7 @@ const App = () => {
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
 
             <Route exact path="/catalog" component={CatalogPage} />
+            <Route exact path="/catalog" component={DetailcropsPage} />
             <Route exact path="/payment" component={Payment} />
           </Switch>
         </main>
