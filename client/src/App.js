@@ -58,6 +58,8 @@ const App = () => {
             <Route exact path="/crops" component={Crops} />
             <Route exact path="/crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />
+            {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
+
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/payment" component={Payment} />
           </Switch>

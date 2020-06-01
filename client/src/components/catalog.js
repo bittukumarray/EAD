@@ -145,9 +145,12 @@ class CatalogPage extends Component {
                                       data-toggle="tooltip"
                                       data-placement="top"
                                       title="Add to Cart"
+                                      href="/catalog/detail-crops"
                                     >
                                       <i
-                                        style={{ color: "rgba(234, 111,123)" }}
+                                        style={{
+                                          color: "rgba(234, 111,123)"
+                                        }}
                                         class="fas fa-shopping-cart mr-3"
                                       ></i>
                                     </a>
