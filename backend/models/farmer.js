@@ -11,7 +11,7 @@ var FarmerSchema = User.discriminator(
         type: String,
         default: Role.Farmer
       },
-      CompletedOrders: {
+      completedOrders: {
         type: Number,
         required: false
       },
