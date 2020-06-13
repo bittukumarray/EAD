@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Bar,
   Bubble,
@@ -10,31 +10,31 @@ import {
   Radar,
   Scatter,
   Chart
-} from 'react-chartjs-2';
-import { MDBContainer } from 'mdbreact';
-import DocsLink from '../components/docsLink';
-import SectionContainer from '../components/sectionContainer';
+} from "react-chartjs-2";
+import { MDBContainer } from "mdbreact";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 // LineChart
 const dataLine = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
   datasets: [
     {
-      label: 'My First dataset',
+      label: "My First dataset",
       fill: false,
       lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
+      backgroundColor: "rgba(75,192,192,0.4)",
+      borderColor: "rgba(75,192,192,1)",
+      borderCapStyle: "butt",
       borderDash: [],
       borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
+      borderJoinStyle: "miter",
+      pointBorderColor: "rgba(75,192,192,1)",
+      pointBackgroundColor: "#fff",
       pointBorderWidth: 1,
       pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      pointHoverBorderColor: "rgba(220,220,220,1)",
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
@@ -46,21 +46,21 @@ const dataLine = {
 // RadarChart
 
 const dataRadar = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   datasets: [
     {
-      label: '#1',
-      backgroundColor: 'rgba(245, 74, 85, 0.5)',
+      label: "#1",
+      backgroundColor: "rgba(245, 74, 85, 0.5)",
       data: [65, 59, 80, 81, 56, 55, 40]
     },
     {
-      label: '#2',
-      backgroundColor: 'rgba(90, 173, 246, 0.5)',
+      label: "#2",
+      backgroundColor: "rgba(90, 173, 246, 0.5)",
       data: [12, 42, 121, 56, 24, 12, 2]
     },
     {
-      label: '#3',
-      backgroundColor: 'rgba(245, 192, 50, 0.5)',
+      label: "#3",
+      backgroundColor: "rgba(245, 192, 50, 0.5)",
       data: [2, 123, 154, 76, 54, 23, 5]
     }
   ]
@@ -68,15 +68,15 @@ const dataRadar = {
 
 // barChart
 const dataBar = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
   datasets: [
     {
-      label: 'My First dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      label: "My First dataset",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
       data: [65, 59, 80, 81, 56, 55, 40]
     }
   ]
@@ -84,29 +84,29 @@ const dataBar = {
 
 // Horizontal Chart
 const dataHorizontal = {
-  labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Grey'],
+  labels: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Grey"],
   datasets: [
     {
-      label: 'My First Dataset',
+      label: "My First Dataset",
       data: [22, 33, 55, 12, 86, 23, 14],
       fill: false,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+        "rgba(255, 205, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(201, 203, 207, 0.2)"
       ],
       borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
+        "rgb(255, 99, 132)",
+        "rgb(255, 159, 64)",
+        "rgb(255, 205, 86)",
+        "rgb(75, 192, 192)",
+        "rgb(54, 162, 235)",
+        "rgb(153, 102, 255)",
+        "rgb(201, 203, 207)"
       ],
       borderWidth: 1
     }
@@ -118,34 +118,34 @@ const dataPolar = {
   datasets: [
     {
       data: [11, 16, 7, 3, 14],
-      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
-      label: 'My dataset' // for legend
+      backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+      label: "My dataset" // for legend
     }
   ],
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+  labels: ["Jan", "Feb", "Mar", "Apr", "May"]
 };
 
 // Pie Chart
 const dataPie = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   datasets: [
     {
       data: [300, 50, 100, 40, 120, 24, 52],
       backgroundColor: [
-        '#F7464A',
-        '#46BFBD',
-        '#FDB45C',
-        '#949FB1',
-        '#4D5360',
-        '#ac64ad'
+        "#F7464A",
+        "#46BFBD",
+        "#FDB45C",
+        "#949FB1",
+        "#4D5360",
+        "#ac64ad"
       ],
       hoverBackgroundColor: [
-        '#FF5A5E',
-        '#5AD3D1',
-        '#FFC870',
-        '#A8B3C5',
-        '#616774',
-        '#da92db'
+        "#FF5A5E",
+        "#5AD3D1",
+        "#FFC870",
+        "#A8B3C5",
+        "#616774",
+        "#da92db"
       ]
     }
   ]
@@ -153,17 +153,17 @@ const dataPie = {
 
 // Doughnut Chart
 const dataDoughnut = {
-  labels: ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'],
+  labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
   datasets: [
     {
-      data: [300, 50, 100, 40, 120],
-      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      data: [300, 50, 100, 40, 150],
+      backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
       hoverBackgroundColor: [
-        '#FF5A5E',
-        '#5AD3D1',
-        '#FFC870',
-        '#A8B3C5',
-        '#616774'
+        "#FF5A5E",
+        "#5AD3D1",
+        "#FFC870",
+        "#A8B3C5",
+        "#616774"
       ]
     }
   ]
@@ -171,10 +171,10 @@ const dataDoughnut = {
 
 // Bubble Charts
 const dataBubble = {
-  labels: 'Bubble',
+  labels: "Bubble",
   datasets: [
     {
-      label: 'John',
+      label: "John",
       data: [
         {
           x: 3,
@@ -182,11 +182,11 @@ const dataBubble = {
           r: 10
         }
       ],
-      backgroundColor: '#ff6384',
-      hoverBackgroundColor: '#ff6384'
+      backgroundColor: "#ff6384",
+      hoverBackgroundColor: "#ff6384"
     },
     {
-      label: 'Peter',
+      label: "Peter",
       data: [
         {
           x: 3.2,
@@ -194,11 +194,11 @@ const dataBubble = {
           r: 10
         }
       ],
-      backgroundColor: '#44e4ee',
-      hoverBackgroundColor: '#44e4ee'
+      backgroundColor: "#44e4ee",
+      hoverBackgroundColor: "#44e4ee"
     },
     {
-      label: 'Donald',
+      label: "Donald",
       data: [
         {
           x: 3.4,
@@ -206,20 +206,20 @@ const dataBubble = {
           r: 10
         }
       ],
-      backgroundColor: '#62088A',
-      hoverBackgroundColor: '#62088A'
+      backgroundColor: "#62088A",
+      hoverBackgroundColor: "#62088A"
     }
   ]
 };
 
 // Scatter Charts
 const dataScatter = {
-  labels: ['Scatter'],
+  labels: ["Scatter"],
   datasets: [
     {
-      borderColor: 'rgba(99,0,125, .2)',
-      backgroundColor: 'rgba(99,0,125, .5)',
-      label: 'V(node2)',
+      borderColor: "rgba(99,0,125, .2)",
+      backgroundColor: "rgba(99,0,125, .5)",
+      label: "V(node2)",
       data: [
         {
           x: 1,
@@ -353,39 +353,39 @@ const dataScatter = {
 const scatterOptions = {
   title: {
     display: true,
-    text: 'Scatter Chart - Logarithmic X-Axis'
+    text: "Scatter Chart - Logarithmic X-Axis"
   },
   scales: {
     xAxes: [
       {
-        type: 'logarithmic',
-        position: 'bottom',
+        type: "logarithmic",
+        position: "bottom",
         ticks: {
-          userCallback: function(tick) {
+          userCallback: function (tick) {
             var remain =
               tick / Math.pow(10, Math.floor(Chart.helpers.log10(tick)));
             if (remain === 1 || remain === 2 || remain === 5) {
-              return tick.toString() + 'Hz';
+              return tick.toString() + "Hz";
             }
-            return '';
+            return "";
           }
         },
         scaleLabel: {
-          labelString: 'Frequency',
+          labelString: "Frequency",
           display: true
         }
       }
     ],
     yAxes: [
       {
-        type: 'linear',
+        type: "linear",
         ticks: {
-          userCallback: function(tick) {
-            return tick.toString() + 'dB';
+          userCallback: function (tick) {
+            return tick.toString() + "dB";
           }
         },
         scaleLabel: {
-          labelString: 'Voltage',
+          labelString: "Voltage",
           display: true
         }
       }
@@ -397,43 +397,43 @@ const ChartsPage = () => {
   return (
     <MDBContainer>
       <DocsLink
-        title='Charts'
-        href='https://mdbootstrap.com/docs/react/advanced/charts/'
+        title="Charts"
+        href="https://mdbootstrap.com/docs/react/advanced/charts/"
       />
 
-      <SectionContainer header='Line chart'>
+      <SectionContainer header="Line chart">
         <Line data={dataLine} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Radar chart'>
+      <SectionContainer header="Radar chart">
         <Radar data={dataRadar} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Bar chart'>
+      <SectionContainer header="Bar chart">
         <Bar data={dataBar} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Horizontal chart'>
+      <SectionContainer header="Horizontal chart">
         <HorizontalBar data={dataHorizontal} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Polar chart'>
+      <SectionContainer header="Polar chart">
         <Polar data={dataPolar} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Pie chart'>
+      <SectionContainer header="Pie chart">
         <Pie data={dataPie} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Doughnut chart'>
+      <SectionContainer header="Doughnut chart">
         <Doughnut data={dataDoughnut} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Bubble chart'>
+      <SectionContainer header="Bubble chart">
         <Bubble data={dataBubble} options={{ responsive: true }} />
       </SectionContainer>
 
-      <SectionContainer header='Scatter chart'>
+      <SectionContainer header="Scatter chart">
         <Scatter data={dataScatter} options={scatterOptions} />
       </SectionContainer>
     </MDBContainer>
