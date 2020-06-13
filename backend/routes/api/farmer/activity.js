@@ -1,4 +1,5 @@
 const express = require("express");
+
 const router = express.Router();
 const auth = require("../../../middleware/farmerAuth");
 const { check, validationResult } = require("express-validator");
@@ -51,29 +52,25 @@ router.post("/add-crops", auth, async (req, res, next) => {
   const data = await crop.save();
   return res.status(201).json({ msg: "successful", crops: data });
 });
-// router.get("/graph/:cropId", async (req, res, next) => {
-//   console.log("Wilson");
-//   var crops1 = req.params.cropId;
-//   var crops1 = crops1.slice(1, -1).split(",");
-//   var a = [];
-//   // const c = await Crops.findById(crops1[0]);
-//   // console.log(c.quantity);
-//   crops1.map(async crop => {
-//     const c = await Crops.findById(crop);
-//     console.log(c.quantity);
-//     a.push(c.quantity);
-//     console.log(a);
-//   });
-//   return res
-//     .status(200)
-//     .json({ Type: "Success", Message: "Fetched the crop", crops: a });
-// });
-router.post("/graph", async (req, res, next) => {
-  const c = req.body.crop;
-  console.log(req.text);
-  console.log(req.body);
+router.post("/pie-chart", async (req, res, next) => {
+  var farmerId = req.body.farmer;
+  console.log("Wilson");
+  console.log(farmerId);
+  var a = [];
+  const crops1 = await Crops.find({ farmer: farmerId });
+  for (let i in crops1) {
+    var b = {};
+    const c = await Crops.findById(crops1[i]);
+    console.log(c.quantity);
+    b["crop"] = c.name;
+    b["quantity"] = c.quantity;
+    a.push(b);
+  }
+
+  console.log(a);
   return res
     .status(200)
-    .json({ Type: "Success", Message: "Fetched the crop", crops: c });
+    .json({ Type: "Success", Message: "Fetched the crop", crops: a });
 });
+
 module.exports = router;
