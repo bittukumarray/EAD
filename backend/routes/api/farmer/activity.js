@@ -102,24 +102,32 @@ router.post("/pie-chart", async (req, res, next) => {
 // });
 
 router.post("/farmer-details", async (req, res, next) => {
-  var farmerId = req.body.farmer;
-  var farm = await farmer.findById(farmerId);
-  const crops1 = await Crops.find({ farmer: farmerId });
-  var c = 0;
-  for (let i in crops1) {
-    c += 1;
+  try {
+    var farmerId = req.body.farmer;
+    var farm = await farmer.findById(farmerId);
+    const crops1 = await Crops.find({ farmer: farmerId });
+    var c = 0;
+    for (let i in crops1) {
+      c += 1;
+    }
+    console.log(farm);
+    var b = {};
+    b["completedOrders"] = farm.completedOrders;
+    b["totalOrders"] = farm.totalOrders;
+    b["totalEarnings"] = farm.totalEarnings;
+    b["totalCrops"] = c;
+    console.log(b);
+    return res.status(200).json({
+      Type: "Success",
+      Message: "Returned the details successfully",
+      details: b
+    });
+  } catch (error) {
+    return res.status(400).json({
+      Type: "Failed",
+      Message: "Cannot fetch the details",
+      errors: err
+    });
   }
-  console.log(farm);
-  var b = {};
-  b["completedOrders"] = farm.completedOrders;
-  b["totalOrders"] = farm.totalOrders;
-  b["totalEarnings"] = farm.totalEarnings;
-  b["totalCrops"] = c;
-  console.log(b);
-  return res.status(200).json({
-    Type: "Success",
-    Message: "Returned the details successfully",
-    details: b
-  });
 });
 module.exports = router;
