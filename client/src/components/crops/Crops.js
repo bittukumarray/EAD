@@ -33,27 +33,33 @@ const Crops = ({getCrops,crop:{crops,loading}})=>{
                                 <div class="row mt-3">
                                     <div  class="col-md-2">
                                     </div>
-                                    <div  class="col-md-8">
-                                        <div class="row">
-                                            <div  class="col-md-4">
-                                                <div class="profile-info-name"> Crop Name : </div>
-                                                <div  class="profile-info-value">
-                                                    <span>{crop.name}</span>
+
+                                    <div  class="col-md-8">  
+                                        <div class="card h-55 border-primary">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div  class="col-md-4">
+                                                        <div class="profile-info-name"> Crop Name : </div>
+                                                        <div  class="profile-info-value">
+                                                            <span>{crop.name}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="profile-info-name">  Price : </div>
+                                                        <div class="profile-info-value">
+                                                            <span>{crop.price}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div  style={{textAlign:"center"}} class="col-md-5">
+                                                        <Link to={`/crop/${crop._id}`} className='btn btn-outline-secondary'>
+                                                            Click For More details
+                                                        </Link>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="profile-info-name">  Price : </div>
-                                                <div class="profile-info-value">
-                                                    <span>{crop.price}</span>
-                                                </div>
-                                            </div>
-                                            <div  style={{textAlign:"center"}} class="col-md-5">
-                                                <Link to={`/crop/${crop._id}`} className='btn btn-info sm'>
-                                                    More details
-                                                </Link>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div  class="col-md-2">
                                     </div>
                                 </div>
