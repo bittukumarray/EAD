@@ -26,36 +26,46 @@ const DashboardPage = () => {
       <div style={{ width: "100%" }}>
         <AdminCardSection1 />
       </div>
-      <div>
-        <div style={{ width: "55%", float: "left" }}>
-          {" "}
-          <TableSection />
-        </div>
-        <div
-          style={{
-            width: "45%",
-            float: "right",
-            paddingLeft: "4rem"
-          }}
-        >
-          <ChartSection2 />
-        </div>
+      <div class="row mt-3">
+          <div  class="col-md-6">
+              <div 
+               style={{  marginTop: "1rem" }}
+              >
+                 <TableSection2 />
+              </div>
+          </div>
+          <div  class="col-md-6">
+              <div
+                 style={{  marginTop: "1rem" }}
+                // style={{
+                //   width: "45%",
+                //   float: "right",
+                //   paddingLeft: "4rem"
+                // }}
+              >
+                <ChartSection2 />
+            </div>
+          </div>
       </div>
-      <div>
-        <div style={{ widht: "60%", float: "left", marginTop: "3rem" }}>
-          <TableSection2 />
-        </div>
-        <div
-          style={{
-            widht: "40%",
-            float: "left",
-            marginLeft: "3rem",
-            marginTop: "3rem"
-          }}
-        >
-          <ChartSection1 />
-        </div>
+      
+
+      <div class="row mt-3">
+          <div  class="col-md-6">
+              <div >
+                {" "}
+                <TableSection />
+              </div>
+          </div>
+          <div  class="col-md-6">
+              <div>
+                <ChartSection1 />
+            </div>
+          </div>
       </div>
+
+        
+
+        
     </React.Fragment>
   );
 };
