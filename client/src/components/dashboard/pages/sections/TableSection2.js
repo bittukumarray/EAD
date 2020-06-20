@@ -15,17 +15,13 @@ class TableSection extends React.Component {
     crops: {},
   };
   componentWillReceiveProps(newprops) {
-    console.log("reciveing props list", newprops);
     this.setState({ crops: newprops.crops });
   }
   render() {
     const { crops } = this.state;
-    console.log(crops);
-    // const item;
     let item;
     // const a = {}
     if (Object.keys(crops).length !== 0) {
-      console.log("aaaaa");
       item = this.state.crops.map((item, key) => (
         <tr>
           <th>{key + 1}</th>

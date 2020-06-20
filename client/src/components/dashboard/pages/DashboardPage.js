@@ -39,7 +39,6 @@ class DashboardPage extends React.Component {
       },
     };
     const farmerid = this.props.auth.user._id;
-    console.log("farmer id", farmerid);
 
     const body = JSON.stringify({ farmer: farmerid });
     // try
@@ -48,12 +47,10 @@ class DashboardPage extends React.Component {
       const labels = [];
       const data = [];
       const success = res.data.Type;
-      console.log("status ", success);
       if (success === "Success") {
         const { crops } = res.data;
 
         for (const [key, value] of Object.entries(crops)) {
-          console.table(key, value["crop"]);
           labels.push(value["crop"]);
           data.push(value["quantity"]);
         }
@@ -63,7 +60,6 @@ class DashboardPage extends React.Component {
   }
   render() {
     const { labels, data, crops } = this.state;
-    console.log("data in dashboard", labels, data);
 
     return (
       <React.Fragment>
@@ -91,7 +87,6 @@ class DashboardPage extends React.Component {
       <div class="row mt-3">
           <div  class="col-md-6">
               <div >
-                {" "}
                 <TableSection />
               </div>
           </div>
