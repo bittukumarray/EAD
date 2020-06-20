@@ -83,19 +83,17 @@ class DashboardPage extends React.Component {
           </div>
         </div>
 
-        {/* 
-      <div class="row mt-3">
-          <div  class="col-md-6">
-              <div >
-                <TableSection />
-              </div>
-          </div>
-          <div  class="col-md-6">
-              <div>
-                <ChartSection1 />
+        <div class="row mt-3">
+          <div class="col-md-10">
+            <div>
+              <ChartSection2
+                heading={"Crops Quantity"}
+                labels={labels}
+                data={data}
+              />
             </div>
           </div>
-      </div> */}
+        </div>
       </React.Fragment>
     );
   }
