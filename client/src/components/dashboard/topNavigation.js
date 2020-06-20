@@ -51,7 +51,7 @@ class TopNavigation extends Component {
       <React.Fragment>
         <MDBNavItem>
           <Link to="/login">
-            <button type="button" class="btn btn-outline btn-md" >
+            <button type="button" class="btn btn-outline btn-md">
               Login
             </button>
           </Link>
