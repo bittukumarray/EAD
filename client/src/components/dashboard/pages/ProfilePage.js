@@ -1,95 +1,45 @@
 import React from "react";
+import {connect} from 'react-redux'
+import { registerFarmer } from './../../../actions/auth';
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
   return (
     <div>
       <div class="container py-2">
-        <div class="row my-2">
-          <div class="col-lg-4">
-            <h2 class="text-center font-weight-light">User Profile</h2>
+        <div class="row my-2 ml-5 mt-5">
+          <div className="col-lg-4 text-center">
+            <h2 className="text-center font-weight-dark" style={{color:"#0099ff"}}>User Profile</h2>
           </div>
-          <div class="col-lg-8"></div>
+          <div class="col-lg-8 mt-5"></div>
           <div class="col-lg-8 order-lg-1 personal-info">
             <form role="form">
               <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label">
-                  First name
+                <label class="col-lg-3 col-form-label form-control-label" style={{fontSize:"20px"}}> 
+                  Name : 
                 </label>
-                <div class="col-lg-9">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter Name"
-                  ></input>
-                </div>
+                <div className="profile-info-name" style={{fontSize:"20px"}}> {props.user.name} </div>
               </div>
               <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label">
-                  Last name
+                <label class="col-lg-3 col-form-label form-control-label" style={{fontSize:"20px"}}>
+                  Username :
                 </label>
-                <div class="col-lg-9">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter Last Name"
-                  ></input>
-                </div>
+                <div className="profile-info-name" style={{fontSize:"20px"}}>x</div>
               </div>
               <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label">
-                  Email
+              <label class="col-lg-3 col-form-label form-control-label" style={{fontSize:"20px"}}> 
+                  Email :
                 </label>
-                <div class="col-lg-9">
-                  <input
-                    class="form-control"
-                    type="email"
-                    placeholder="ex. er@gmail.com"
-                  ></input>
-                </div>
+                <div className="profile-info-name" style={{fontSize:"20px"}}> {props.user.email} </div>
               </div>
               <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label">
-                  Address
+                <label class="col-lg-3 col-form-label form-control-label" style={{fontSize:"20px"}}> 
+                  Address :
                 </label>
-                <div class="col-lg-9">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Street"
-                  ></input>
-                </div>
+                <div className="profile-info-name" style={{fontSize:"20px"}}>x</div>
               </div>
-              <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label"></label>
-                <div class="col-lg-6">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="City"
-                  ></input>
-                </div>
-                <div class="col-lg-3">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="State"
-                  ></input>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label">
-                  Username
-                </label>
-                <div class="col-lg-9">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="ex. kisn754"
-                  ></input>
-                </div>
-              </div>
+              
 
-              <div class="form-group row">
+              {/* <div class="form-group row">
                 <div class="col-lg-9 ml-auto text-right">
                   <input
                     type="reset"
@@ -102,7 +52,7 @@ const ProfilePage = () => {
                     value="Save Changes"
                   />
                 </div>
-              </div>
+              </div> */}
             </form>
           </div>
 
@@ -110,9 +60,10 @@ const ProfilePage = () => {
             <img
               src="https://img.etimg.com/thumb/width-640,height-480,imgsize-120883,resizemode-1,msid-65900138/small-and-marginal-farmers-are-to-see-better-days-with-a-free-of-cost-farmer-to-farmer-rental-program-through-this-revolutionary-app-by-tafes-jfarm-services.jpg"
               class="mx-auto img-fluid rounded-circle"
-              alt="image has to be here"
+              alt="Image ka kya krega"
+              style={{width:"280px"}}
             />
-            <h6 class="my-4">Upload a new photo</h6>
+            {/* <h6 class="my-4">Upload a new photo</h6>
             <div class="input-group px-xl-4">
               <form>
                 <div style={{ textAlign: "left" }} class="custom-file">
@@ -131,7 +82,7 @@ const ProfilePage = () => {
                   <i class="fa fa-upload"></i>
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -139,4 +90,10 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+const mapStateToProps=(state)=>{
+  return{
+    user:state.auth.user
+  }
+}
+
+export default connect(mapStateToProps)(ProfilePage);

@@ -37,12 +37,43 @@ class TopNavigation extends Component {
 
     const authLinks = (
       <React.Fragment>
+        {/* <MDBNavItem>
+          <h4 style={{color:"white"}}>Farmer Name</h4>
+        </MDBNavItem> */}
+        
         <MDBNavItem>
-          <Link href="/logout" target="_blank">
-            <button type="button" class="btn btn-outline btn-md">
+            <li className="dropdown mt-3">
+              <p href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                <span style={{color:"#009900",fontWeight:"bolder",fontFamily:"Courier"}}> 
+                  {this.state.name}Farmer Name
+                </span> 
+              <span className="caret" style={{backgroundColor:"green"}}></span></p>
+              <ul className="dropdown-menu" style={{background:"#3399ff"}}>
+                <li><Link to="/profile" style={{fontWeight:"bolder",fontFamily:"Courier",outline:"none"}}>Profile</Link></li>
+                <li><Link to="/dashboard" style={{fontWeight:"bolder",fontFamily:"Courier",outline:"none"}}>Dashboard</Link></li>
+                <li><Link href="/logout" target="_blank" style={{color:"#ff3300",fontWeight:"bold",outline:"none"}}>Logout</Link></li>
+              </ul>
+            </li>
+        </MDBNavItem>
+        <MDBNavItem>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          {/* <Link href="/logout" target="_blank">
+            <button type="button" className="btn btn-info btn-md">
               logout
             </button>
-          </Link>
+          </Link> */}
         </MDBNavItem>
       </React.Fragment>
     );
@@ -51,14 +82,14 @@ class TopNavigation extends Component {
       <React.Fragment>
         <MDBNavItem>
           <Link to="/login">
-            <button type="button" class="btn btn-outline btn-md">
+            <button type="button" className="btn btn-info btn-md">
               Login
             </button>
           </Link>
         </MDBNavItem>
         <MDBNavItem>
           <Link to="/register">
-            <button type="button" class="btn btn-outline btn-md">
+            <button type="button" className="btn btn-info btn-md">
               signup
             </button>
           </Link>

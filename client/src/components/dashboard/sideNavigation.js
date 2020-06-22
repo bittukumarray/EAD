@@ -40,7 +40,7 @@ const SideNavigation = () => {
             deliverable
           </MDBListGroupItem>
         </NavLink>
-        <NavLink to="/setting" activeClassName="activeClass">
+        {/* <NavLink to="/setting" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />
             setting
@@ -51,7 +51,7 @@ const SideNavigation = () => {
             <MDBIcon icon="map" className="mr-3" />
             password reset
           </MDBListGroupItem>
-        </NavLink>
+        </NavLink> */}
       </MDBListGroup>
     </div>
   );

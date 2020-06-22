@@ -2,3 +2,13 @@
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
 }
+
+.dropdown-menu:li {
+    text-align: center;
+    
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+ }

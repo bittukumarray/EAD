@@ -17,7 +17,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const authLinks = (
     <MDBNavItem>
       <MDBNavLink exact to="/logout" onClick={logout}>
-        <strong>Logout</strong>
+        <strong >Logout</strong>
       </MDBNavLink>
     </MDBNavItem>
   );
