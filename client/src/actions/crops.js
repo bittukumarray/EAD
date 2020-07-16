@@ -23,6 +23,17 @@ export const getCrops = ()=> async dispatch =>{
 }
 
 
+//add to cart 
+export const addToCart = (userId, cropId) => async dispatch =>{
+  try{
+    console.log("adding to cart", cropId,userId);
+
+  }
+  catch(err){
+   console.log("error")
+  }
+}
+
 
 // //Get Crop
 // export const getCrop = id => async dispatch => {
