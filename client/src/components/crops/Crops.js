@@ -59,8 +59,7 @@ class Crops extends React.Component{
                                                                 </div>
                                                                 <div class="col-md-3-sm-3">
                                                                 <div  class="profile-info-value">
-                                                                   <Link class="col-md-3"to={`/add-to-cart/${user._id}/${crop._id}`}>Add to cart </Link>
-                                                                   <button onClick={()=>this.onclick(user._id, crop._id)}> Add t0 cart</button>
+                                                                   <div  style={{textAlign:"center"}} className='btn btn-outline' onClick={()=>this.onclick(user._id, crop._id)}> Add to cart</div>
                                                               </div>
                                                                 </div>
                                                                 <div  style={{textAlign:"center"}} class="col-md-5-sm-3">
