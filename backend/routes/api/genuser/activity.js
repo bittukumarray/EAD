@@ -10,10 +10,13 @@ const Farmer = require("../../../models/farmer");
 
 router.get("/get-cart", auth, async (req, res, next) => {
   try {
+    console.log("user id",req.user.id)
     const cropId = await genUser.findById(req.user.id);
+    console.log("cropid",cropId)
     res.json(cropId.cart);
   }
   catch (e) {
+    console.log(e);
     res.status(500).json({ "msg": "something went wrong" });
   }
 });

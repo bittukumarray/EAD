@@ -14,9 +14,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
 import { Redirect } from "react-router-dom";
-import { loginFarmer } from "../../actions/auth";
+import { loginGenUser } from "../../actions/auth";
 
-const Login = ({ loginFarmer, isAuthenticated }) => {
+const Login = ({ loginGenUser, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -39,7 +39,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
     e.preventDefault();
     console.log("Success submit");
     console.log(email, password);
-    loginFarmer(email, password);
+    loginGenUser(email, password);
   };
 
   //redirect if logged in
@@ -154,7 +154,7 @@ const Login = ({ loginFarmer, isAuthenticated }) => {
 
 Login.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  loginFarmer: PropTypes.func.isRequired,
+  loginGenUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
@@ -162,6 +162,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, loginFarmer }, null, {
+export default connect(mapStateToProps, { setAlert, loginGenUser }, null, {
   pure: false
 })(Login);
