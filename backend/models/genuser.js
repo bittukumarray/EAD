@@ -12,11 +12,19 @@ const genSchema = new mongoose.Schema({
     items: [
       {
         productId: {
-          type: Schema.Types.ObjectId,
+          type: Object,
           ref: "crops",
           required: true
         },
-        quantity: { type: Number, required: true }
+        quantity: {
+          type: Number,
+          required: true
+        },
+        farmerId: {
+          type: Object,
+          ref: "farmer",
+          required: true
+        }
       }
     ]
   },
@@ -29,7 +37,7 @@ const genSchema = new mongoose.Schema({
 });
 var options = { discriminatorKey: "genuser" };
 var GenUserSchema = User.discriminator("genuser", genSchema, options);
-genSchema.methods.addToCart = function(product) {
+genSchema.methods.addToCart = function (product) {
   //   console.log(product);
   const cartProductIndex = this.cart.items.findIndex(cp => {
     return cp.productId.toString() === product._id.toString();
