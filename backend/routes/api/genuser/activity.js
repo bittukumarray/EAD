@@ -33,7 +33,7 @@ router.post("/add-cart", auth, async (req, res, next) => {
     await userData.save();
     res.status(200).json({ message: "items added to cart", cart: cartItem });
   } catch (e) {
-    res.status(500).json({"msg":"Something went wrong"});
+    res.status(500).json({"msg":"all fields are required. maybe you are missing some fields"});
   }
 });
 
