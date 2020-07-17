@@ -10,13 +10,19 @@ const OrderSchema = new mongoose.Schema({
     }
   ],
   user: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "genuser"
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "genuser"
   },
-  date: {
+  orderdate: {
     type: Date,
     default: Date.now
+  },
+  deliverydate: {
+    type: Date
+  },
+  isDelivered: {
+    tpye: Boolean
   }
 });
 

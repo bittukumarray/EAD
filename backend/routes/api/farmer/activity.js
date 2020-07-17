@@ -79,29 +79,37 @@ router.post("/pie-chart", async (req, res, next) => {
   } catch (error) {
     return res
       .status(400)
-      .json({ Type: "Success", Message: "Cannot fetch crops", errors: err });
+      .json({ Type: "Success", Message: "Cannot fetch crops", errors: error });
   }
 });
-// router.get("/updateFarmer", async (res, req, next) => {
-//   // var farmer = await User.update(
-//   //   { role: "farmer" },
-//   //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
-//   // );
-//   var farm = await User.find({ role: "farmer" });
-//   for (let i in farm) {
-//     var farmer = await User.findOne({ _id: farm[i]._id }, function (err, doc) {
-//       doc.completedOrders = 0;
-//       doc.totalOrders = 0;
-//       doc.totalEarnings = 0;
-//       doc.save();
-//     });
-//   }
-//   return res
-//     .status(200)
-//     .json({ Type: "Success", Message: "Updated the farmers" });
-// });
+router.post("/updateFarmerDetails", async (res, req, next) => {
+  // var farmer = await User.update(
+  //   { role: "farmer" },
+  //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
+  // );
+  console.log(req.body);
+  const { name, email, city } = req.body;
+  var farm = await User.find({ _id: id });
 
-router.post("/farmer-details", async (req, res, next) => {
+  var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
+    doc.name = name;
+    doc.email = email;
+    doc.city = city;
+    doc.save();
+  });
+  return res.status(200).json({
+    Type: "Success",
+    Message: "Updated the farmer details"
+    // details: farmer
+  });
+  //  catch (err) {
+  //   return res.status(400).json({
+  //     Type: "Failed",
+  //     Message: "Cannot fetch the details",
+  //     errors: err
+  //   });
+});
+router.post("/farmer-details", auth, async (req, res, next) => {
   try {
     var farmerId = req.body.farmer;
     var farm = await farmer.findById(farmerId);
@@ -112,6 +120,7 @@ router.post("/farmer-details", async (req, res, next) => {
     }
     console.log(farm);
     var b = {};
+    b["name"] = farm.name;
     b["completedOrders"] = farm.completedOrders;
     b["totalOrders"] = farm.totalOrders;
     b["totalEarnings"] = farm.totalEarnings;
@@ -126,8 +135,46 @@ router.post("/farmer-details", async (req, res, next) => {
     return res.status(400).json({
       Type: "Failed",
       Message: "Cannot fetch the details",
+      errors: error
+    });
+  }
+});
+
+router.post("/get-farmer-crops", auth, async (req, res, next) => {
+  try {
+    var farmerId = req.body.farmerId;
+    const crops1 = await Crops.find({ farmer: farmerId });
+    var c = {};
+    var b = [];
+    for (let i in crops1) {
+      c = {};
+      const crop = await Crops.findById(crops1[i]);
+      console.log(crop);
+      c["Crop Name"] = crop.name;
+      c["Details"] = crop.details;
+      c["quantity"] = crop.quantity;
+      c["price"] = crop.price;
+      b.push(c);
+      // console.log(c);
+    }
+    if (!b.length == 0) {
+      return res.status(200).json({
+        Type: "Success",
+        Message: "Fetched the crops for the farmer",
+        crops: b
+      });
+    } else {
+      return res
+        .status(400)
+        .json({ Type: "Failed", Message: "No crops present for the farmer" });
+    }
+  } catch (err) {
+    return res.status(400).json({
+      Type: "Failed",
+      Message: "Cannot fetch the crops",
       errors: err
     });
   }
 });
+
 module.exports = router;
