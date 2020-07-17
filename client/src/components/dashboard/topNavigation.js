@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./topNav.css";
 import { Link } from "react-router-dom";
+import {logout} from  '../../actions/auth'
 
 class TopNavigation extends Component {
   state = {
@@ -31,6 +32,11 @@ class TopNavigation extends Component {
       dropdownOpen: !this.state.dropdownOpen,
     });
   };
+
+  onlogoutclick=()=>{
+    this.props.logout();
+    console.log("logout")
+  }
   render() {
     console.log(this.props.auth);
     const { isAuthenticated } = this.props.auth;
@@ -51,7 +57,7 @@ class TopNavigation extends Component {
               <ul className="dropdown-menu" style={{background:"#3399ff"}}>
                 <li><Link to="/profile" style={{fontWeight:"bolder",fontFamily:"Courier",outline:"none"}}>Profile</Link></li>
                 <li><Link to="/dashboard" style={{fontWeight:"bolder",fontFamily:"Courier",outline:"none"}}>Dashboard</Link></li>
-                <li><Link href="/logout" target="_blank" style={{color:"#ff3300",fontWeight:"bold",outline:"none"}}>Logout</Link></li>
+                <li><Link href="/logout"  style={{color:"#ff3300",fontWeight:"bold",outline:"none"}} onClick={this.onlogoutclick}>Logout</Link></li>
               </ul>
             </li>
         </MDBNavItem>
@@ -176,4 +182,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, {})(TopNavigation);
+export default connect(mapStateToProps, {logout})(TopNavigation);

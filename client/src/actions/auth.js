@@ -84,7 +84,7 @@ export const registerFarmer = ({ name, email, password }) => async dispatch => {
 //
 //login genuser
 
-export const loginGenUser = (email, password) => async dispatch => {
+export const loginAllUser = (email, password) => async dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -94,7 +94,7 @@ export const loginGenUser = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post("/api/login/user", body, config);
+    const res = await axios.post("/api/check-user", body, config);
 
     dispatch({
       type: LOGIN_SUCCESS,
