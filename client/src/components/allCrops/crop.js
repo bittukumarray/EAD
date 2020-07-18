@@ -55,10 +55,13 @@ class Crops extends React.Component{
             // {
             //     headers
             // })
+           alert('Successfully Added to Cart')
+
         console.log("data", res.data)
         }
         catch{
             console.log("error")
+            alert('Error Occured , not able to add to cart ')
         }
     }
     
@@ -103,6 +106,7 @@ class Crops extends React.Component{
         
         return  (
             <Fragment>
+                
               <div class="row">
                 <div class="col-xs-12 col-sm-4 center mt-4 ml-5">
                   <span class="profile-picture">
