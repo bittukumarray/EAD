@@ -18,6 +18,7 @@ class Crops extends React.Component{
         try{
         
         const url  = `/api/filter/get-crop/${this.props.match.params.id}`
+
         const res =await axios.get(url)
         const data = await res.data;
         console.log("crop ",data)
@@ -32,8 +33,31 @@ class Crops extends React.Component{
             this.setState({error:true, loading:false})
         }
     }
-    onclick= (userId, cropId, quantity)=>{
+    onclick = async (userId, cropId, quantity)=>{
+        try{
         console.log(userId,this.props.match.params.id, quantity, 'adding to cart ')
+        const url = `/api/user/get-cart`
+        console.log(this.props.token)
+        const {token} = this.props;
+        const body = {
+            "farmerId":"5e899d88fe910a4bd7123311",
+            "quantity":10,
+            "cropsId":"5f132594fa75183b01c92093"
+        }
+        // const config = {
+        //     headers: {
+        //       "Content-Type": "application/json"
+        //     }
+        //   };
+        const res = await axios.get(url,{},{})//,body,
+            // {
+            //     headers
+            // })
+        console.log("data", res.data)
+        }
+        catch{
+            console.log("error")
+        }
     }
     
     IncrementItem = () => {
@@ -61,7 +85,7 @@ class Crops extends React.Component{
           <React.Fragment>
           <div class="col-md-3-sm-3">
           <div  class="profile-info-value">
-          <div  style={{textAlign:"center"}} className='btn btn-outline' onClick={()=>this.onclick(user._id, crop._id , quantity)}> Add to cart</div>
+          <div  style={{textAlign:"center"}} className='btn btn-outline' onClick={()=>this.onclick(crop.farmer, crop._id , quantity)}> Add to cart</div>
           </div>
     </div>
     <div>
@@ -179,5 +203,6 @@ crop: PropTypes.object.isRequired
 const mapStateToProps = state => ({
 crop: state.crop,
 user : state.auth.user,
+token:state.auth.token,
 });
 export default connect(mapStateToProps,{getCrops}) (Crops);
