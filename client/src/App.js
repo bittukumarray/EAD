@@ -57,6 +57,8 @@ const App = () => {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crops-info" component={BlogPage} />
             <Route exact path="/crops" component={Crops} />
+            {/* <Route exact path="/farmer-crops" component={Crops} /> */}
+
             <Route exact path="/crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}

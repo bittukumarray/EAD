@@ -8,7 +8,6 @@ export const getCrops = ()=> async dispatch =>{
     try{
         console.log("in crop list");
         const res = await axios.get('/api/farmer/get-crops');
-        // console.log(res.data);
         dispatch({
             type:GET_CROPS,
             payload:res.data.crops
