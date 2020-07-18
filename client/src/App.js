@@ -26,6 +26,8 @@ import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import Payment from "./components/payment/Payment";
 import AllCrops from './components/allCrops/allCrops'
+import SingleCrop from './components/allCrops/crop'
+
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -59,6 +61,7 @@ const App = () => {
             <Route exact path="/crops-info" component={BlogPage} />
             <Route exact path="/farmer-crops" component={Crops} />
             <Route exact path="/crops" component={AllCrops} />
+            <Route exact path="/crops/:id" component={SingleCrop} />
 
             <Route exact path="/farmer-crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />

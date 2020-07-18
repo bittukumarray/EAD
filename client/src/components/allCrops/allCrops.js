@@ -29,6 +29,7 @@ class Crops extends React.Component{
         // const {crops, loading}= crop;
         const {crops,error,loading} = this.state;
         if(loading)return <div>Loading </div>
+        if(error) return <div>Error Occured</div>
         console.log("state", crops);
 
         return (
