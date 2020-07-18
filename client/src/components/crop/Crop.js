@@ -36,8 +36,27 @@ DecreaseItem = () => {
     if(!loading){
       crp = crop.crop;
     }
+    let addToCart = ""
+    console.log(user)
+    if(user){
+      if(user.role === "genuser")
+     addToCart = (
+      <React.Fragment>
+      <div class="col-md-3-sm-3">
+      <div  class="profile-info-value">
+      <div  style={{textAlign:"center"}} className='btn btn-outline' onClick={()=>this.onclick(user._id, crop._id , quantity)}> Add to cart</div>
+      </div>
+</div>
+<div>
+<button onClick={this.IncrementItem}>Click to increment by 1</button>
+<button onClick={this.DecreaseItem}>Click to decrease by 1</button>
 
-    console.log(crp)
+<h2>{ this.state.quantity }</h2>
+</div></React.Fragment>
+
+    )
+
+     }
     // return <div>loading ....</div>
     return loading || crop === null ? (
           <div>loading</div>
@@ -108,20 +127,9 @@ DecreaseItem = () => {
                       <span>{crp.details}</span>
                     </div>
                                                                                     
-                    <div class="col-md-3-sm-3">
-                      <div  class="profile-info-value">
-                      <div  style={{textAlign:"center"}} className='btn btn-outline' onClick={()=>this.onclick(user._id, crop._id , quantity)}> Add to cart</div>
-                      </div>
-              </div>
-              <div>
-        <button onClick={this.IncrementItem}>Click to increment by 1</button>
-        <button onClick={this.DecreaseItem}>Click to decrease by 1</button>
-
-         <h2>{ this.state.quantity }</h2>
-      </div>
-
-                                                              
-                                                               
+                    {/* {user._id} */}
+                            {/* { user._id === 'farmer' && {addToCart}}                                */}
+                          {addToCart}                                     
                   </div>
                 </div>
               </div>

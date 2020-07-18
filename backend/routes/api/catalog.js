@@ -46,6 +46,16 @@ router.get("/all", async (req, res, next) => {
     }
 });
 
+router.get('/get-crop/:id', async (req,res,next)=>{
+    const id = req.params.id;
+    try{
+        const crop = await Crops.findById(id);
+        return res.json({crop : crop, success:true})
+    }
+    catch(e){
+        return res.json({success:false})
+    }
+});
 
 
 

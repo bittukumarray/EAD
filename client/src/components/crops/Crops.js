@@ -58,7 +58,7 @@ class Crops extends React.Component{
                                                                 </div>
 
                                                                 <div  style={{textAlign:"center"}} class="col-md-5-sm-3">
-                                                                    <Link to={`/crop/${crop._id}`} className='btn btn-outline-secondary'>
+                                                                    <Link to={`/farmer-crop/${crop._id}`} className='btn btn-outline-secondary'>
                                                                         Click For More details
                                                                     </Link>
                                                                 </div>
