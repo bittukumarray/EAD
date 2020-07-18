@@ -109,7 +109,8 @@ router.post("/updateFarmerDetails", async (res, req, next) => {
   //     errors: err
   //   });
 });
-router.post("/farmer-details", auth, async (req, res, next) => {
+
+router.post("/farmer-details",  async (req, res, next) => {
   try {
     var farmerId = req.body.farmer;
     var farm = await farmer.findById(farmerId);
@@ -140,7 +141,7 @@ router.post("/farmer-details", auth, async (req, res, next) => {
   }
 });
 
-router.post("/get-farmer-crops", auth, async (req, res, next) => {
+router.post("/get-farmer-crops", async (req, res, next) => {
   try {
     var farmerId = req.body.farmerId;
     const crops1 = await Crops.find({ farmer: farmerId });
