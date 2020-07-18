@@ -33,23 +33,25 @@ class Crops extends React.Component{
             this.setState({error:true, loading:false})
         }
     }
-    onclick = async (userId, cropId, quantity)=>{
+    onclick = async (farmerId, cropId, quantity)=>{
         try{
-        console.log(userId,this.props.match.params.id, quantity, 'adding to cart ')
-        const url = `/api/user/get-cart`
+        console.log(farmerId,this.props.match.params.id, quantity, 'adding to cart ')
+        const url = `/api/user/add-cart`
         console.log(this.props.token)
         const {token} = this.props;
         const body = {
-            "farmerId":"5e899d88fe910a4bd7123311",
-            "quantity":10,
-            "cropsId":"5f132594fa75183b01c92093"
+            "farmerId":farmerId, //"5e899d88fe910a4bd7123311",
+            "quantity":quantity,
+            "cropsId":cropId //"5f132594fa75183b01c92093"
         }
-        // const config = {
-        //     headers: {
-        //       "Content-Type": "application/json"
-        //     }
-        //   };
-        const res = await axios.get(url,{},{})//,body,
+        const config = {
+            headers: {
+              "Content-Type": "application/json",
+              'x-auth-token':token
+            }
+          };
+        const body1 = {}
+        const res = await axios.post(url,body)//,body,
             // {
             //     headers
             // })
