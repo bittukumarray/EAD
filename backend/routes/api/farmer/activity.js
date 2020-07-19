@@ -82,7 +82,7 @@ router.post("/pie-chart", async (req, res, next) => {
       .json({ Type: "Success", Message: "Cannot fetch crops", errors: error });
   }
 });
-router.post("/update-farmer", async (req, res, next) => {
+router.post("/update-farmer", auth,async (req, res, next) => {
   // var farmer = await User.update(
   //   { role: "farmer" },
   //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
@@ -90,7 +90,8 @@ router.post("/update-farmer", async (req, res, next) => {
   try {
     console.log(req.body);
 
-    const { id, name, city } = req.body;
+    const {  name, city } = req.body;
+    const id = req.user.id;
     var farmer = await User.findById(id);
     console.log(farmer);
     // var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
@@ -112,9 +113,9 @@ router.post("/update-farmer", async (req, res, next) => {
     });
   }
 });
-router.post("/farmer-details", async (req, res, next) => {
+router.post("/farmer-details",auth ,async (req, res, next) => {
   try {
-    var farmerId = req.body.farmer;
+    var farmerId = req.user.id;
     var farm = await farmer.findById(farmerId);
     const crops1 = await Crops.find({ farmer: farmerId });
     var c = 0;
@@ -130,13 +131,14 @@ router.post("/farmer-details", async (req, res, next) => {
     b["totalCrops"] = c;
     console.log(b);
     return res.status(200).json({
-      Type: "Success",
+      success: true,
       Message: "Returned the details successfully",
-      details: b
+      details: b,
+      farmer:farm
     });
   } catch (error) {
     return res.status(400).json({
-      Type: "Failed",
+      success: false,
       Message: "Cannot fetch the details",
       errors: error
     });

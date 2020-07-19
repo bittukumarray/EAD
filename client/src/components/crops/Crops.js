@@ -19,7 +19,6 @@ class Crops extends React.Component{
             const body = {
                 role:'farmer'
             }
-            // console.log(body)
             const res =await axios.post(url,body)
             const data = await res.data;
             console.log("data ",data)
