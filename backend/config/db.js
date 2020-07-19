@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const config = require("config");
-const db = config.get("mongoURI");
+let db = config.get("mongoURI");
 
+// const url = "mongodb://bittu:password@127.0.0.1:27017/EAD_DB?authSource=admin";
+
+// console.log(url);
 // mongoose.connect(db);
 const connectDB = async () => {
   try {
@@ -20,7 +23,6 @@ const connectDB = async () => {
 };
 
 // // const mongoose = require('mongoose');
-
 // const MONGO_USERNAME = 'bittu';
 // const MONGO_PASSWORD = 'password';
 // const MONGO_HOSTNAME = '127.0.0.1';
