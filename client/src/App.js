@@ -18,6 +18,7 @@ import Landing from "./components/landing";
 import TopNavigation from "./components/dashboard/topNavigation";
 import PrivateRoute from "./components/common/PrivateRoute";
 import RegisterTab from "./components/auth/tabview";
+import ProfilePage from "./components/dashboard/pages/ProfilePage" //./pages/ProfilePage";
 
 //Redux
 import { Provider } from "react-redux";
@@ -67,6 +68,7 @@ const App = () => {
             <Route exact path="/farmer-crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
+            <Route path="/profile" component={ProfilePage} />
 
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/catalog" component={DetailcropsPage} />

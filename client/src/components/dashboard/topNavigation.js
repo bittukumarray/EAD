@@ -35,6 +35,8 @@ class TopNavigation extends Component {
 
   onlogoutclick=()=>{
     this.props.logout();
+    this.props.history.push('/login');
+
     // console.log("logout")
   }
   render() {
@@ -129,7 +131,7 @@ class TopNavigation extends Component {
               </MDBNavLink>
             </MDBNavItem>
 
-            <MDBNavItem active>
+            <MDBNavItem >
               <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
