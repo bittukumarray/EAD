@@ -82,35 +82,37 @@ router.post("/pie-chart", auth, async (req, res, next) => {
       .json({ Type: "Success", Message: "Cannot fetch crops", errors: error });
   }
 });
-router.post("/updateFarmerDetails", async (res, req, next) => {
+router.post("/update-farmer", async (req, res, next) => {
   // var farmer = await User.update(
   //   { role: "farmer" },
   //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
   // );
-  console.log(req.body);
-  const { name, email, city } = req.body;
-  var farm = await User.find({ _id: id });
+  try {
+    console.log(req.body);
 
-  var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
-    doc.name = name;
-    doc.email = email;
-    doc.city = city;
-    doc.save();
-  });
-  return res.status(200).json({
-    Type: "Success",
-    Message: "Updated the farmer details"
-    // details: farmer
-  });
-  //  catch (err) {
-  //   return res.status(400).json({
-  //     Type: "Failed",
-  //     Message: "Cannot fetch the details",
-  //     errors: err
-  //   });
+    const { id, name, city } = req.body;
+    var farmer = await User.findById(id);
+    console.log(farmer);
+    // var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
+    farmer.name = name;
+    farmer.city = city;
+    farmer.save();
+    // });
+    return res.status(200).json({
+      success: true,
+      Message: "Updated the farmer details",
+      farmer: farmer
+      // details: farmer
+    });
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      Message: "Cannot update the details",
+      errors: err
+    });
+  }
 });
-
-router.post("/farmer-details",  async (req, res, next) => {
+router.post("/farmer-details", async (req, res, next) => {
   try {
     var farmerId = req.body.farmer;
     var farm = await farmer.findById(farmerId);
