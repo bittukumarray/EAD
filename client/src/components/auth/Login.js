@@ -1,20 +1,6 @@
-// import React, { Fragment, useState } from "react";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCol,
-  MDBInput,
-  MDBCardBody,
-  MDBCardHeader,
-  MDBIcon,
-  MDBBtn
-} from "mdbreact";
-// import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
-// import { Redirect } from "react-router-dom";
-import { loginCompany } from "../../actions/auth";
+
 import React, { Component } from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider, withStyles } from "@material-ui/styles";
@@ -60,7 +46,7 @@ const useStyles = {
     width: "100%"
   },
   image: {
-    backgroundImage: "url(https://source.unsplash.com/collection/8706966)",
+    backgroundImage: "url(https://source.unsplash.com/collection/1461851)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center"
@@ -89,7 +75,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Whizingo
+        Agventure
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -108,10 +94,6 @@ class Login extends Component {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/");
     }
-
-    //   if (nextProps.errors) {
-    //     this.setState({ errors: nextProps.errors });
-    //   }
   }
   onSubmitLogin = e => {
     const { email, password } = this.state;
@@ -139,13 +121,7 @@ class Login extends Component {
   };
 
   render() {
-    console.log("Wilson", this.props.isAuthenticated);
     const { classes } = this.props;
-    // if (this.props.isAuthenticated) {
-    //   console.log("User is Logged in successfully!!", this.props);
-    // } else {
-    //   console.log("Authentication Failed!!", this.props);
-    // }
 
     const redirectToReferrer = this.props.isAuthenticated;
     if (redirectToReferrer === true) {
@@ -154,8 +130,6 @@ class Login extends Component {
 
     return (
       <React.Fragment>
-        <br />
-        <br />
         <Grid container component="main" className={classes.image}>
           {/* <CssBaseline /> */}
           <Grid item xs={false} sm={4} md={7} className={classes.image} />
