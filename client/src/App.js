@@ -17,6 +17,7 @@ import Crop from "./components/crop/Crop";
 import Landing from "./components/landing";
 import TopNavigation from "./components/dashboard/topNavigation";
 import PrivateRoute from "./components/common/PrivateRoute";
+import RegisterTab from "./components/auth/tabview";
 
 //Redux
 import { Provider } from "react-redux";
@@ -25,6 +26,9 @@ import { loadUser } from "./actions/auth";
 // import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import Payment from "./components/payment/Payment";
+import AllCrops from './components/allCrops/allCrops'
+import SingleCrop from './components/allCrops/crop'
+
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -49,15 +53,18 @@ const App = () => {
           <Alert />
 
           <Switch>
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/register" component={RegisterTab} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/company-register" component={CompanyRegister} />
             <Route exact path="/company-login" component={CompanyLogin} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crops-info" component={BlogPage} />
-            <Route exact path="/crops" component={Crops} />
-            <Route exact path="/crop/:id" component={Crop} />
+            <Route exact path="/farmer-crops" component={Crops} />
+            <Route exact path="/crops" component={AllCrops} />
+            <Route exact path="/crops/:id" component={SingleCrop} />
+
+            <Route exact path="/farmer-crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
 

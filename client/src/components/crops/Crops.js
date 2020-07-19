@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {getCrops, getCrop, addToCart} from '../../actions/crops';
+import {getCrops, getCrop} from '../../actions/crops';
 import { Link } from 'react-router-dom';
 
 class Crops extends React.Component{
@@ -11,9 +11,7 @@ class Crops extends React.Component{
     componentDidMount(){
         this.props.getCrops();
     }
-     onclick= (userId, cropId)=>{
-        console.log(userId,cropId, 'adding to cart ')
-    }
+
     render(){
         const {crop,user}  = this.props;
         const {crops, loading}= crop;
@@ -56,14 +54,11 @@ class Crops extends React.Component{
                                                                     <div class="profile-info-value">
                                                                         <span>{crop.price}</span>
                                                                     </div>
+                                                             
                                                                 </div>
-                                                                <div class="col-md-3-sm-3">
-                                                                <div  class="profile-info-value">
-                                                                   <div  style={{textAlign:"center"}} className='btn btn-outline' onClick={()=>this.onclick(user._id, crop._id)}> Add to cart</div>
-                                                              </div>
-                                                                </div>
+
                                                                 <div  style={{textAlign:"center"}} class="col-md-5-sm-3">
-                                                                    <Link to={`/crop/${crop._id}`} className='btn btn-outline-secondary'>
+                                                                    <Link to={`/farmer-crop/${crop._id}`} className='btn btn-outline-secondary'>
                                                                         Click For More details
                                                                     </Link>
                                                                 </div>

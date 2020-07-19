@@ -25,12 +25,13 @@ router.post("/add-cart", auth, async (req, res, next) => {
     const crop = await Crops.findById(req.body.cropsId);
     const farmerData = await Farmer.findById(req.body.farmerId);
     const userData = await genUser.findById(req.user.id);
+    console.log(farmerData,)
     const cartItem = {
       productId: crop,
       quantity: req.body.quantity,
       farmerId: farmerData
     };
-    console.log("cart item is ", cartItem);
+    // console.log("cart item is ", cartItem);
     userData.cart.items.push(cartItem);
     await userData.save();
     res.status(200).json({ message: "items added to cart", cart: cartItem });

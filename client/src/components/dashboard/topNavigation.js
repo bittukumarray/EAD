@@ -35,10 +35,10 @@ class TopNavigation extends Component {
 
   onlogoutclick=()=>{
     this.props.logout();
-    console.log("logout")
+    // console.log("logout")
   }
   render() {
-    console.log(this.props.auth);
+    // console.log(this.props.auth);
     const { isAuthenticated } = this.props.auth;
 
     const authLinks = (

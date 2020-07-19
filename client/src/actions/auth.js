@@ -7,7 +7,9 @@ import {
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  GENERAL_REGISTER_SUCCESS,
+  GENERAL_REGISTER_FAIL
 } from "./types";
 
 import setAuthToken from "../utils/setAuthToken";
@@ -49,6 +51,39 @@ export const loadCompanyUser = () => async dispatch => {
   }
 };
 
+//registration general user
+
+export const registerUser = ({ name, email, password }) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  const role="genuser";
+  const body = JSON.stringify({ name, email, password, role });
+
+  try {
+    const res = await axios.post("/api/signup/user", body, config);
+
+    dispatch({
+      type: GENERAL_REGISTER_SUCCESS,
+      payload: res.data
+    });
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => {
+        dispatch(setAlert(error.msg, "danger"));
+      });
+    }
+
+    dispatch({
+      type: GENERAL_REGISTER_FAIL
+    });
+  }
+};
+
 //register Farmer
 
 export const registerFarmer = ({ name, email, password }) => async dispatch => {
@@ -57,8 +92,7 @@ export const registerFarmer = ({ name, email, password }) => async dispatch => {
       "Content-Type": "application/json"
     }
   };
-
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email, password,  });
 
   try {
     const res = await axios.post("/api/signup/farmer", body, config);
