@@ -3,22 +3,66 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {getCrops, getCrop} from '../../actions/crops';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 class Crops extends React.Component{
     state = {
+        crops:null,
+        error:false,
+        loading:true,
+    }
 
-    }
-    componentDidMount(){
-        this.props.getCrops();
-    }
+    async componentDidMount(){
+        console.log("mounting")
+            try{
+            const url  = '/api/farmer/get-farmer-crops/'
+            const body = {
+                role:'farmer'
+            }
+            // console.log(body)
+            const res =await axios.post(url,body)
+            const data = await res.data;
+            console.log("data ",data)
+            this.setState({crops:data.crops,loading:false})
+            }
+            catch{
+                this.setState({error:true, loading:false})
+            }
+        }
+    //     componentDidMount(){
+    //         // const {user} = this.props;
+    //         // if(user){
+    //         const url  = '/api/farmer/get-farmer-crops/'
+    //         const body = {
+    //             role:'farmer'
+    //         }
+    //         axios.post(url,body).then(data=>{
+    //             console.log(data);
+    //             this.setState({crops:data.crops,loading:false})
+
+    //         }).catch(err=>{
+    //             this.setState({error:true, loading:false})
+
+    //         })
+    //     // }
+    // }
+
 
     render(){
-        const {crop,user}  = this.props;
-        const {crops, loading}= crop;
-        if(user === null) return <div>Please Login</div>
-        return loading || crop=== null || user === null ? (
-                    <div>loading</div>
-                  ) : (
+        const {user} = this.props;
+
+        // console.log("crops ", this.state.crops)
+        // const {crop,user}  = this.props;
+        const {crops,loading,error} = this.state;
+        if(loading)return <div>Loading </div>
+        if(error) return <div>Error Occured</div>
+        console.log(crops)
+        // return <div>Error Occured</div>
+
+        // return <div>hello ... </div>
+
+        // if(user === null) return <div>Please Login</div>
+        return  (
                     <Fragment>
             
                         <div class="row mt-5 ">

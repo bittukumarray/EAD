@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/farmer-logo.png";
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from "mdbreact";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 
 import "./sideNav.css";
 
@@ -34,12 +34,12 @@ const SideNavigation = () => {
           </MDBListGroupItem>
         </NavLink>
 
-        <NavLink to="/deliverable" activeClassName="activeClass">
+        <Link to="/farmer-crops" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />
-            deliverable
+            Farmer Crops
           </MDBListGroupItem>
-        </NavLink>
+        </Link>
         {/* <NavLink to="/setting" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />
