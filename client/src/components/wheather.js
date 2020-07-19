@@ -10,10 +10,6 @@ class WeatherPage extends Component {
     city: "patna"
   };
   async componentDidMount() {
-    // const data = await axios.get(
-    //   `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`,{}, {}
-    // );
-    // this.setState({ data: data.data });
 
     const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
     const data = await res.json();
@@ -26,10 +22,6 @@ class WeatherPage extends Component {
   };
 
   onClickHandler = async e => {
-    // const data = await axios.get(
-    //   `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
-    // );
-    // this.setState({ data: data.data });
 
     const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
     const data = await res.json();
