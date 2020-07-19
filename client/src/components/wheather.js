@@ -6,13 +6,19 @@ import axios from "axios";
 class WeatherPage extends Component {
   state = {
     data: "",
+
     city: "patna"
   };
   async componentDidMount() {
-    const data = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
-    );
-    this.setState({ data: data.data });
+    // const data = await axios.get(
+    //   `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`,{}, {}
+    // );
+    // this.setState({ data: data.data });
+
+    const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
+    const data = await res.json();
+    console.log("data", data)
+    this.setState({ data: data });
   }
 
   onChangeHandler = e => {
@@ -20,14 +26,20 @@ class WeatherPage extends Component {
   };
 
   onClickHandler = async e => {
-    const data = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
-    );
-    this.setState({ data: data.data });
+    // const data = await axios.get(
+    //   `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
+    // );
+    // this.setState({ data: data.data });
+
+    const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
+    const data = await res.json();
+    console.log("data", data)
+    this.setState({ data: data });
   };
 
   render() {
-    console.log(this.state.data.weather);
+    // console.log(this.state.data.weather);
+    // return <div>loading </div>
     return (
       <MDBCard className="my-5 px-5 pb-5">
         <MDBCardBody className="text-left">
