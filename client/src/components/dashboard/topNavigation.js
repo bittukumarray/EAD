@@ -133,7 +133,7 @@ class TopNavigation extends Component {
               <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <MDBNavLink to="/crops">Crops</MDBNavLink>
+              <MDBNavLink to="/catalog">Catalog</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
               <MDBNavLink to="/sales">Sales</MDBNavLink>
