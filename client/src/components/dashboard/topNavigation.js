@@ -35,7 +35,7 @@ class TopNavigation extends Component {
 
   onlogoutclick=()=>{
     this.props.logout();
-    this.props.history.push('/login');
+    // this.props.history.push('/login');
 
     // console.log("logout")
   }
