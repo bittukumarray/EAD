@@ -7,6 +7,7 @@ const Farmer = require("../../../models/farmer");
 const Crops = require("../../../models/crops");
 const User = require("../../../models/User");
 const farmer = require("../../../models/farmer");
+const { response } = require("express");
 
 //get crops
 router.get("/get-crops", async (req, res, next) => {
@@ -82,35 +83,43 @@ router.post("/pie-chart", async (req, res, next) => {
       .json({ Type: "Success", Message: "Cannot fetch crops", errors: error });
   }
 });
-router.post("/updateFarmerDetails", async (res, req, next) => {
+// router.post("/update-farmer", async (req, res, next) => {
+//   console.log(req.body);
+//   return res.json(req.body);
+// });
+router.post("/update-farmer", async (req, res, next) => {
   // var farmer = await User.update(
   //   { role: "farmer" },
   //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
   // );
-  console.log(req.body);
-  const { name, email, city } = req.body;
-  var farm = await User.find({ _id: id });
+  try {
+    console.log(req.body);
 
-  var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
-    doc.name = name;
-    doc.email = email;
-    doc.city = city;
-    doc.save();
-  });
-  return res.status(200).json({
-    Type: "Success",
-    Message: "Updated the farmer details"
-    // details: farmer
-  });
-  //  catch (err) {
-  //   return res.status(400).json({
-  //     Type: "Failed",
-  //     Message: "Cannot fetch the details",
-  //     errors: err
-  //   });
+    const { id, name, email, city } = req.body;
+    var farmer = await User.findById(id);
+
+    // var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
+    farmer.name = name;
+    farmer.email = email;
+    farmer.city = city;
+    farmer.save();
+    // });
+    return res.status(200).json({
+      success: true,
+      Message: "Updated the farmer details",
+      farmer: farmer
+      // details: farmer
+    });
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      Message: "Cannot update the details",
+      errors: error
+    });
+  }
 });
 
-router.post("/farmer-details",  async (req, res, next) => {
+router.post("/farmer-details", async (req, res, next) => {
   try {
     var farmerId = req.body.farmer;
     var farm = await farmer.findById(farmerId);
