@@ -49,7 +49,7 @@ const Register = ({ setAlert, registerFarmer, isAuthenticated }) => {
           <MDBCol md="7" lg="4">
             <SectionContainer>
               <form onSubmit={e => onSubmit(e)}>
-                <p className="h4 text-center mb-4">Farmer Sign up</p>
+                <p className="h4 text-center mb-4">General User Sign up</p>
                 <label
                   htmlFor="defaultFormRegisterNameEx"
                   className="grey-text"

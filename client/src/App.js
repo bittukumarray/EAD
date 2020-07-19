@@ -17,6 +17,7 @@ import Crop from "./components/crop/Crop";
 import Landing from "./components/landing";
 import TopNavigation from "./components/dashboard/topNavigation";
 import PrivateRoute from "./components/common/PrivateRoute";
+import RegisterTab from "./components/auth/tabview";
 
 //Redux
 import { Provider } from "react-redux";
@@ -52,7 +53,7 @@ const App = () => {
           <Alert />
 
           <Switch>
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/register" component={RegisterTab} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/company-register" component={CompanyRegister} />
             <Route exact path="/company-login" component={CompanyLogin} />
