@@ -51,7 +51,7 @@ function ProductHero(props) {
       >
         A new caring perspective to the more healthy food
       </Typography>
-      <Button
+      {/* <Button
         color="secondary"
         variant="contained"
         size="large"
@@ -60,7 +60,7 @@ function ProductHero(props) {
         href="/register"
       >
         Register
-      </Button>
+      </Button> */}
       <Typography variant="body2" color="inherit" className={classes.more}>
         Discover the experience
       </Typography>

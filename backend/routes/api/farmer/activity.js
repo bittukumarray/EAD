@@ -54,7 +54,7 @@ router.post("/add-crops", auth, async (req, res, next) => {
   const data = await crop.save();
   return res.status(201).json({ msg: "successful", crops: data });
 });
-router.post("/pie-chart", auth, async (req, res, next) => {
+router.post("/pie-chart", async (req, res, next) => {
   try {
     var farmerId = req.body.farmer;
     var a = [];
@@ -143,21 +143,25 @@ router.post("/farmer-details", async (req, res, next) => {
   }
 });
 
-router.post("/get-farmer-crops", async (req, res, next) => {
+router.post("/get-farmer-crops", auth,async (req, res, next) => {
   try {
-    var farmerId = req.body.farmerId;
+    var farmerId = req.user.id //req.body.farmerId;
+    console.log("gft",req.user.id)
+    // const userData = await genUser.findById(req.user.id);
+
+    console.log("gft",farmerId)
     const crops1 = await Crops.find({ farmer: farmerId });
     var c = {};
     var b = [];
     for (let i in crops1) {
       c = {};
       const crop = await Crops.findById(crops1[i]);
-      console.log(crop);
-      c["Crop Name"] = crop.name;
-      c["Details"] = crop.details;
-      c["quantity"] = crop.quantity;
-      c["price"] = crop.price;
-      b.push(c);
+      // console.log(crop);
+      // c["Crop Name"] = crop.name;
+      // c["Details"] = crop.details;
+      // c["quantity"] = crop.quantity;
+      // c["price"] = crop.price;
+      b.push(crop);
       // console.log(c);
     }
     if (!b.length == 0) {
