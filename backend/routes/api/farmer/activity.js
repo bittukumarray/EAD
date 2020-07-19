@@ -54,7 +54,7 @@ router.post("/add-crops", auth, async (req, res, next) => {
   const data = await crop.save();
   return res.status(201).json({ msg: "successful", crops: data });
 });
-router.post("/pie-chart", async (req, res, next) => {
+router.post("/pie-chart", auth, async (req, res, next) => {
   try {
     var farmerId = req.body.farmer;
     var a = [];
