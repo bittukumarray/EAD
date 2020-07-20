@@ -12,6 +12,7 @@ import {
 import { connect } from "react-redux";
 import axios from "axios";
 import crop from "../assets/crop.jpg";
+import { Link } from "react-router-dom";
 
 class CatalogPage extends Component {
   state = {
@@ -22,6 +23,7 @@ class CatalogPage extends Component {
   async componentDidMount() {
     const data = await axios.get(`/api/filter/all`);
     this.setState({ data: data.data });
+    console.log("data is ", data.data);
   }
 
   onChangeSearchHandler = async e => {
@@ -107,16 +109,18 @@ class CatalogPage extends Component {
             <div class="row">
               {this.state.data
                 ? this.state.data.map(element => {
-                    {
-                      /* <!--Grid column--> */
-                    }
-                    return (
-                      <div key={element._id} class="col-md-3">
-                        {/* <!--Card group--> */}
-                        <div class="card-group">
-                          {/* <!--Card--> */}
-                          <div class="card card-personal mb-4">
-                            {/* <!--Card image--> */}
+                  {
+                    /* <!--Grid column--> */
+                  }
+                  return (
+
+                    <div key={element._id} class="col-md-3">
+                      {/* <!--Card group--> */}
+                      <div class="card-group">
+                        {/* <!--Card--> */}
+                        <div class="card card-personal mb-4">
+                          {/* <!--Card image--> */}
+                          <Link to={`/crop/detail/${element._id}`} >
                             <div
                               class="view"
                               style={{ backgroundColor: "grey" }}
@@ -134,7 +138,6 @@ class CatalogPage extends Component {
                                     <a
                                       data-toggle="tooltip"
                                       data-placement="top"
-                                      title="Add to Cart"
                                     >
                                       <MDBIcon icon="map-marker-alt" />{" "}
                                       {element.city}
@@ -145,7 +148,7 @@ class CatalogPage extends Component {
                                       data-toggle="tooltip"
                                       data-placement="top"
                                       title="Add to Cart"
-                                      href="/catalog/detail-crops"
+                                      href="/crop/detail/"
                                     >
                                       <i
                                         style={{ color: "rgba(234, 111,123)" }}
@@ -184,11 +187,15 @@ class CatalogPage extends Component {
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </Link>
                         </div>
+
                       </div>
-                    );
-                  })
+                    </div>
+
+                  );
+                })
+
                 : null}
             </div>
           </section>

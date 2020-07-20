@@ -1,5 +1,5 @@
 import { setAlert } from "../../actions/alert";
-import { registerFarmer } from "../../actions/auth";
+import { registerUser } from "../../actions/auth";
 
 import React, { Component } from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -111,7 +111,7 @@ class Register extends Component {
     } else {
       console.log(name, email, password);
       // console.log(formData);
-      this.props.registerFarmer({ name, email, password });
+      this.props.registerUser({ name, email, password });
     }
   };
 
@@ -266,7 +266,7 @@ class Register extends Component {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   isRegistered: PropTypes.bool,
-  registerFarmer: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
@@ -280,6 +280,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { setAlert, registerFarmer })(
+export default connect(mapStateToProps, { setAlert, registerUser })(
   withStyles(useStyles)(Register)
 );
