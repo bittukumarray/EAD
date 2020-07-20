@@ -19,6 +19,7 @@ import TopNavigation from "./components/dashboard/topNavigation";
 import PrivateRoute from "./components/common/PrivateRoute";
 import RegisterTab from "./components/auth/tabview";
 import ProfilePage from "./components/dashboard/pages/ProfilePage" //./pages/ProfilePage";
+import ProductPage from "./components/crop/cropDetails";
 
 //Redux
 import { Provider } from "react-redux";
@@ -60,6 +61,7 @@ const App = () => {
             <Route exact path="/company-login" component={CompanyLogin} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/crop/detail/:id" component={ProductPage} />
             <Route exact path="/crops-info" component={BlogPage} />
             <Route exact path="/farmer-crops" component={Crops} />
             <Route exact path="/crops" component={AllCrops} />
@@ -71,7 +73,7 @@ const App = () => {
             <Route path="/profile" component={ProfilePage} />
 
             <Route exact path="/catalog" component={CatalogPage} />
-            <Route exact path="/catalog" component={DetailcropsPage} />
+            <Route exact path="/catalog/" component={DetailcropsPage} />
             <Route exact path="/payment" component={Payment} />
           </Switch>
         </main>
