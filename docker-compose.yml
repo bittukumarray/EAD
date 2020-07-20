@@ -1,0 +1,11 @@
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    container_name: elasticsearch_ead
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+
+
