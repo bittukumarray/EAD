@@ -26,7 +26,7 @@ const genSchema = new mongoose.Schema({
           required: true
         }
       }
-    ]
+    ],
   },
   order: [
     {

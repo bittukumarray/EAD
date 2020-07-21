@@ -13,7 +13,6 @@ router.get("/", auth, async (req, res, next) => {
   // console.log("body");
 
   try {
-    console.log("user check");
     const user = await User.findById(req.user.id).select("-password");
 
     return res.json(user);
@@ -36,7 +35,6 @@ router.post("/", [
   const { email, password } = req.body;
 
   try {
-    console.log("user check");
     // const user = await User.findById(req.user.id).select("-password");
     const user = await User.findOne({email:email});
     if (!user) {
@@ -44,7 +42,6 @@ router.post("/", [
         .status(400)
         .json({ errors: [{ msg: "invalid credential" }] });
     }
-    console.log("user", user)
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res

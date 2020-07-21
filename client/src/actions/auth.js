@@ -92,7 +92,8 @@ export const registerFarmer = ({ name, email, password }) => async dispatch => {
       "Content-Type": "application/json"
     }
   };
-  const body = JSON.stringify({ name, email, password,  });
+  let role="farmer"
+  const body = JSON.stringify({ name, email, password, role });
 
   try {
     const res = await axios.post("/api/signup/farmer", body, config);

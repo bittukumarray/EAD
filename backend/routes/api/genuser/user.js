@@ -34,7 +34,7 @@ router.post(
     }
 
     const { name, email, password, role } = req.body;
-
+    // console.log("In genuer register");
     try {
       console.log(typeof User);
       let user = await User.findOne({ email });
