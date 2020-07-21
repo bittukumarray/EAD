@@ -1,14 +1,31 @@
 import React, { Component } from 'react'
+import PayWithPayPal from './payWithPayPal'
+class Payment extends Component {
 
-export default class Payment extends Component {
+  state = {
+    total :20.00,
+    checkoutList:[{name:"banana", value:10}, {name:"apple", value:10}],
+    isCheckout:true,
+  }
+
+
+
+
     render() {
+        const {checkoutList, total, isCheckout} = this.state;
+
+            if(isCheckout) return (
+             <PayWithPayPal 
+              total = {total}
+              items  = {checkoutList}
+              /> 
+            )
         return (
             <div>
                 
                 
 
-
-
+        
 
 
 
@@ -235,3 +252,6 @@ export default class Payment extends Component {
         )
     }
 }
+
+
+export default Payment;
