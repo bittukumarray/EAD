@@ -1,4 +1,5 @@
 const express = require("express");
+// import Crop from "./../../../../client/src/components/crop/Crop";
 
 const router = express.Router();
 const auth = require("../../../middleware/farmerAuth");
@@ -147,7 +148,7 @@ router.post("/farmer-details", auth, async (req, res, next) => {
 
 router.post("/get-farmer-crops", auth, async (req, res, next) => {
   try {
-    var farmerId = req.user.id; //req.body.farmerId;
+    let farmerId = req.user.id; //req.body.farmerId;
     console.log("gft", req.user.id);
     // const userData = await genUser.findById(req.user.id);
 
@@ -185,5 +186,21 @@ router.post("/get-farmer-crops", auth, async (req, res, next) => {
     });
   }
 });
-
+router.post("/get-same-crops", async (req, res, next) => {
+  let crop = req.body.crop;
+  crop.toLowerCase();
+  crops = await Crops.find({ name: crop });
+  let finalcrop = [];
+  for (let i in crops) {
+    let dic = {};
+    let farmerId = crops[i].farmer._id;
+    console.log(farmerId);
+    farm = await User.findById(farmerId);
+    // console.log(farm);
+    dic["crops"] = crops[i];
+    dic["farmer"] = farm;
+    finalcrop.push(dic);
+  }
+  return res.status(200).json({ finalcrop });
+});
 module.exports = router;
