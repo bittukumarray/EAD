@@ -5,7 +5,6 @@ const { check, validationResult } = require("express-validator");
 const Order = require("../../../models/order");
 const Crops = require("../../../models/crops");
 const genUser = require("../../../models/genuser");
-const { GenUser } = require("../../../helpers/roles");
 const Farmer = require("../../../models/farmer");
 
 router.get("/get-cart", auth, async (req, res, next) => {
@@ -27,6 +26,7 @@ router.post("/add-cart", auth, async (req, res, next) => {
     const userData = await genUser.findById(req.user.id);
     console.log(farmerData,)
     const cartItem = {
+      _id:crop,
       productId: crop,
       quantity: req.body.quantity,
       farmerId: farmerData
@@ -34,10 +34,10 @@ router.post("/add-cart", auth, async (req, res, next) => {
     // console.log("cart item is ", cartItem);
     userData.cart.items.push(cartItem);
     await userData.save();
-    res.status(200).json({ message: "items added to cart", cart: cartItem });
+    res.status(200).json({ msg: "item added to cart", cart: cartItem, status:1 });
   } catch (e) {
     res.status(500).json({
-      msg: "all fields are required. maybe you are missing some fields"
+      msg: "maybe you are missing some fields", status:0
     });
   }
 });
