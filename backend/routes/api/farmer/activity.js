@@ -82,7 +82,7 @@ router.post("/pie-chart", async (req, res, next) => {
       .json({ Type: "Success", Message: "Cannot fetch crops", errors: error });
   }
 });
-router.post("/update-farmer", auth,async (req, res, next) => {
+router.post("/update-farmer", auth, async (req, res, next) => {
   // var farmer = await User.update(
   //   { role: "farmer" },
   //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
@@ -90,7 +90,7 @@ router.post("/update-farmer", auth,async (req, res, next) => {
   try {
     console.log(req.body);
 
-    const {  name, city } = req.body;
+    const { name, city } = req.body;
     const id = req.user.id;
     var farmer = await User.findById(id);
     console.log(farmer);
@@ -113,7 +113,7 @@ router.post("/update-farmer", auth,async (req, res, next) => {
     });
   }
 });
-router.post("/farmer-details",auth ,async (req, res, next) => {
+router.post("/farmer-details", auth, async (req, res, next) => {
   try {
     var farmerId = req.user.id;
     var farm = await farmer.findById(farmerId);
@@ -134,7 +134,7 @@ router.post("/farmer-details",auth ,async (req, res, next) => {
       success: true,
       Message: "Returned the details successfully",
       details: b,
-      farmer:farm
+      farmer: farm
     });
   } catch (error) {
     return res.status(400).json({
@@ -145,13 +145,13 @@ router.post("/farmer-details",auth ,async (req, res, next) => {
   }
 });
 
-router.post("/get-farmer-crops", auth,async (req, res, next) => {
+router.post("/get-farmer-crops", auth, async (req, res, next) => {
   try {
     var farmerId = req.user.id //req.body.farmerId;
-    console.log("gft",req.user.id)
+    console.log("gft", req.user.id)
     // const userData = await genUser.findById(req.user.id);
 
-    console.log("gft",farmerId)
+    console.log("gft", farmerId)
     const crops1 = await Crops.find({ farmer: farmerId });
     var c = {};
     var b = [];
@@ -185,5 +185,36 @@ router.post("/get-farmer-crops", auth,async (req, res, next) => {
     });
   }
 });
+
+
+
+router.get("/farmer-crops/:id", async (req, res, next) => {
+  try {
+
+    let farmerId = req.params.id;
+    // console.log("id is ", farmerId);
+    Crops.find({ farmer: farmerId })
+      .sort({ "date": -1 })
+      .limit(5)
+      .exec(function (err, docs) {
+        if(!err){
+          return res.json({ "msg": "success", "crops": docs });
+        }
+        else{
+          return res.status(404).json({ "msg": "failed", "crops": [] })
+        }
+      });
+
+  }
+  catch (e) {
+    console.log("error is ", e);
+    return res.status(500).json({ "msg": "failed", "crops": [] })
+  }
+
+});
+
+
+
+
 
 module.exports = router;
