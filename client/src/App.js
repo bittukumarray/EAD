@@ -8,6 +8,7 @@ import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
+import UserDashboard from './components/userDashboard/Dashboard';
 import BlogPage from "./components/cropsInfo";
 import Crops from "./components/crops/Crops";
 import WeatherPage from "./components/wheather";
@@ -60,6 +61,8 @@ const App = () => {
             <Route exact path="/company-register" component={CompanyRegister} />
             <Route exact path="/company-login" component={CompanyLogin} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
+            <PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
+
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crop/detail/:id" component={ProductPage} />
             <Route exact path="/crops-info" component={BlogPage} />

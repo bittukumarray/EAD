@@ -41,7 +41,7 @@ class TopNavigation extends Component {
   }
   render() {
     // console.log(this.props.auth);
-    const { isAuthenticated,user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     const authLinks = (
       <React.Fragment>
@@ -105,23 +105,6 @@ class TopNavigation extends Component {
       </React.Fragment>
     );
 
-    let dashboardLink ="";
-    if(user && user.role==='farmer'){
-      dashboardLink = (
-        <MDBNavItem className="nav-item">
-        <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
-      </MDBNavItem>
-      )
-    }
-    else if (user && user.role ==="genuser"){
-      dashboardLink = (
-        <MDBNavItem className="nav-item">
-        <MDBNavLink to="/user-dashboard"> User Dashboard</MDBNavLink>
-      </MDBNavItem>
-      )
-    }
-    console.log("user in topnav ", user)
-
     return (
       <MDBNavbar
         style={{ height: "59px" }}
@@ -157,8 +140,9 @@ class TopNavigation extends Component {
             <MDBNavItem className="nav-item">
               <MDBNavLink to="/sales">Sales</MDBNavLink>
             </MDBNavItem>
-{dashboardLink}
-
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
+            </MDBNavItem>
             <MDBNavItem className="nav-item">
               <MDBNavLink to="/weather-report"> Weather-Report</MDBNavLink>
             </MDBNavItem>
