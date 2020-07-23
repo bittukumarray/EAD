@@ -6,7 +6,6 @@ import ProductHero from "./modules/views/ProductHero";
 import ProductValues from "./modules/views/ProductValues";
 import ProductHowItWorks from "./modules/views/ProductHowItWorks";
 import ProductCTA from "./modules/views/ProductCTA";
-import AppAppBar from "./modules/views/AppAppBar";
 
 function Landing() {
   return (
@@ -19,7 +18,7 @@ function Landing() {
       <ProductSmokingHero />
       <AppFooter />
     </React.Fragment>
-  );
+    );
 }
 
 export default Landing;

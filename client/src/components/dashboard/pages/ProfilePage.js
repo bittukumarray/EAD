@@ -73,9 +73,9 @@ class ProfilePage extends React.Component {
    if(!user) return <div>Loading </div>
   return (
     <div>
-      <div class="container py-2">
-        <div class="row my-2 ml-5 mt-5">
-          <div className="col-lg-4 text-center">
+      <div class="container py-2"> 
+        <div class="row my-2 ml-5 mt-5"> 
+          <div className="col-lg-4 text-center"> 
             <h2 className="text-center font-weight-dark" style={{color:"#0099ff"}}>User Profile111</h2>
           </div>
           <div class="col-lg-8 mt-5"></div>
@@ -182,7 +182,7 @@ class ProfilePage extends React.Component {
 
 const mapStateToProps=(state)=>{
   return{
-    user:state.auth.user
+    user:state.auth.user 
   }
 }
 

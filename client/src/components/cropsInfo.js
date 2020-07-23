@@ -7,12 +7,11 @@ import {
   MDBMask,
   MDBIcon,
   MDBView,
-  MDBBtn
 } from "mdbreact";
 import { GetCropsInfo } from "../actions/cropsInfo";
 import { connect } from "react-redux";
 import SideNavigation from "./sidenav";
-import store from '../store';
+import store from "../store";
 
 class BlogPage extends Component {
   componentDidMount() {
@@ -20,10 +19,9 @@ class BlogPage extends Component {
     // this.setState({"name":"Bittu"});
   }
 
-
   render() {
-    console.log("state is ",this.state);
-    console.log("props is ",this.props);
+    console.log("state is ", this.state);
+    console.log("props is ", this.props);
     console.log("store is ", store.getState());
     return (
       <React.Fragment>
@@ -37,7 +35,7 @@ class BlogPage extends Component {
               Information About Crops
             </div>
             {this.props.cropsInfo[0]
-              ? this.props.cropsInfo[0].map(element => (
+              ? this.props.cropsInfo[0].map((element) => (
                   <MDBRow key={element._id}>
                     <MDBCol lg="2" md="12" className="mb-lg-0 mb-4"></MDBCol>
                     <MDBCol lg="8" md="10" className="mb-lg-0 mb-4">
@@ -65,7 +63,7 @@ class BlogPage extends Component {
                       <p>
                         <b>{element.date}</b>
                       </p>
-                      {element.details.map(para => (
+                      {element.details.map((para) => (
                         <p className="dark-grey-text" key={para}>
                           {para}
                         </p>
@@ -81,9 +79,9 @@ class BlogPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   cropsInfo: state.cropsInfo,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { GetCropsInfo })(BlogPage);
