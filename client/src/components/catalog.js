@@ -120,7 +120,7 @@ class CatalogPage extends Component {
                         {/* <!--Card--> */}
                         <div class="card card-personal mb-4">
                           {/* <!--Card image--> */}
-                          <Link to={`/crop/detail/${element._id}`} >
+                          <a href={`/crop/detail/${element._id}`} >
                             <div
                               class="view"
                               style={{ backgroundColor: "grey" }}
@@ -187,7 +187,7 @@ class CatalogPage extends Component {
                                 </div>
                               </div>
                             </div>
-                          </Link>
+                          </a>
                         </div>
 
                       </div>

@@ -3,11 +3,14 @@ const express = require("express");
 
 const router = express.Router();
 const auth = require("../../../middleware/farmerAuth");
+const genAuth = require("../../../middleware/genuserAuth");
 const { check, validationResult } = require("express-validator");
 const Farmer = require("../../../models/farmer");
 const Crops = require("../../../models/crops");
 const User = require("../../../models/User");
 const farmer = require("../../../models/farmer");
+const Order = require("../../../models/order");
+const { GenUser } = require("../../../helpers/roles");
 
 //get crops
 router.get("/get-crops", async (req, res, next) => {
@@ -186,11 +189,43 @@ router.post("/get-farmer-crops", auth, async (req, res, next) => {
     });
   }
 });
-router.post("/get-same-crops", async (req, res, next) => {
+
+
+
+router.get("/farmer-crops/:id", async (req, res, next) => {
   try {
-    let crop = req.body.crop;
+
+    let farmerId = req.params.id;
+    // console.log("id is ", farmerId);
+    Crops.find({ farmer: farmerId })
+      .sort({ "date": -1 })
+      .limit(5)
+      .exec(function (err, docs) {
+        if (!err) {
+          return res.json({ "msg": "success", "crops": docs });
+        }
+        else {
+          return res.status(404).json({ "msg": "failed", "crops": [] })
+        }
+      });
+
+  }
+  catch (e) {
+    console.log("error is ", e);
+    return res.status(500).json({ "msg": "failed", "crops": [] })
+  }
+
+});
+
+
+
+
+
+router.get("/get-same-crops/:id", async (req, res, next) => {
+  try {
+    let crop = req.params.id;
     crop.toLowerCase();
-    crops = await Crops.find({ name: crop });
+    crops = await Crops.find({ name: { $regex: crop, $options: "i" } });
     let finalcrop = [];
     for (let i in crops) {
       let dic = {};
@@ -211,4 +246,51 @@ router.post("/get-same-crops", async (req, res, next) => {
     });
   }
 });
+
+
+router.post("/order-successful", genAuth, async (req, res, next) => {
+
+  const quantity = req.body.quantity;
+  const earnings = req.body.earnings;
+  const farmerId = req.body.farmerId;
+  const cropId = req.body.cropId;
+  const userId = req.user.id;
+
+  try {
+    let farmerData = await Farmer.findById(farmerId);
+
+    farmerData.totalEarnings += earnings;
+    farmerData.totalOrders +=1;
+
+    let cropData = await Crops.findById(cropId);
+    cropData.quantity -= quantity;
+
+    let crop = [
+      {
+        crop: cropData,
+        quantity: quantity
+      }
+    ]
+    let orderData = new Order({
+      user: userId,
+      isDelivered: false,
+      crops: crop,
+      deliverydate:new Date(new Date().getTime() + 7 * 3600 * 24 * 1000)
+    })
+
+
+    await farmerData.save();
+    await cropData.save();
+    await orderData.save();
+
+    return res.json({ "msg": "success", "crop": cropData, "farmer": farmerData, "order": orderData });
+
+  }
+  catch (e) {
+    return res.status(400).json({ "msg": "failed", "crop": null, "farmer": null, "order": null, "err": e })
+  }
+
+})
+
+
 module.exports = router;
