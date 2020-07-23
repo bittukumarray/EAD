@@ -32,7 +32,7 @@ import setAuthToken from "./utils/setAuthToken";
 import Payment from "./components/payment/Payment";
 import AllCrops from "./components/allCrops/allCrops";
 import SingleCrop from "./components/allCrops/crop";
-
+import Cart from "./components/cart/cart";
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -79,6 +79,7 @@ const App = () => {
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
             {/* <Route path="/profile" component={ProfilePage} /> */}
             <Route path="/add-crop" component={AddCrop} />
+            <Route path="/cart" component={Cart} />
 
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/catalog/" component={DetailcropsPage} />

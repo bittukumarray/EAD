@@ -225,23 +225,39 @@ class TopNavigation extends Component {
       );
     } else if (user && user.role === "genuser") {
       dashboardLink = (
-        <MDBNavItem className="nav-item">
-          <MDBNavLink
-            to="/user-dashboard"
-            style={{
-              color: "#D5D8DC",
-              // fontWeight: "bold",
-              fontFamily: "rockwell",
-              fontSize: "17px",
-            }}
-          >
-            {" "}
-            Dashboard
-          </MDBNavLink>
-        </MDBNavItem>
+        <React.Fragment>
+          <MDBNavItem className="nav-item">
+            <MDBNavLink
+              to="/user-dashboard"
+              style={{
+                color: "#D5D8DC",
+                // fontWeight: "bold",
+                fontFamily: "rockwell",
+                fontSize: "17px",
+              }}
+            >
+              {" "}
+              Dashboard
+            </MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem className="nav-item">
+            <MDBNavLink
+              to="/cart"
+              style={{
+                color: "#D5D8DC",
+                // fontWeight: "bold",
+                fontFamily: "rockwell",
+                fontSize: "17px",
+              }}
+            >
+              {" "}
+             My Cart
+            </MDBNavLink>
+          </MDBNavItem>
+        </React.Fragment>
       );
     }
-    console.log("user in topnav ", user);
+    // console.log("user in topnav ", user);
 
     return (
       <MDBNavbar

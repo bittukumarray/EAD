@@ -7,7 +7,7 @@ const Crops = require("../../../models/crops");
 const genUser = require("../../../models/genuser");
 const Farmer = require("../../../models/farmer");
 
-router.get("/get-cart", auth, async (req, res, next) => {
+router.post("/get-cart", auth, async (req, res, next) => {
   try {
     console.log("user id", req.user.id);
     const cropId = await genUser.findById(req.user.id);
@@ -24,20 +24,23 @@ router.post("/add-cart", auth, async (req, res, next) => {
     const crop = await Crops.findById(req.body.cropsId);
     const farmerData = await Farmer.findById(req.body.farmerId);
     const userData = await genUser.findById(req.user.id);
-    console.log(farmerData,)
+    console.log(farmerData);
     const cartItem = {
-      _id:crop,
+      _id: crop,
       productId: crop,
       quantity: req.body.quantity,
-      farmerId: farmerData
+      farmerId: farmerData,
     };
     // console.log("cart item is ", cartItem);
     userData.cart.items.push(cartItem);
     await userData.save();
-    res.status(200).json({ msg: "item added to cart", cart: cartItem, status:1 });
+    res
+      .status(200)
+      .json({ msg: "item added to cart", cart: cartItem, status: 1 });
   } catch (e) {
     res.status(500).json({
-      msg: "maybe you are missing some fields", status:0
+      msg: "maybe you are missing some fields",
+      status: 0,
     });
   }
 });
@@ -46,7 +49,7 @@ router.post("/order", auth, async (req, res, next) => {
   const { user, crops } = req.body;
   order = new Order({
     user,
-    crops
+    crops,
   });
   const data = await order.save();
   return res.status(201).json({ msg: "successful", order: data });
@@ -73,7 +76,7 @@ router.post("/get-orders", async (req, res, next) => {
       return res.status(200).json({
         Type: "Success",
         Message: "Fetched the orders for the user",
-        crops: b
+        crops: b,
       });
     } else {
       return res
@@ -84,7 +87,7 @@ router.post("/get-orders", async (req, res, next) => {
     return res.status(400).json({
       Type: "Failed",
       Message: "Cannot fetch the orders",
-      errors: err
+      errors: err,
     });
   }
 });
