@@ -8,7 +8,7 @@ import {
   MDBNavItem,
   MDBNavLink,
   MDBView,
-  MDBBtn,
+  MDBBtn
 } from "mdbreact";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -18,18 +18,18 @@ import { logout } from "../../actions/auth";
 
 class TopNavigation extends Component {
   state = {
-    collapse: false,
+    collapse: false
   };
 
   onClick = () => {
     this.setState({
-      collapse: !this.state.collapse,
+      collapse: !this.state.collapse
     });
   };
 
   toggle = () => {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
+      dropdownOpen: !this.state.dropdownOpen
     });
   };
 
@@ -63,7 +63,7 @@ class TopNavigation extends Component {
                 style={{
                   color: "0E0401",
                   fontWeight: "bold",
-                  fontFamily: "courier",
+                  fontFamily: "courier"
                 }}
               >
                 {this.state.name}Farmer Name
@@ -80,7 +80,7 @@ class TopNavigation extends Component {
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Courier",
-                    outline: "none",
+                    outline: "none"
                   }}
                 >
                   Profile
@@ -92,10 +92,22 @@ class TopNavigation extends Component {
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Courier",
-                    outline: "none",
+                    outline: "none"
                   }}
                 >
                   Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cart"
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: "Courier",
+                    outline: "none"
+                  }}
+                >
+                  My Cart
                 </Link>
               </li>
               <li>
@@ -104,7 +116,7 @@ class TopNavigation extends Component {
                   style={{
                     color: "#A60819",
                     fontWeight: "bold",
-                    outline: "none",
+                    outline: "none"
                   }}
                   onClick={this.onlogoutclick}
                 >
@@ -147,7 +159,7 @@ class TopNavigation extends Component {
               style={{
                 backgroundColor: "#D5D8DC",
                 color: "black",
-                fontWeight: "bold",
+                fontWeight: "bold"
               }}
             >
               Login
@@ -162,7 +174,7 @@ class TopNavigation extends Component {
               style={{
                 backgroundColor: "#D5D8DC",
                 color: "black",
-                fontWeight: "bold",
+                fontWeight: "bold"
               }}
             >
               signup
@@ -202,7 +214,7 @@ class TopNavigation extends Component {
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
-                fontSize: "17px",
+                fontSize: "17px"
               }}
             >
               Dashboard
@@ -215,7 +227,7 @@ class TopNavigation extends Component {
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
-                fontSize: "17px",
+                fontSize: "17px"
               }}
             >
               CropsInfo
@@ -229,7 +241,7 @@ class TopNavigation extends Component {
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
 
-                fontSize: "17px",
+                fontSize: "17px"
               }}
             >
               {" "}
@@ -248,25 +260,11 @@ class TopNavigation extends Component {
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
-                fontSize: "17px",
+                fontSize: "17px"
               }}
             >
               {" "}
               Dashboard
-            </MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem className="nav-item">
-            <MDBNavLink
-              to="/cart"
-              style={{
-                color: "#D5D8DC",
-                // fontWeight: "bold",
-                fontFamily: "rockwell",
-                fontSize: "17px",
-              }}
-            >
-              {" "}
-              My cart
             </MDBNavLink>
           </MDBNavItem>
         </React.Fragment>
@@ -294,7 +292,7 @@ class TopNavigation extends Component {
                   color: "black",
                   fontWeight: "bold",
                   fontSize: "25px",
-                  fontFamily: "garamond",
+                  fontFamily: "garamond"
                 }}
               >
                 Agventure
@@ -308,7 +306,7 @@ class TopNavigation extends Component {
                   color: "#D5D8DC",
                   // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px",
+                  fontSize: "17px"
                 }}
               >
                 Home
@@ -321,7 +319,7 @@ class TopNavigation extends Component {
                   color: "#D5D8DC",
                   // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px",
+                  fontSize: "17px"
                 }}
               >
                 Catalog
@@ -337,7 +335,7 @@ class TopNavigation extends Component {
                   color: "#D5D8DC",
                   // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px",
+                  fontSize: "17px"
                 }}
               >
                 {" "}
@@ -376,11 +374,11 @@ class TopNavigation extends Component {
 }
 TopNavigation.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { logout })(TopNavigation);
