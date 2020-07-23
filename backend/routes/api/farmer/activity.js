@@ -151,7 +151,7 @@ router.post("/get-farmer-crops", auth, async (req, res, next) => {
     let farmerId = req.user.id; //req.body.farmerId;
     console.log("gft", req.user.id);
     // const userData = await genUser.findById(req.user.id);
-
+    
     console.log("gft", farmerId);
     const crops1 = await Crops.find({ farmer: farmerId });
     var c = {};
