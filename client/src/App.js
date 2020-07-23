@@ -8,7 +8,7 @@ import CompanyLogin from "./components/auth/CompanyLogin";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
-import UserDashboard from './components/userDashboard/Dashboard';
+import UserDashboard from "./components/userDashboard/Dashboard";
 import BlogPage from "./components/cropsInfo";
 import Crops from "./components/crops/Crops";
 import WeatherPage from "./components/wheather";
@@ -19,7 +19,7 @@ import Landing from "./components/landing";
 import TopNavigation from "./components/dashboard/topNavigation";
 import PrivateRoute from "./components/common/PrivateRoute";
 import RegisterTab from "./components/auth/tabview";
-import ProfilePage from "./components/dashboard/pages/ProfilePage" //./pages/ProfilePage";
+import ProfilePage from "./components/dashboard/pages/ProfilePage"; //./pages/ProfilePage";
 import ProductPage from "./components/crop/cropDetails";
 
 //Redux
@@ -29,8 +29,8 @@ import { loadUser } from "./actions/auth";
 // import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import Payment from "./components/payment/Payment";
-import AllCrops from './components/allCrops/allCrops'
-import SingleCrop from './components/allCrops/crop'
+import AllCrops from "./components/allCrops/allCrops";
+import SingleCrop from "./components/allCrops/crop";
 
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
@@ -61,7 +61,11 @@ const App = () => {
             <Route exact path="/company-register" component={CompanyRegister} />
             <Route exact path="/company-login" component={CompanyLogin} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
-            <PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
+            <PrivateRoute
+              exact
+              path="/user-dashboard"
+              component={UserDashboard}
+            />
 
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crop/detail/:id" component={ProductPage} />
@@ -77,7 +81,7 @@ const App = () => {
 
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/catalog/" component={DetailcropsPage} />
-            {/* <Route exact path="/payment" component={Payment} /> */}
+            {<Route exact path="/payment" component={Payment} />}
           </Switch>
         </main>
         {/* </div> */}
