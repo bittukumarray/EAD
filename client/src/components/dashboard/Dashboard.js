@@ -28,7 +28,6 @@ class Dashboard extends React.Component {
               {/* Famer Side Nav */}
               <Route path="/dashboard" component={DashboardPage} />
               <Route path="/profile" component={ProfilePage} />
-              <Route path="/add-crop" component={AddCrop} />
               <Route path="/farmer-crops" component={Crops} />
               <Route exact path="/farmer-crop/:id" component={Crop} />
             </Switch>

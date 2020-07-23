@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
       quantity: "",
       city: "",
       details: "",
-      loading: true,
+      loading: false,
       error: false,
     };
   }
@@ -25,22 +25,30 @@ class ProfilePage extends React.Component {
   };
   onSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit ");
-
+    console.log("submit  axios");
     try {
       const { name, city, details, price, quantity } = this.state;
 
       const url = "api/farmer/add-crops/";
       const body = {
+        name: name,
+        img: "",
+        details: details,
+        price: price,
+        quantity: quantity,
         role: "farmer",
         city: city,
-        name: name,
       };
-      const res = await axios.post(url, body); //,body,
-      alert("Successfully changed");
-      this.props.history.push("/dashboard");
+
+      const res = await axios.post(url, body);
+      const data = await res.data;
+      if (res.data["success"]) {
+        this.props.history.push("/farmer-crops");
+      } else {
+        alert("error ");
+      }
     } catch {
-      alert("Error Occured , not able to add to cart ");
+      alert("error ");
     }
   };
 
@@ -92,7 +100,6 @@ class ProfilePage extends React.Component {
                         name="city"
                         value={city}
                         onChange={this.onChange}
-                        disabled
                       />
                     </label>
                   </div>
@@ -103,11 +110,10 @@ class ProfilePage extends React.Component {
                     >
                       details :{" "}
                       <input
-                        type="email"
+                        type="text"
                         name="details"
                         value={details}
                         onChange={this.onChange}
-                        disabled
                       />
                     </label>
                   </div>{" "}
@@ -118,11 +124,10 @@ class ProfilePage extends React.Component {
                     >
                       price :{" "}
                       <input
-                        type="email"
+                        type="number"
                         name="price"
                         value={price}
                         onChange={this.onChange}
-                        disabled
                       />
                     </label>
                   </div>{" "}
@@ -133,11 +138,10 @@ class ProfilePage extends React.Component {
                     >
                       quantity :{" "}
                       <input
-                        type="email"
+                        type="number"
                         name="quantity"
                         value={quantity}
                         onChange={this.onChange}
-                        disabled
                       />
                     </label>
                   </div>
