@@ -77,7 +77,7 @@ const App = () => {
 
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/catalog/" component={DetailcropsPage} />
-            <Route exact path="/payment" component={Payment} />
+            {/* <Route exact path="/payment" component={Payment} /> */}
           </Switch>
         </main>
         {/* </div> */}
