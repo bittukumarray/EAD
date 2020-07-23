@@ -39,7 +39,7 @@ export default function AlignItemsList(props) {
         (async function anyNameFunction() {
             try {
                 // console.log("Data is ", props);
-                const data = await axios.get(`/api/farmer/farmer-crops/${props.farmerId}`);
+                const data = await axios.get(`/api/farmer/get-same-crops/${props.cropName}`);
                 setCropsData(data.data);
                 console.log("Data is ", data);
             }
@@ -53,15 +53,15 @@ export default function AlignItemsList(props) {
 
     return (
         <List className={classes.root}>
-            {cropsData ? cropsData.crops.map((element) => {
+            {cropsData ? cropsData.finalcrop.map((element) => {
                 return <React.Fragment >
-                    <a href={`/crop/detail/${element._id}`} >
+                    <a href={`/crop/detail/${element.crops._id}`} >
                         <ListItem alignItems="flex-start" className={classes.list}>
                             <ListItemAvatar>
-                                <Avatar alt="No Image" src={element.img} />
+                                <Avatar alt="No Image" src={element.farmer.avatar} />
                             </ListItemAvatar>
                             <ListItemText
-                                primary={element.name}
+                                primary={element.farmer.name}
                                 secondary={
                                     <React.Fragment>
                                         <Typography
@@ -70,10 +70,10 @@ export default function AlignItemsList(props) {
                                             className={classes.inline}
                                             color="textPrimary"
                                         >
-                                            {element.city}
+                                            {element.crops.city}
                                         </Typography>
                                         <Typography>
-                                            {element.details.substring(0, 20) + "..."}
+                                            <span style={{color:"rgba(200,20,20,0.8)"}}>{element.farmer.totalOrders} </span> Customers have bought from him
                                         </Typography>
                                     </React.Fragment>
                                 }

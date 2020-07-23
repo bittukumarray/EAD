@@ -19,6 +19,23 @@ import FarmerSuggestionList from "./farmerSuggestion";
 import SuggestionList from "./suggestion";
 
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+const useStylesSelect = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+}));
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: 100,
@@ -44,16 +61,22 @@ const useStylesCard = makeStyles((theme) => ({
 const ProductPage = (props) => {
     const classes = useStyles();
     const classesCard = useStylesCard();
+    const selectIn = useStylesSelect();
 
     useEffect(() => {
         props.getCrop(props.match.params.id);
     }, []);
-    console.log("props is ", props);
+    console.log("props is in details ", props);
 
     const onCartAdded = (e, cropData) => {
         props.addToCart(cropData.farmer, cropData._id, cropData.quantity);
     }
 
+    const [quantity, setQuantity] = React.useState(1);
+
+    const handleChange = (event) => {
+        setQuantity(event.target.value);
+    };
 
     return (
         <Container>
@@ -118,11 +141,25 @@ const ProductPage = (props) => {
 
                         </div>
                         <hr></hr>
+                        <FormControl className={selectIn.formControl}>
+                            <InputLabel id="demo-simple-select-label">Quantity</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={quantity}
+                                onChange={handleChange}
+                            >
+                                {[...Array(props.crop.crop.quantity)].map((e, i) => {
+                                    return <MenuItem key={i} value={i+1}>{i+1}</MenuItem>
+                                })}
+                            </Select>
+                        </FormControl>
+                        <hr></hr>
                         <div>
                             <Button>
                                 <ShopIcon style={{ paddingRight: 15, color: red[500], fontSize: 40 }}></ShopIcon>
-                                Buy Now
-                           </Button>
+                                <Link to={{ pathname: "/payment", checkoutList: [{ "name": "Orange", "value": quantity*props.crop.crop.price }], total: quantity*props.crop.crop.price, isCheckout: true,quantity:quantity, farmerId:props.crop.crop.farmer, cropId:props.crop.crop._id  }}>Buy Now</Link>
+                            </Button>
 
                         </div>
                         <hr></hr>
@@ -130,7 +167,7 @@ const ProductPage = (props) => {
                     </Grid>
                     {props.crop.crop ? <Grid item xs={12} sm={3} >
                         <div>
-                            <h3 style={{ fontWeight: "bold", textAlign:"center", color:"rgba(200,10,20,0.8)" }}>
+                            <h3 style={{ fontWeight: "bold", textAlign: "center", color: "rgba(200,10,20,0.8)" }}>
                                 Suggested crops
                             </h3>
                         </div>
@@ -140,11 +177,11 @@ const ProductPage = (props) => {
                 <Grid>
                     {props.crop.crop ? <Grid item xs={12} sm={12} >
                         <div>
-                            <h3 style={{ fontWeight: "bold", marginTop:20, textAlign:"center", color:"rgba(200,10,20,0.8)" }}>
+                            <h3 style={{ fontWeight: "bold", marginTop: 20, textAlign: "center", color: "rgba(200,10,20,0.8)" }}>
                                 Suggested Farmers
                             </h3>
                         </div>
-                        <FarmerSuggestionList farmerId={props.crop.crop.farmer}></FarmerSuggestionList>
+                        <FarmerSuggestionList cropName={props.crop.crop.name}></FarmerSuggestionList>
                     </Grid> : null}
 
                 </Grid>

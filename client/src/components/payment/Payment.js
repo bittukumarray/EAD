@@ -1,16 +1,27 @@
 import React, { Component } from 'react'
+import PayWithPayPal from './payWithPayPal'
+class Payment extends Component {
 
-export default class Payment extends Component {
+  // state = {
+  //   total :20.00,
+  //   checkoutList:[{name:"banana", value:10}, {name:"apple", value:10}],
+  //   isCheckout:true,
+  // }
+
     render() {
+        const {checkoutList, total, isCheckout, farmerId, quantity, cropId} = this.props.location;
+
+            if(isCheckout) return (
+             <PayWithPayPal 
+              total = {total}
+              items  = {checkoutList}
+              farmerId={farmerId}
+              cropId={cropId}
+              quantity={quantity}
+              /> 
+            )
         return (
             <div>
-                
-                
-
-
-
-
-
 
   <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
@@ -235,3 +246,6 @@ export default class Payment extends Component {
         )
     }
 }
+
+
+export default Payment;

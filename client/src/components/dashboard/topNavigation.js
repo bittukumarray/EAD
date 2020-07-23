@@ -146,7 +146,12 @@ class TopNavigation extends Component {
             <MDBNavItem className="nav-item">
               <MDBNavLink to="/weather-report"> Weather-Report</MDBNavLink>
             </MDBNavItem>
+                <MDBNavItem className="nav-item">
+          <MDBNavLink to="/payment">payment</MDBNavLink>
+          </MDBNavItem>
           </MDBNavbarNav>
+
+
           <MDBNavbarNav right>
             {/* <MDBNavItem
               style={{
