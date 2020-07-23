@@ -66,14 +66,13 @@ const App = () => {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crop/detail/:id" component={ProductPage} />
             <Route exact path="/crops-info" component={BlogPage} />
-            <Route exact path="/farmer-crops" component={Crops} />
             <Route exact path="/crops" component={AllCrops} />
             <Route exact path="/crops/:id" component={SingleCrop} />
-
-            <Route exact path="/farmer-crop/:id" component={Crop} />
+            {/* <Route exact path="/farmer-crops" component={Crops} /> */}
+            {/* <Route exact path="/farmer-crop/:id" component={Crop} /> */}
             <Route exact path="/weather-report" component={WeatherPage} />
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
-            <Route path="/profile" component={ProfilePage} />
+            {/* <Route path="/profile" component={ProfilePage} /> */}
 
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/catalog/" component={DetailcropsPage} />

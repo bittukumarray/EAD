@@ -7,6 +7,7 @@ import TopNavigation from "./topNavigation";
 
 import DashboardPage from "./pages/DashboardPage";
 import ProfilePage from "./pages/ProfilePage";
+import AddCrop from "./pages/AddCrop";
 import Crops from '../../components/crops/Crops'
 import Crop from '../../components/crop/Crop'
 
@@ -29,6 +30,7 @@ class Dashboard extends React.Component {
               {/* Famer Side Nav */}
               <Route path="/dashboard" component={DashboardPage} />
               <Route path="/profile" component={ProfilePage} />
+              <Route path="/add-crop" component={AddCrop} />
               <Route path="/farmer-crops" component={Crops} />
               <Route exact path="/farmer-crop/:id" component={Crop} />
 
