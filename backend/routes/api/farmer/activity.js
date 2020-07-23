@@ -252,9 +252,12 @@ router.post("/suggested-crops-pooling", async (req, res, next) => {
 
     let crop = await Crops.findById(cropId);
     let quan = crop.quantity;
+    let cropname = crop.name;
     let remaining = quantity - quan;
-    console.log(quan, remaining);
-    newCrop = await Crops.find({ quantity: { $gt: remaining } });
+
+    newCrop = await Crops.find({
+      $and: [{ name: cropname }, { quantity: { $gt: remaining } }]
+    });
     return res
       .status(200)
       .json({ Type: "Success", Message: "Fetched the crops", Crops: newCrop });
