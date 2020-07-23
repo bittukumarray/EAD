@@ -62,8 +62,8 @@ class TopNavigation extends Component {
               <span
                 style={{
                   color: "0E0401",
-                  fontWeight: "bolder",
-                  fontFamily: "calibri"
+                  fontWeight: "bold",
+                  fontFamily: "courier"
                 }}
               >
                 {this.state.name}Farmer Name
@@ -141,14 +141,30 @@ class TopNavigation extends Component {
       <React.Fragment>
         <MDBNavItem>
           <Link to="/login">
-            <button type="button" className="btn btn-info btn-md">
+            <button
+              type="button"
+              className="btn btn-md"
+              style={{
+                backgroundColor: "#D5D8DC",
+                color: "black",
+                fontWeight: "bold"
+              }}
+            >
               Login
             </button>
           </Link>
         </MDBNavItem>
         <MDBNavItem>
           <Link to="/register">
-            <button type="button" className="btn btn-info btn-md">
+            <button
+              type="button"
+              className="btn btn-md"
+              style={{
+                backgroundColor: "#D5D8DC",
+                color: "black",
+                fontWeight: "bold"
+              }}
+            >
               signup
             </button>
           </Link>
@@ -160,13 +176,35 @@ class TopNavigation extends Component {
     if (user && user.role === "farmer") {
       dashboardLink = (
         <MDBNavItem className="nav-item">
-          <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
+          <MDBNavLink
+            to="/dashboard"
+            style={{
+              color: "#D5D8DC",
+              // fontWeight: "bold",
+              fontFamily: "rockwell",
+              fontSize: "17px"
+            }}
+          >
+            {" "}
+            Dashboard
+          </MDBNavLink>
         </MDBNavItem>
       );
     } else if (user && user.role === "genuser") {
       dashboardLink = (
         <MDBNavItem className="nav-item">
-          <MDBNavLink to="/user-dashboard"> User Dashboard</MDBNavLink>
+          <MDBNavLink
+            to="/user-dashboard"
+            style={{
+              color: "#D5D8DC",
+              // fontWeight: "bold",
+              fontFamily: "rockwell",
+              fontSize: "17px"
+            }}
+          >
+            {" "}
+            Dashboard
+          </MDBNavLink>
         </MDBNavItem>
       );
     }
@@ -190,8 +228,9 @@ class TopNavigation extends Component {
                   float: "left",
                   marginRight: "5rem",
                   color: "black",
-                  fontWeight: "bolder",
-                  fontSize: "20px"
+                  fontWeight: "bold",
+                  fontSize: "25px",
+                  fontFamily: "garamond"
                 }}
               >
                 Agventure
@@ -199,21 +238,59 @@ class TopNavigation extends Component {
             </MDBNavItem>
 
             <MDBNavItem>
-              <MDBNavLink to="/">Home</MDBNavLink>
+              <MDBNavLink
+                to="/"
+                style={{
+                  color: "#D5D8DC",
+                  // fontWeight: "bold",
+                  fontFamily: "rockwell",
+                  fontSize: "17px"
+                }}
+              >
+                Home
+              </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <MDBNavLink to="/catalog">Catalog</MDBNavLink>
+              <MDBNavLink
+                to="/catalog"
+                style={{
+                  color: "#D5D8DC",
+                  // fontWeight: "bold",
+                  fontFamily: "rockwell",
+                  fontSize: "17px"
+                }}
+              >
+                Catalog
+              </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
-              <MDBNavLink to="/sales">Sales</MDBNavLink>
+              <MDBNavLink
+                to="/sales"
+                style={{
+                  color: "#D5D8DC",
+                  // fontWeight: "bold",
+                  fontFamily: "rockwell",
+                  fontSize: "17px"
+                }}
+              >
+                AddCrops
+              </MDBNavLink>
             </MDBNavItem>
             {dashboardLink}
 
             <MDBNavItem className="nav-item">
-              <MDBNavLink to="/weather-report"> Weather-Report</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem className="nav-item">
-              <MDBNavLink to="/payment">payment</MDBNavLink>
+              <MDBNavLink
+                to="/weather-report"
+                style={{
+                  color: "#D5D8DC",
+                  // fontWeight: "bold",
+                  fontFamily: "rockwell",
+                  fontSize: "17px"
+                }}
+              >
+                {" "}
+                Weather-Report
+              </MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
 
