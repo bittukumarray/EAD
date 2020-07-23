@@ -31,6 +31,7 @@ import Payment from "./components/payment/Payment";
 import AllCrops from "./components/allCrops/allCrops";
 import SingleCrop from "./components/allCrops/crop";
 import AppFooter from "./components/modules/views/AppFooter";
+import AddCrop from "./components/dashboard/pages/AddCrop";
 import Cart from "./components/cart/cart";
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
@@ -77,8 +78,8 @@ const App = () => {
             <Route exact path="/farmer-crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
-            {/* <Route path="/profile" component={ProfilePage} /> */}
-            {/* <Route path="/add-crop" component={AddCrop} /> */}
+            <Route path="/profile" component={ProfilePage} />
+            <Route path="/add-crop" component={AddCrop} />
             <Route path="/cart" component={Cart} />
             <Route path="/profile" component={ProfilePage} />
 
