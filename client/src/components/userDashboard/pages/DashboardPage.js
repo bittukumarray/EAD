@@ -3,28 +3,28 @@ import React from "react";
 import axios from "axios";
 
 import AdminCardSection1 from "./sections/AdminCardSection1";
-import TableSection from "./sections/TableSection";
+// import TableSection from "./sections/TableSection";
 import TableSection2 from "./sections/TableSection2";
 // import BreadcrumSection from './sections/BreadcrumSection';
-import ChartSection1 from "./sections/ChartSection1";
+// import ChartSection1 from "./sections/ChartSection1";
 import ChartSection2 from "./sections/ChartSection2";
 // import MapSection from './sections/MapSection';
 // import ModalSection from './sections/ModalSection';
 // import '../index.css';
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import BarChart from "../../Charts/BarChart";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBTable,
-  MDBTableBody,
-  MDBTableHead,
-  MDBCardHeader,
-  MDBRow,
-  MDBCol,
-} from "mdbreact";
+// import {
+//   MDBCard,
+//   MDBCardBody,
+//   MDBTable,
+//   MDBTableBody,
+//   MDBTableHead,
+//   MDBCardHeader,
+//   MDBRow,
+//   MDBCol,
+// } from "mdbreact";
 
 class DashboardPage extends React.Component {
   state = {

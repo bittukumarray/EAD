@@ -1,31 +1,32 @@
 import React, { Component } from "react";
 import { MDBCard, MDBCardBody } from "mdbreact";
 import { connect } from "react-redux";
-import axios from "axios";
 
 class WeatherPage extends Component {
   state = {
     data: "",
 
-    city: "patna"
+    city: "patna",
   };
   async componentDidMount() {
-
-    const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
+    const res = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
+    );
     const data = await res.json();
-    console.log("data", data)
+    console.log("data", data);
     this.setState({ data: data });
   }
 
-  onChangeHandler = e => {
+  onChangeHandler = (e) => {
     this.setState({ city: e.target.value });
   };
 
-  onClickHandler = async e => {
-
-    const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`)
+  onClickHandler = async (e) => {
+    const res = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
+    );
     const data = await res.json();
-    console.log("data", data)
+    console.log("data", data);
     this.setState({ data: data });
   };
 
@@ -39,7 +40,7 @@ class WeatherPage extends Component {
             style={{
               color: "black",
               backgroundColor: "#e0e0e0",
-              fontFamily: "didot"
+              fontFamily: "didot",
             }}
             className="card h1-responsive font-weight-bold text-center my-5"
           >
@@ -61,7 +62,7 @@ class WeatherPage extends Component {
               type="text"
               placeholder="Enter city name"
               class="form-control"
-              placeholder=""
+              // placeholder=""
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
             ></input>
@@ -75,7 +76,7 @@ class WeatherPage extends Component {
                   "https://rekordeast.co.za/wp-content/uploads/sites/85/2019/06/cool-weather.jpeg" +
                   ")",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "cover"
+                backgroundSize: "cover",
               }}
             >
               <div class="card-body pb-3">
@@ -83,7 +84,7 @@ class WeatherPage extends Component {
                   {this.state.data.name}
                 </h4>
                 <p class="card-text">
-                  {this.state.data.weather.map(element => {
+                  {this.state.data.weather.map((element) => {
                     return element.description;
                   })}
                 </p>

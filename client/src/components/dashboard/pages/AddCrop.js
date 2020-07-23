@@ -19,27 +19,6 @@ class ProfilePage extends React.Component {
       error: false,
     };
   }
-  async componentDidMount() {
-    try {
-      const url = "/api/farmer/add-crops/";
-      const body = {
-        role: "farmer",
-      };
-      const res = await axios.post(url, body);
-      const data = await res.data;
-      console.log("farmer details", data.farmer);
-      const { farmer } = data;
-      this.setState({
-        loading: false,
-        email: farmer.email,
-        name: farmer.name,
-        city: farmer.city,
-        id: farmer._id,
-      });
-    } catch {
-      this.setState({ error: true, loading: false });
-    }
-  }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -49,8 +28,8 @@ class ProfilePage extends React.Component {
     console.log("submit ");
 
     try {
-      // get our form data out of state
-      const { name, city, email } = this.state;
+      const { name, city, details, price, quantity } = this.state;
+
       const url = "api/farmer/add-crops/";
       const body = {
         role: "farmer",

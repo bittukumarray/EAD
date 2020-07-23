@@ -3,14 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // import "./HomePage.css";
 import SideNavigation from "./sideNavigation";
-import TopNavigation from "./topNavigation";
 
 import DashboardPage from "./pages/DashboardPage";
 import ProfilePage from "./pages/ProfilePage";
 import AddCrop from "./pages/AddCrop";
-import Crops from '../../components/crops/Crops'
-import Crop from '../../components/crop/Crop'
-
+import Crops from "../../components/crops/Crops";
+import Crop from "../../components/crop/Crop";
 
 import "./index.css";
 
@@ -33,7 +31,6 @@ class Dashboard extends React.Component {
               <Route path="/add-crop" component={AddCrop} />
               <Route path="/farmer-crops" component={Crops} />
               <Route exact path="/farmer-crop/:id" component={Crop} />
-
             </Switch>
           </main>
           {/* <Footer /> */}
