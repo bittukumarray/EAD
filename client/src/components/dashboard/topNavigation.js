@@ -232,6 +232,7 @@ class TopNavigation extends Component {
                 fontSize: "17px",
               }}
             >
+              {" "}
               Add Crops
             </MDBNavLink>
           </MDBNavItem>

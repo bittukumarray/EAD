@@ -31,7 +31,7 @@ import Payment from "./components/payment/Payment";
 import AllCrops from "./components/allCrops/allCrops";
 import SingleCrop from "./components/allCrops/crop";
 import AppFooter from "./components/modules/views/AppFooter";
-import Cart from './components/cart/cart'
+import Cart from "./components/cart/cart";
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
