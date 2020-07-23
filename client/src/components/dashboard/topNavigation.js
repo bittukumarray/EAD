@@ -210,11 +210,25 @@ class TopNavigation extends Component {
           </MDBNavItem>
           <MDBNavItem className="nav-item">
             <MDBNavLink
+              to="/crops-info"
+              style={{
+                color: "#D5D8DC",
+                // fontWeight: "bold",
+                fontFamily: "rockwell",
+                fontSize: "17px",
+              }}
+            >
+              CropsInfo
+            </MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem className="nav-item">
+            <MDBNavLink
               to="/add-crop"
               style={{
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
+
                 fontSize: "17px",
               }}
             >
@@ -251,7 +265,7 @@ class TopNavigation extends Component {
               }}
             >
               {" "}
-             My Cart
+              My cart
             </MDBNavLink>
           </MDBNavItem>
         </React.Fragment>
@@ -272,7 +286,7 @@ class TopNavigation extends Component {
           <MDBNavbarNav left>
             <MDBNavItem>
               <MDBNavLink
-                to="#"
+                to="/"
                 style={{
                   float: "left",
                   marginRight: "5rem",

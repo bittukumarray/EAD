@@ -6,7 +6,7 @@ class WeatherPage extends Component {
   state = {
     data: "",
 
-    city: "patna",
+    city: "patna"
   };
   async componentDidMount() {
     const res = await fetch(
@@ -17,11 +17,11 @@ class WeatherPage extends Component {
     this.setState({ data: data });
   }
 
-  onChangeHandler = (e) => {
+  onChangeHandler = e => {
     this.setState({ city: e.target.value });
   };
 
-  onClickHandler = async (e) => {
+  onClickHandler = async e => {
     const res = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bebc487b6c92189e53406045437508b6`
     );
@@ -40,7 +40,7 @@ class WeatherPage extends Component {
             style={{
               color: "black",
               backgroundColor: "#e0e0e0",
-              fontFamily: "didot",
+              fontFamily: "didot"
             }}
             className="card h1-responsive font-weight-bold text-center my-5"
           >
@@ -50,9 +50,16 @@ class WeatherPage extends Component {
             <div class="input-group-prepend">
               <button
                 onClick={this.onClickHandler}
-                class="btn btn-md btn-outline-primary m-0 px-3 py-2 z-depth-0 waves-effect"
+                class="btn btn-md btn-outline-primary m-0"
                 type="button"
                 id="button-addon1"
+                style={{
+                  backgroundColor: "#eeeeee",
+                  color: "black",
+                  fontFamily: "garamond",
+                  fontWeight: "bolder",
+                  fontSize: "13px"
+                }}
               >
                 Apply
               </button>
@@ -76,7 +83,7 @@ class WeatherPage extends Component {
                   "https://rekordeast.co.za/wp-content/uploads/sites/85/2019/06/cool-weather.jpeg" +
                   ")",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
+                backgroundSize: "cover"
               }}
             >
               <div class="card-body pb-3">
@@ -84,7 +91,7 @@ class WeatherPage extends Component {
                   {this.state.data.name}
                 </h4>
                 <p class="card-text">
-                  {this.state.data.weather.map((element) => {
+                  {this.state.data.weather.map(element => {
                     return element.description;
                   })}
                 </p>

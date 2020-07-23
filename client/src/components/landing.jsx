@@ -16,9 +16,8 @@ function Landing() {
       <ProductHowItWorks />
       <ProductCTA />
       <ProductSmokingHero />
-      <AppFooter />
     </React.Fragment>
-    );
+  );
 }
 
 export default Landing;

@@ -19,10 +19,12 @@ const OrderSchema = new mongoose.Schema({
     default: Date.now
   },
   deliverydate: {
-    type: Date
+    type: Date,
+    default: new Date(new Date().getTime() + 7 * 3600 * 24 * 1000)
   },
   isDelivered: {
-    tpye: Boolean
+    type: Boolean,
+    default: false
   }
 });
 

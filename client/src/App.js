@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Landing from "./components/layout/Landing";
-import Navbar from "./components/layout/Navbar";
+
 import Register from "./components/auth/Register";
 import CompanyRegister from "./components/auth/CompanyRegister";
 import CompanyLogin from "./components/auth/CompanyLogin";
@@ -21,7 +20,6 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import RegisterTab from "./components/auth/tabview";
 import ProfilePage from "./components/dashboard/pages/ProfilePage"; //./pages/ProfilePage";
 import ProductPage from "./components/crop/cropDetails";
-import AddCrop from "./components/dashboard/pages/AddCrop";
 
 //Redux
 import { Provider } from "react-redux";
@@ -32,7 +30,8 @@ import setAuthToken from "./utils/setAuthToken";
 import Payment from "./components/payment/Payment";
 import AllCrops from "./components/allCrops/allCrops";
 import SingleCrop from "./components/allCrops/crop";
-import Cart from "./components/cart/cart";
+import AppFooter from "./components/modules/views/AppFooter";
+import Cart from './components/cart/cart'
 // import companyRegister from "./components/auth/companyRegister";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -71,21 +70,24 @@ const App = () => {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/crop/detail/:id" component={ProductPage} />
             <Route exact path="/crops-info" component={BlogPage} />
+            <Route exact path="/farmer-crops" component={Crops} />
             <Route exact path="/crops" component={AllCrops} />
             <Route exact path="/crops/:id" component={SingleCrop} />
-            <Route exact path="/farmer-crops" component={Crops} />
+
             <Route exact path="/farmer-crop/:id" component={Crop} />
             <Route exact path="/weather-report" component={WeatherPage} />
             {/* <Route exact path="/catalog/detail-crops" component={CatalogPage} />*/}
             {/* <Route path="/profile" component={ProfilePage} /> */}
-            <Route path="/add-crop" component={AddCrop} />
+            {/* <Route path="/add-crop" component={AddCrop} /> */}
             <Route path="/cart" component={Cart} />
+            <Route path="/profile" component={ProfilePage} />
 
             <Route exact path="/catalog" component={CatalogPage} />
             <Route exact path="/catalog/" component={DetailcropsPage} />
-            {/* <Route exact path="/payment" component={Payment} /> */}
+            <Route exact path="/payment" component={Payment} />
           </Switch>
         </main>
+        <AppFooter />
         {/* </div> */}
       </Router>
     </Provider>
