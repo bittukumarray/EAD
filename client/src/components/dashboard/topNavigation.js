@@ -173,6 +173,25 @@ class TopNavigation extends Component {
     );
 
     let dashboardLink = "";
+    let dashboardLink1 = "";
+    if (user && user.role === "farmer") {
+      dashboardLink1 = (
+        <MDBNavItem className="nav-item">
+          <MDBNavLink
+            to="/dashboard"
+            style={{
+              color: "#D5D8DC",
+              // fontWeight: "bold",
+              fontFamily: "rockwell",
+              fontSize: "17px"
+            }}
+          >
+            {" "}
+            AddCrops
+          </MDBNavLink>
+        </MDBNavItem>
+      );
+    }
     if (user && user.role === "farmer") {
       dashboardLink = (
         <MDBNavItem className="nav-item">
@@ -263,20 +282,9 @@ class TopNavigation extends Component {
                 Catalog
               </MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem className="nav-item">
-              <MDBNavLink
-                to="/sales"
-                style={{
-                  color: "#D5D8DC",
-                  // fontWeight: "bold",
-                  fontFamily: "rockwell",
-                  fontSize: "17px"
-                }}
-              >
-                AddCrops
-              </MDBNavLink>
-            </MDBNavItem>
+
             {dashboardLink}
+            {dashboardLink1}
 
             <MDBNavItem className="nav-item">
               <MDBNavLink
