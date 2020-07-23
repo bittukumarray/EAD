@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap'
+import React, { useState, useEffect, useRef } from 'react';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import axios from "axios";
 
-function PayWithPayPal (props) {
-    const { items, total } = props
+function PayWithPayPal(props) {
+    const { items, total, farmerId, cropId, quantity } = props
     const [paidFor, setPaidFor] = useState(false);
     const [error, setError] = useState(null);
     const paypalRef = useRef();
@@ -16,7 +17,7 @@ function PayWithPayPal (props) {
                             description: 'Laptop store checkout',
                             amount: {
                                 currency_code: 'INR',
-                                value: 10.00,
+                                value: total,
                             }
                         }]
                     });
@@ -26,6 +27,26 @@ function PayWithPayPal (props) {
                     setPaidFor(true);
                     console.log('ORDER', order);
                     alert('sucessful order is done call api from backend')
+                    let body = {
+                        quantity: quantity,
+                        earnings: total,
+                        farmerId: farmerId,
+                        cropId: cropId,
+                        role: "genuser"
+                    }
+                    let header = {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "x-auth-token": localStorage.getItem("token")
+                        }
+                    }
+                    try {
+                        let Data = await axios.post("api/farmer/order-successful", body, header);
+                        console.log("data is Payment ", Data);
+                    } catch (e) {
+                        console.log("error is payment ", e);
+                    }
+
 
                 },
                 onError: err => {
@@ -53,7 +74,7 @@ function PayWithPayPal (props) {
             </div>
         )
     }
-    console.log("payment",items)
+    console.log("payment", items)
     return (
         <div className="helloo-1">
             <ListGroup>
