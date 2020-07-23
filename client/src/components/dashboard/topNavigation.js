@@ -8,60 +8,111 @@ import {
   MDBNavItem,
   MDBNavLink,
   MDBView,
-  MDBBtn,
+  MDBBtn
 } from "mdbreact";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./topNav.css";
 import { Link } from "react-router-dom";
-import {logout} from  '../../actions/auth'
+import { logout } from "../../actions/auth";
 
 class TopNavigation extends Component {
   state = {
-    collapse: false,
+    collapse: false
   };
 
   onClick = () => {
     this.setState({
-      collapse: !this.state.collapse,
+      collapse: !this.state.collapse
     });
   };
 
   toggle = () => {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
+      dropdownOpen: !this.state.dropdownOpen
     });
   };
 
-  onlogoutclick=()=>{
+  onlogoutclick = () => {
     this.props.logout();
     // this.props.history.push('/login');
 
     // console.log("logout")
-  }
+  };
   render() {
     // console.log(this.props.auth);
-    const { isAuthenticated,user } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
       <React.Fragment>
         {/* <MDBNavItem>
           <h4 style={{color:"white"}}>Farmer Name</h4>
         </MDBNavItem> */}
-        
+
         <MDBNavItem>
-            <li className="dropdown mt-3">
-              <p href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-                <span style={{color:"#009900",fontWeight:"bolder",fontFamily:"Courier"}}> 
-                  {this.state.name}Farmer Name
-                </span> 
-              <span className="caret" style={{backgroundColor:"green"}}></span></p>
-              <ul className="dropdown-menu" style={{background:"#3399ff"}}>
-                <li><Link to="/profile" style={{fontWeight:"bolder",fontFamily:"Courier",outline:"none"}}>Profile</Link></li>
-                <li><Link to="/dashboard" style={{fontWeight:"bolder",fontFamily:"Courier",outline:"none"}}>Dashboard</Link></li>
-                <li><Link href="/logout"  style={{color:"#ff3300",fontWeight:"bold",outline:"none"}} onClick={this.onlogoutclick}>Logout</Link></li>
-              </ul>
-            </li>
+          <li className="dropdown mt-3">
+            <p
+              href="#"
+              className="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span
+                style={{
+                  color: "0E0401",
+                  fontWeight: "bolder",
+                  fontFamily: "calibri"
+                }}
+              >
+                {this.state.name}Farmer Name
+              </span>
+              <span
+                className="caret"
+                style={{ backgroundColor: "black" }}
+              ></span>
+            </p>
+            <ul className="dropdown-menu" style={{ background: "#E5E8E8" }}>
+              <li>
+                <Link
+                  to="/profile"
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: "Courier",
+                    outline: "none"
+                  }}
+                >
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard"
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: "Courier",
+                    outline: "none"
+                  }}
+                >
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/logout"
+                  style={{
+                    color: "#A60819",
+                    fontWeight: "bold",
+                    outline: "none"
+                  }}
+                  onClick={this.onlogoutclick}
+                >
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </li>
         </MDBNavItem>
         <MDBNavItem>
           <span>&nbsp;</span>
@@ -105,22 +156,21 @@ class TopNavigation extends Component {
       </React.Fragment>
     );
 
-    let dashboardLink ="";
-    if(user && user.role==='farmer'){
+    let dashboardLink = "";
+    if (user && user.role === "farmer") {
       dashboardLink = (
         <MDBNavItem className="nav-item">
-        <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
-      </MDBNavItem>
-      )
-    }
-    else if (user && user.role ==="genuser"){
+          <MDBNavLink to="/dashboard"> Farmer Dashboard</MDBNavLink>
+        </MDBNavItem>
+      );
+    } else if (user && user.role === "genuser") {
       dashboardLink = (
         <MDBNavItem className="nav-item">
-        <MDBNavLink to="/user-dashboard"> User Dashboard</MDBNavLink>
-      </MDBNavItem>
-      )
+          <MDBNavLink to="/user-dashboard"> User Dashboard</MDBNavLink>
+        </MDBNavItem>
+      );
     }
-    console.log("user in topnav ", user)
+    console.log("user in topnav ", user);
 
     return (
       <MDBNavbar
@@ -141,14 +191,14 @@ class TopNavigation extends Component {
                   marginRight: "5rem",
                   color: "black",
                   fontWeight: "bolder",
-                  fontSize: "20px",
+                  fontSize: "20px"
                 }}
               >
                 Agventure
               </MDBNavLink>
             </MDBNavItem>
 
-            <MDBNavItem >
+            <MDBNavItem>
               <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="nav-item">
@@ -157,16 +207,15 @@ class TopNavigation extends Component {
             <MDBNavItem className="nav-item">
               <MDBNavLink to="/sales">Sales</MDBNavLink>
             </MDBNavItem>
-{dashboardLink}
+            {dashboardLink}
 
             <MDBNavItem className="nav-item">
               <MDBNavLink to="/weather-report"> Weather-Report</MDBNavLink>
             </MDBNavItem>
-                <MDBNavItem className="nav-item">
-          <MDBNavLink to="/payment">payment</MDBNavLink>
-          </MDBNavItem>
+            <MDBNavItem className="nav-item">
+              <MDBNavLink to="/payment">payment</MDBNavLink>
+            </MDBNavItem>
           </MDBNavbarNav>
-
 
           <MDBNavbarNav right>
             {/* <MDBNavItem
@@ -198,11 +247,11 @@ class TopNavigation extends Component {
 }
 TopNavigation.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 
-export default connect(mapStateToProps, {logout})(TopNavigation);
+export default connect(mapStateToProps, { logout })(TopNavigation);
