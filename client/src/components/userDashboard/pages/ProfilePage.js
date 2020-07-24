@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { registerFarmer } from "./../../../actions/auth";
 import { render } from "react-dom";
 import axios from "axios";
-import SideNavigation from "../../dashboard/sideNavigation";
+
 import Divider from "@material-ui/core/Divider";
+import SideNavigation from "./../../userDashboard/sideNavigation";
 class ProfilePage extends React.Component {
   constructor() {
     super();
