@@ -1,5 +1,4 @@
 const express = require("express");
-// import Crop from "./../../../../client/src/components/crop/Crop";
 
 const router = express.Router();
 const auth = require("../../../middleware/farmerAuth");

@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://aaquib123:aaquib123@ead-blv9z.mongodb.net/EAD_DB?retryWrites=true&w=majority",
+  "mongoURI": "mongodb+srv://aaquib123:aaquib123@ead-blv9z.mongodb.net/EAD_DB_NEW?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken"
 }
