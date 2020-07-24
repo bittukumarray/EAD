@@ -217,22 +217,25 @@ router.get("/farmer-crops/:id", async (req, res, next) => {
   }
 });
 
-router.get("/get-same-crops/:id", async (req, res, next) => {
+router.get("/get-same-crops/:id/:id2", async (req, res, next) => {
   try {
     let crop = req.params.id;
+    let farmerID = req.params.id2
     crop.toLowerCase();
     crops = await Crops.find({ name: { $regex: crop, $options: "i" } });
     let finalcrop = [];
     for (let i in crops) {
-      if (crops[i] > 0) {
+      if (crops[i].quantity > 0) {
         let dic = {};
         let farmerId = crops[i].farmer._id;
-        console.log(farmerId);
-        farm = await User.findById(farmerId);
-        // console.log(farm);
-        dic["crops"] = crops[i];
-        dic["farmer"] = farm;
-        finalcrop.push(dic);
+        if (farmerID != farmerId) {
+          console.log(farmerId);
+          farm = await User.findById(farmerId);
+          // console.log(farm);
+          dic["crops"] = crops[i];
+          dic["farmer"] = farm;
+          finalcrop.push(dic);
+        }
       }
     }
     return res.status(200).json({ finalcrop });
@@ -244,23 +247,27 @@ router.get("/get-same-crops/:id", async (req, res, next) => {
     });
   }
 });
-router.post("/suggested-crops-pooling", async (req, res, next) => {
+router.get("/suggested-crops-pooling/:id1/:id2/:id3", async (req, res, next) => {
   try {
-    console.log("wilson");
-    let cropId = req.body.id;
-    let quantity = req.body.quantity;
-
-    let crop = await Crops.findById(cropId);
-    let quan = crop.quantity;
-    let cropname = crop.name;
-    let remaining = quantity - quan;
-
-    newCrop = await Crops.find({
-      $and: [{ name: cropname }, { quantity: { $gt: remaining } }]
-    });
-    return res
-      .status(200)
-      .json({ Type: "Success", Message: "Fetched the crops", Crops: newCrop });
+    let crop = req.params.id1;
+    let farmerID = req.params.id2
+    let quantity=req.params.id3
+    crop.toLowerCase();
+    crops = await Crops.find({ name: { $regex: crop, $options: "i" }, quantity:{$gte:quantity} });
+    let finalcrop = [];
+    for (let i in crops) {
+        let dic = {};
+        let farmerId = crops[i].farmer._id;
+        if (farmerID != farmerId) {
+          console.log(farmerId);
+          farm = await User.findById(farmerId);
+          // console.log(farm);
+          dic["crops"] = crops[i];
+          dic["farmer"] = farm;
+          finalcrop.push(dic);
+      }
+    }
+    return res.status(200).json({ finalcrop });
   } catch (err) {
     return res.status(400).json({
       Type: "Failed",
@@ -269,49 +276,80 @@ router.post("/suggested-crops-pooling", async (req, res, next) => {
     });
   }
 });
+
 router.post("/order-successful", genAuth, async (req, res, next) => {
-  const quantity = req.body.quantity;
-  const earnings = req.body.earnings;
-  const farmerId = req.body.farmerId;
-  const cropId = req.body.cropId;
+  // console.log("req body is ", req.body);
+  const quantity1 = req.body.quantity.quantity1;
+  const earning1 = req.body.earning.earning1;
+  const farmerId1 = req.body.farmerId.farmerId1;
+  const cropId1 = req.body.cropId.cropId1;
+  const quantity2 = req.body.quantity.quantity2;
+  const earning2 = req.body.earning.earning2;
+  const farmerId2 = req.body.farmerId.farmerId2;
+  const cropId2 = req.body.cropId.cropId2;
   const userId = req.user.id;
 
   try {
-    let farmerData = await Farmer.findById(farmerId);
+    let farmerData1 = await Farmer.findById(farmerId1);
 
-    farmerData.totalEarnings += earnings;
-    farmerData.totalOrders += 1;
+    farmerData1.totalEarnings += earning1;
+    farmerData1.totalOrders += 1;
 
-    let cropData = await Crops.findById(cropId);
-    cropData.quantity -= quantity;
+    let cropData1 = await Crops.findById(cropId1);
+   
+    cropData1.quantity -= quantity1;
 
     let crop = [
       {
-        crop: cropData,
-        quantity: quantity
+        crop: cropData1,
+        quantity: quantity1
       }
     ];
+    let farmerData2 = await Farmer.findById(farmerId2);
+    if (farmerData2) {
+      farmerData2.totalEarnings += earning2;
+      farmerData2.totalOrders += 1;
+    }
+    let cropData2 = await Crops.findById(cropId2);
+    if (cropData2) {
+      cropData2.quantity -= quantity2;
+      crop.push({
+        crop: cropData2,
+        quantity: quantity2
+      })
+    }
+
+
     let orderData = new Order({
       user: userId,
       isDelivered: false,
       crops: crop,
       deliverydate: new Date(new Date().getTime() + 7 * 3600 * 24 * 1000)
     });
-
-    await farmerData.save();
-    await cropData.save();
+    if(farmerData1)
+    await farmerData1.save();
+    if(cropData1)
+    await cropData1.save();
+    if(farmerData2)
+    await farmerData2.save();
+    if(cropData2)
+    await cropData2.save();
+    if(orderData)
     await orderData.save();
-
+    // console.log("after that level")
     return res.json({
       msg: "success",
-      crop: cropData,
-      farmer: farmerData,
+      crop1: cropData1,
+      crop2: cropData2,
+      farmer1: farmerData1,
+      farmer2: farmerData2,
       order: orderData
     });
   } catch (e) {
+    console.log("error is ", e);
     return res
       .status(400)
-      .json({ msg: "failed", crop: null, farmer: null, order: null, err: e });
+      .json({ msg: "failed", crop1: null, crop2: null, farmer1: null, farmer2: null, order: null, err: e });
   }
 });
 

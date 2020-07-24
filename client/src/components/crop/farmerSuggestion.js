@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     backgroundColor: theme.palette.background.paper,
-    height: 150,
+    height: 200,
     width: 200,
   },
 }));
@@ -37,7 +37,7 @@ export default function AlignItemsList(props) {
       try {
         // console.log("Data is ", props);
         const data = await axios.get(
-          `/api/farmer/get-same-crops/${props.cropName}`
+          `/api/farmer/get-same-crops/${props.cropName}/${props.farmerId}`
         );
         setCropsData(data.data);
         console.log("Data is ", data);
@@ -76,6 +76,13 @@ export default function AlignItemsList(props) {
                               {element.farmer.totalOrders}{" "}
                             </span>{" "}
                             Customers have bought from him
+                          </Typography>
+                          <Typography>
+                            He has total
+                            <span style={{ color: "rgba(200,20,20,0.8)" }}>
+                      {" "}{element.crops.quantity}{" "}
+                            </span>{" "}
+                            Kg of this crop
                           </Typography>
                         </React.Fragment>
                       }
