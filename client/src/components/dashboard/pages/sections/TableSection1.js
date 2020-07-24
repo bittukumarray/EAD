@@ -19,7 +19,7 @@ class TableSection extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "api/farmer/get-orders-farmer";
+    const url = "/api/farmer/get-orders-farmer";
     const body = {
       role: "farmer",
     };
