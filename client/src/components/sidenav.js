@@ -39,7 +39,7 @@ const TopNavigation = () => {
             Pesticides
           </MDBListGroupItem>
         </NavLink>
-        <NavLink to="/deliverable" activeClassName="activeClass">
+        <NavLink to="/weather-report" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="chart-bar" className="mr-3" />
             Weather Report

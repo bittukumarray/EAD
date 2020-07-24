@@ -148,7 +148,6 @@ class CatalogPage extends Component {
                                         data-toggle="tooltip"
                                         data-placement="top"
                                         title="Add to Cart"
-                                        href="/crop/detail/"
                                       >
                                         <i
                                           style={{

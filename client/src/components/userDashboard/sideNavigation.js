@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/farmer-logo.png";
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from "mdbreact";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import "./sideNav.css";
 
@@ -21,7 +21,11 @@ const SideNavigation = () => {
         <img alt="MDB React Logo" className="img-fluid" src={logo} />
       </a>
       <MDBListGroup className="list-group-flush">
-        <NavLink exact={true} to="/user-dashboard" activeClassName="activeClass">
+        <NavLink
+          exact={true}
+          to="/user-dashboard"
+          activeClassName="activeClass"
+        >
           <MDBListGroupItem>
             <MDBIcon icon="chart-pie" className="mr-3" />
             Dashboard
@@ -31,6 +35,18 @@ const SideNavigation = () => {
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Profile
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/get-orders" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="user" className="mr-3" />
+            Orders
+          </MDBListGroupItem>
+        </NavLink>
+        <NavLink to="/get-cart" activeClassName="activeClass">
+          <MDBListGroupItem>
+            <MDBIcon icon="user" className="mr-3" />
+            Cart
           </MDBListGroupItem>
         </NavLink>
 

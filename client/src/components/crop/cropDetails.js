@@ -15,11 +15,20 @@ import ShopIcon from "@material-ui/icons/Shop";
 import { red } from "@material-ui/core/colors";
 import FarmerSuggestionList from "./farmerSuggestion";
 import SuggestionList from "./suggestion";
+import Input from '@material-ui/core/Input';
 
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import axios from "axios";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Divider from "@material-ui/core/Divider";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
+
 
 const useStylesSelect = makeStyles((theme) => ({
   formControl: {
@@ -28,6 +37,14 @@ const useStylesSelect = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  inline: {
+    display: "inline",
+  },
+  list: {
+    backgroundColor: theme.palette.background.paper,
+    height: 200,
+    width: 200,
   },
 }));
 
@@ -68,9 +85,52 @@ const ProductPage = (props) => {
 
   const [quantity, setQuantity] = React.useState(1);
 
+  const [value , setValue] = React.useState(null);
   const handleChange = (event) => {
+    console.log("evet is ", event.target.value)
     setQuantity(event.target.value);
   };
+
+
+  const [cropsData, setCropsData] = React.useState(null);
+
+  const onGetfarmers = async () => {
+    try {
+      const data = await axios.get(
+        `/api/farmer/suggested-crops-pooling/${props.crop.crop.name}/${props.crop.crop.farmer}/${poolingQuantity}`
+      );
+      setCropsData(data.data);
+      console.log("Data is ", data);
+    } catch (e) {
+      console.log("error in data is ", e);
+      setCropsData(null);
+    }
+  }
+
+
+  const [poolingQuantity, setPoolingQuantity] = React.useState(0)
+  const [earningPooling, setEarningPooling] = React.useState(0);
+  const [poolingprice, setPoolingprice] = React.useState(0);
+  const [poolingCropId, setPoolingCropId] = React.useState(null);
+  const [poolingFarmerId, setPoolingFarmerId]= React.useState(null);
+
+
+  const handleChangePooling = (event) => {
+    console.log("evet is ", cropsData.finalcrop[event.target.value])
+    setPoolingprice(cropsData.finalcrop[event.target.value].crops.price)
+    setEarningPooling(cropsData.finalcrop[event.target.value].crops.price*poolingQuantity);
+    setPoolingCropId(cropsData.finalcrop[event.target.value].crops._id);
+    setPoolingFarmerId(cropsData.finalcrop[event.target.value].crops.farmer);
+    setValue(event.target.value);
+  };
+
+
+  const PoolingQuantityHandle = (e) => {
+    if (e.target.value >= 0){
+      setEarningPooling(poolingprice*poolingQuantity)
+      setPoolingQuantity(parseInt(e.target.value));
+    }
+  }
 
   return (
     <Container>
@@ -188,6 +248,63 @@ const ProductPage = (props) => {
               </Select>
             </FormControl>
             <hr></hr>
+            <h3>Pooling Option</h3>
+            <hr></hr>
+            <p>Enter quantity for pooling</p>
+            <Input onChange={PoolingQuantityHandle} value={poolingQuantity} placeholder="Quanity for pooling" type="number" />
+            <hr></hr>
+            <Button variant="contained" onClick={onGetfarmers} color="primary">Get Farmers</Button>
+            <hr></hr>
+            <FormControl className={selectIn.formControl}>
+              <InputLabel id="demo-simple-select-label">Farmer</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={value}
+                onChange={handleChangePooling}
+              >
+                {cropsData
+                  ? cropsData.finalcrop.map((element, index) => {
+                   return <ListItem key={index} name={element} value={index} alignItems="flex-start" className={classes.list}>
+                    <ListItemAvatar>
+                      <Avatar alt="No Image" src={element.farmer.avatar} />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={element.farmer.name}
+                      secondary={
+                        <React.Fragment>
+                          <Typography
+                            component="span"
+                            variant="body2"
+                            className={classes.inline}
+                            color="textPrimary"
+                          >
+                            {element.crops.city}
+                          </Typography>
+                          <Typography>He has tatol of {" "}
+                          <span style={{ color: "rgba(200,20,20,0.8)" }}>
+                              {element.crops.quantity}{" "}
+                            </span>{" "} kg  <span style={{ color: "rgba(200,20,20,0.8)" }}>
+                              {element.crops.name}{" "}
+                            </span>{" "}and total {" "}
+                            <span style={{ color: "rgba(200,20,20,0.8)" }}>
+                              {element.farmer.totalOrders}{" "}
+                            </span>{" "}
+                            Customers have bought from him
+                            and He is selling at <span style={{ color: "rgba(200,20,20,0.8)" }}>
+                              {element.crops.price}{" "}per kg.
+                            </span>{" "}
+                          </Typography>
+                         
+                        </React.Fragment>
+                      }
+                    />
+                  </ListItem>
+
+                  }):null}
+              </Select>
+            </FormControl>
+            <hr></hr>
             <div>
               <Button>
                 <ShopIcon
@@ -202,11 +319,13 @@ const ProductPage = (props) => {
                         value: quantity * props.crop.crop.price,
                       },
                     ],
-                    total: quantity * props.crop.crop.price,
+                    total: quantity * props.crop.crop.price + earningPooling,
+                    earning:{earning1:quantity * props.crop.crop.price, earning2:earningPooling},
                     isCheckout: true,
-                    quantity: quantity,
-                    farmerId: props.crop.crop.farmer,
-                    cropId: props.crop.crop._id,
+                    checkoutList:[{name:props.crop.crop.name, value:quantity * props.crop.crop.price + earningPooling}],
+                    quantity: {quantity1:quantity, quantity2:poolingQuantity},
+                    farmerId: {farmerId1:props.crop.crop.farmer, farmerId2:poolingFarmerId},
+                    cropId: {cropId1:props.crop.crop._id, cropId2:poolingCropId}
                   }}
                 >
                   Buy Now
@@ -251,6 +370,7 @@ const ProductPage = (props) => {
               </div>
               <FarmerSuggestionList
                 cropName={props.crop.crop.name}
+                farmerId={props.crop.crop.farmer}
               ></FarmerSuggestionList>
             </Grid>
           ) : null}

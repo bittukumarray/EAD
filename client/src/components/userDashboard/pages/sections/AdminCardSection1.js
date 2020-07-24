@@ -3,47 +3,50 @@ import { MDBCard, MDBCardBody, MDBIcon, MDBRow, MDBCol } from "mdbreact";
 import axios from "axios";
 
 class AdminCardSection1 extends Component {
+  state = {
+    NoOfCartItems: 0,
+    NoOfOrders: 0,
+    error: false,
+    loading: true
+  };
 
-    state={
-      NoOfCartItems:0,
-      NoOfOrders:0,
-      error: false,
-      loading: true,
+  async componentDidMount() {
+    try {
+      const url = "/api/user/get-user-details";
+      const body = {
+        role: "genuser"
+      };
+      const res = await axios.post(url, body);
+      const data = await res.data;
+      console.log(data.details);
+      const { NoOfCartItems, NoOfOrders } = data.details;
+
+      this.setState({
+        NoOfCartItems: NoOfCartItems,
+        NoOfOrders: NoOfOrders,
+        loading: false
+      });
+    } catch {
+      this.setState({ error: true, loading: false });
     }
-
-    async componentDidMount(){
-      try{
-        const url = "/api/user/get-user-details";
-        const body = {
-          role:"genuser"
-        }
-        const res = await axios.post(url, body);
-        const data = await res.data;
-        console.log(data.details)
-        const{NoOfCartItems,NoOfOrders} = data.details;
-
-        this.setState({ NoOfCartItems: NoOfCartItems,NoOfOrders:NoOfOrders, loading: false });
-
-      }
-      catch{
-        this.setState({ error: true, loading: false });
-
-      }
-    }
+  }
 
   render() {
-    const{NoOfCartItems,NoOfOrders} = this.state;
+    const { NoOfCartItems, NoOfOrders } = this.state;
 
     return (
       <MDBRow className="mb-4">
         <MDBCol className="mb-r">
-          <MDBCard className="cascading-admin-card">
+          <MDBCard
+            className="cascading-admin-card"
+            style={{ width: "30%", float: "right" }}
+          >
             <div className="admin-up">
               <MDBIcon icon="money-bill-alt" className="default-color-dark" />
               <div className="data">
                 <p>Number of Item in cart </p>
                 <h4>
-    <strong>{NoOfCartItems}</strong>
+                  <strong>{NoOfCartItems}</strong>
                 </h4>
               </div>
             </div>
@@ -55,7 +58,7 @@ class AdminCardSection1 extends Component {
                   aria-valuenow="50"
                   className="progress-bar default-color-dark"
                   role="progressbar"
-                  style={{ width: "50%" }}
+                  style={{ width: "25%" }}
                 ></div>
               </div>
             </MDBCardBody>
@@ -68,7 +71,7 @@ class AdminCardSection1 extends Component {
               <div className="data">
                 <p>Total Orders</p>
                 <h4>
-                <strong>{NoOfOrders}</strong>
+                  <strong>{NoOfOrders}</strong>
                 </h4>
               </div>
             </div>
@@ -86,7 +89,7 @@ class AdminCardSection1 extends Component {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-{/*         
+        {/*         
         <MDBCol xl="3" md="6" className="mb-r">
           <MDBCard className="cascading-admin-card">
             <div className="admin-up">
@@ -139,7 +142,6 @@ class AdminCardSection1 extends Component {
         </MDBCol>
      
       */}
-     
       </MDBRow>
     );
   }
