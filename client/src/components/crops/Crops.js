@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import { getCrops } from "../../actions/crops";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import SideNavigation from "../dashboard/sideNavigation";
 
 class Crops extends React.Component {
   state = {
     crops: null,
     error: false,
-    loading: true,
+    loading: true
   };
 
   async componentDidMount() {
@@ -17,7 +18,7 @@ class Crops extends React.Component {
     try {
       const url = "/api/farmer/get-farmer-crops/";
       const body = {
-        role: "farmer",
+        role: "farmer"
       };
       const res = await axios.post(url, body);
       const data = await res.data;
@@ -61,18 +62,29 @@ class Crops extends React.Component {
     // if(user === null) return <div>Please Login</div>
     return (
       <Fragment>
+        <SideNavigation />
+        <div
+          className="card"
+          style={{
+            backgroundColor: "#eeeeee",
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "60px"
+          }}
+          className=" card h1-responsive font-weight-bolder text-center my-5"
+        >
+          Crops List
+        </div>
         <div class="row mt-5 ">
           <div class="col-md-3 "></div>
           <div class="col-md-5">
             <br></br>
-            <div style={{ textAlign: "center" }}>
-              <h1 style={{ color: "#3CB371", fontWeight: "bold" }}>Crops</h1>
-            </div>
           </div>
           <div class="col-md-4 "></div>
         </div>
         <div className="crops">
-          {crops.map((crop) => (
+          {crops.map(crop => (
             <div>
               {/* <div>{crop.quantiy}</div> */}
               <div class="row mt-3">
@@ -83,22 +95,52 @@ class Crops extends React.Component {
                     <div class="card-body">
                       <div class="row">
                         <div class="col-md-3-sm-3">
-                          <div class="profile-info-name"> Crop Name : </div>
-                          <div class="profile-info-value">
+                          <div
+                            class="profile-info-name"
+                            style={{
+                              fontFamily: "garamond",
+                              fontWeight: "bold"
+                            }}
+                          >
+                            {" "}
+                            Crop Name :{" "}
+                          </div>
+                          <div
+                            class="profile-info-value"
+                            style={{
+                              fontFamily: "garamond",
+                              fontWeight: "bold",
+                              fontSize: "20px"
+                            }}
+                          >
                             <span>{crop.name}</span>
                           </div>
                         </div>
                         <div class="col-md-3">
-                          <div class="profile-info-name"> Price : </div>
-                          <div class="profile-info-value">
+                          <div
+                            class="profile-info-name"
+                            style={{
+                              fontFamily: "garamond",
+                              fontWeight: "bold",
+                              fontSize: "20px"
+                            }}
+                          >
+                            {" "}
+                            Price :{" "}
+                          </div>
+                          <div
+                            class="profile-info-value"
+                            style={{
+                              fontFamily: "garamond",
+                              fontWeight: "bold",
+                              fontSize: "20px"
+                            }}
+                          >
                             <span>{crop.price}</span>
                           </div>
                         </div>
 
-                        <div
-                          style={{ textAlign: "center" }}
-                          class="col-md-5-sm-3"
-                        >
+                        <div class="col-md-5-sm-3">
                           <Link
                             to={`/farmer-crop/${crop._id}`}
                             className="btn btn-outline-secondary"
@@ -125,11 +167,11 @@ class Crops extends React.Component {
 
 Crops.propTypes = {
   getCrops: PropTypes.func.isRequired,
-  crop: PropTypes.object.isRequired,
+  crop: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   crop: state.crop,
-  user: state.auth.user,
+  user: state.auth.user
 });
 export default connect(mapStateToProps, { getCrops })(Crops);

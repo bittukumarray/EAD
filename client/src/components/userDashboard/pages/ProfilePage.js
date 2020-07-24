@@ -89,6 +89,7 @@ class ProfilePage extends React.Component {
                 value={name}
                 onChange={this.onChange}
                 className="form-control form-control-lg"
+                style={{ fontSize: "30px", color: "black" }}
               />
             </div>
           </label>
@@ -109,6 +110,7 @@ class ProfilePage extends React.Component {
                 disabled
                 id="inputLGEx"
                 className="form-control form-control-lg"
+                style={{ fontSize: "30px", color: "black" }}
               />
             </div>
           </label>
@@ -125,6 +127,7 @@ class ProfilePage extends React.Component {
                 id="inputLGEx"
                 onChange={this.onChange}
                 className="form-control form-control-lg"
+                style={{ fontSize: "30px", color: "black" }}
               />
             </div>
           </label>

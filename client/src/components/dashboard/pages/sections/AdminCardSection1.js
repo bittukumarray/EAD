@@ -3,38 +3,50 @@ import { MDBCard, MDBCardBody, MDBIcon, MDBRow, MDBCol } from "mdbreact";
 import axios from "axios";
 
 class AdminCardSection1 extends Component {
+  state = {
+    completedOrders: 0,
+    totalOrders: 0,
+    totalEarnings: 0,
+    totalCrops: 0,
+    error: false,
+    loading: true
+  };
 
-    state={
-      completedOrders:0,
-      totalOrders:0,
-      totalEarnings:0,
-      totalCrops:0,
-      error: false,
-      loading: true,
+  async componentDidMount() {
+    try {
+      const url = "/api/farmer/farmer-details";
+      const body = {
+        role: "farmer"
+      };
+      const res = await axios.post(url, body);
+      const data = await res.data;
+      console.log(data.details);
+      const {
+        completedOrders,
+        totalCrops,
+        totalEarnings,
+        totalOrders
+      } = data.details;
+
+      this.setState({
+        completedOrders: completedOrders,
+        totalOrders: totalOrders,
+        totalEarnings: totalEarnings,
+        totalCrops: totalCrops,
+        loading: false
+      });
+    } catch {
+      this.setState({ error: true, loading: false });
     }
-
-    async componentDidMount(){
-      try{
-        const url = "/api/farmer/farmer-details";
-        const body = {
-          role:"farmer"
-        }
-        const res = await axios.post(url, body);
-        const data = await res.data;
-        console.log(data.details)
-        const{completedOrders,totalCrops,totalEarnings,totalOrders} = data.details;
-
-        this.setState({ completedOrders: completedOrders,totalOrders:totalOrders,totalEarnings:totalEarnings,totalCrops:totalCrops, loading: false });
-
-      }
-      catch{
-        this.setState({ error: true, loading: false });
-
-      }
-    }
+  }
 
   render() {
-    const{completedOrders,totalCrops,totalEarnings,totalOrders} = this.state;
+    const {
+      completedOrders,
+      totalCrops,
+      totalEarnings,
+      totalOrders
+    } = this.state;
 
     return (
       <MDBRow className="mb-4">
@@ -45,7 +57,7 @@ class AdminCardSection1 extends Component {
               <div className="data">
                 <p>Total Crops</p>
                 <h4>
-    <strong>{totalCrops}</strong>
+                  <strong>{totalCrops}</strong>
                 </h4>
               </div>
             </div>
@@ -70,7 +82,7 @@ class AdminCardSection1 extends Component {
               <div className="data">
                 <p>Total Orders</p>
                 <h4>
-                <strong>{totalOrders}</strong>
+                  <strong>{totalOrders}</strong>
                 </h4>
               </div>
             </div>
@@ -95,7 +107,7 @@ class AdminCardSection1 extends Component {
               <div className="data">
                 <p>Order Completed</p>
                 <h4>
-                <strong>{completedOrders}</strong>
+                  <strong>{completedOrders}</strong>
                 </h4>
               </div>
             </div>
@@ -107,7 +119,7 @@ class AdminCardSection1 extends Component {
                   aria-valuenow="25"
                   className="progress-bar info-color-dark"
                   role="progressbar"
-                  style={{ width: "92%" }}
+                  style={{ width: "0%" }}
                 ></div>
               </div>
             </MDBCardBody>
@@ -120,7 +132,7 @@ class AdminCardSection1 extends Component {
               <div className="data">
                 <p>All earnings</p>
                 <h4>
-                <strong>{totalEarnings}</strong>
+                  <strong>{totalEarnings}</strong>
                 </h4>
               </div>
             </div>

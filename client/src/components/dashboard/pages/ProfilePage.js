@@ -88,6 +88,7 @@ class ProfilePage extends React.Component {
                 value={name}
                 onChange={this.onChange}
                 className="form-control form-control-lg"
+                style={{ fontSize: "30px", color: "black" }}
               />
             </div>
           </label>
@@ -108,6 +109,7 @@ class ProfilePage extends React.Component {
                 disabled
                 id="inputLGEx"
                 className="form-control form-control-lg"
+                style={{ fontSize: "30px", color: "black" }}
               />
             </div>
           </label>
@@ -122,12 +124,13 @@ class ProfilePage extends React.Component {
                 value={city}
                 onChange={this.onChange}
                 className="form-control form-control-lg"
+                style={{ fontSize: "30px", color: "black" }}
               />
             </div>
           </label>
         </div>
 
-        <button className="btn" type="submit">
+        <button className="btn btn-danger" type="submit">
           Submit
         </button>
       </form>
@@ -135,8 +138,33 @@ class ProfilePage extends React.Component {
     return (
       <div class="container py-2">
         <SideNavigation />
+        <div
+          className="card"
+          style={{
+            backgroundColor: "#eeeeee",
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "60px"
+          }}
+          className=" card h1-responsive font-weight-bolder text-center my-5"
+        >
+          Farmer Profile
+        </div>
 
-        {form_elemnt}
+        <div
+          className="card h1-responsive font-weight-bolder my-5"
+          style={{
+            backgroundColor: "#D5D8DC",
+
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "30px"
+          }}
+        >
+          {form_elemnt}
+        </div>
       </div>
     );
   }

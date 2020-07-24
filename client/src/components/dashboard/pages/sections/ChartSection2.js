@@ -5,8 +5,8 @@ import { Line, Doughnut } from "react-chartjs-2";
 class ChartSection2 extends Component {
   state = {
     dataLine: {
-      labels: [],
-    },
+      labels: []
+    }
   };
   componentWillReceiveProps(newprops) {
     const dataLine = {
@@ -20,6 +20,14 @@ class ChartSection2 extends Component {
             "#FDB45C",
             "#949FB1",
             "#4D5360",
+            "#226ACA",
+            "#117A3A",
+            "#691A0A",
+            "#701EAC ",
+            "#DC0A3A ",
+            "#299387 ",
+            "#060C72 ",
+            "#DE5DC2 "
           ],
           hoverBackgroundColor: [
             "#FF5A5E",
@@ -27,9 +35,17 @@ class ChartSection2 extends Component {
             "#FFC870",
             "#A8B3C5",
             "#616774",
-          ],
-        },
-      ],
+            "#226ACA",
+            "#117A3A",
+            "#691A0A",
+            "#701EAC ",
+            "#DC0A3A ",
+            "#299387 ",
+            "#060C72 ",
+            "#DE5DC2 "
+          ]
+        }
+      ]
     };
     this.setState({ dataLine });
   }

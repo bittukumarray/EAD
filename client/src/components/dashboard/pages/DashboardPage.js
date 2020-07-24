@@ -31,13 +31,13 @@ class DashboardPage extends React.Component {
   state = {
     labels: [],
     data: [],
-    crops: {},
+    crops: {}
   };
   async componentDidMount() {
     const config = {
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json"
+      }
     };
     const farmerid = this.props.auth.user._id;
 
@@ -69,24 +69,23 @@ class DashboardPage extends React.Component {
         </div>
         <div class="row mt-3">
           <div class="col-md-6">
-            <div style={{ marginTop: "1rem" }}>
-              <TableSection2 crops={crops} />
-              <TableSection1 />
-            </div>
+            <TableSection1 />
           </div>
           <div class="col-md-6">
-            <div style={{ marginTop: "1rem" }}>
-              <BarChart
-                heading={"Crops Quantity"}
-                labels={labels.slice(0, 5)}
-                data={data.slice(0, 5)}
-              />
-            </div>
+            <BarChart
+              heading={"Crops Quantity"}
+              labels={labels.slice(0, 5)}
+              data={data.slice(0, 5)}
+            />
           </div>
         </div>
 
         <div class="row mt-3">
-          <div class="col-md-10">
+          <div class="col-md-5">
+            {" "}
+            <TableSection2 crops={crops} />
+          </div>
+          <div class="col-md-7">
             <div>
               <ChartSection2
                 heading={"Crops Quantity"}
@@ -101,8 +100,8 @@ class DashboardPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, {})(DashboardPage);

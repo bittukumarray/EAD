@@ -9,7 +9,7 @@ import "./Cropdispay.css";
 
 class Crop extends React.Component {
   state = {
-    quantity: 1,
+    quantity: 1
   };
   componentDidMount() {
     this.props.getCrop(this.props.match.params.id);
@@ -77,92 +77,119 @@ class Crop extends React.Component {
       <div>loading</div>
     ) : (
       <Fragment>
-        <div class="row">
-          <div class="col-xs-12 col-sm-4 center mt-4 ml-5">
-            <span class="profile-picture">
-              <img
-                class="img-thumbnail"
-                alt=" Avatar"
-                id="avatar2"
-                src={crp.img}
-              />
-            </span>
+        <div class="container"></div>
+        <div
+          className="card"
+          style={{
+            backgroundColor: "#eeeeee",
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "60px"
+          }}
+          className=" card h1-responsive font-weight-bolder text-center my-5"
+        >
+          Crop Details
+        </div>
 
-            <div class="space space-4"></div>
-          </div>
+        <div
+          className="card h1-responsive font-weight-bolder my-5"
+          style={{
+            backgroundColor: "#D5D8DC",
 
-          <div class="col-xs-12 col-sm-7 mt-5">
-            <div class="profile-user-info">
-              <div class="profile-info-row">
-                <div class="profile-info-name"> Name </div>
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "25px"
+          }}
+        >
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 center mt-4 ml-5">
+              <span class="profile-picture">
+                <img
+                  class="img-thumbnail"
+                  alt=" Avatar"
+                  id="avatar2"
+                  src={crp.img}
+                />
+              </span>
 
-                <div class="profile-info-value">
-                  <span>{crp.name}</span>
-                </div>
-              </div>
+              <div class="space space-4"></div>
+            </div>
 
-              <div class="profile-info-row">
-                <div class="profile-info-name"> Farmer Name </div>
+            <div class="col-xs-12 col-sm-7 mt-5">
+              <div class="profile-user-info">
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> Name </div>
 
-                <div class="profile-info-value">
-                  <span>{crp.farmer_name}</span>
-                </div>
-              </div>
-
-              <div class="profile-info-row">
-                <div class="profile-info-name"> Quantity </div>
-
-                <div class="profile-info-value">
-                  <span>{crp.quantity}</span>
-                </div>
-              </div>
-
-              <div class="profile-info-row">
-                <div class="profile-info-name"> Price </div>
-
-                <div class="profile-info-value">
-                  <span>{crp.price}</span>
-                </div>
-              </div>
-
-              <div class="profile-info-row">
-                <div class="profile-info-name"> City </div>
-
-                <div class="profile-info-value">
-                  <i class="fa fa-map-marker light-orange bigger-110"></i>
-                  <span> {crp.city}</span>
-                  <span>India</span>
-                </div>
-              </div>
-
-              <div class="profile-info-row">
-                <div class="profile-info-name"> details </div>
-
-                <div class="profile-info-value">
-                  <span>{crp.details}</span>
+                  <div class="profile-info-value">
+                    <span>{crp.name}</span>
+                  </div>
                 </div>
 
-                {/* {user._id} */}
-                {/* { user._id === 'farmer' && {addToCart}}                                */}
-                {addToCart}
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> Farmer </div>
+
+                  <div class="profile-info-value">
+                    <span>{crp.farmer_name}</span>
+                  </div>
+                </div>
+
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> Quantity </div>
+
+                  <div class="profile-info-value">
+                    <span>{crp.quantity}</span>
+                  </div>
+                </div>
+
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> Price </div>
+
+                  <div class="profile-info-value">
+                    <span>{crp.price}</span>
+                  </div>
+                </div>
+
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> City </div>
+
+                  <div class="profile-info-value">
+                    <i class="fa fa-map-marker light-orange bigger-110"></i>
+                    <span> {crp.city}</span>
+                    <span>India</span>
+                  </div>
+                </div>
+
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> details </div>
+
+                  <div class="profile-info-value">
+                    <span>{crp.details}</span>
+                  </div>
+
+                  {/* {user._id} */}
+                  {/* { user._id === 'farmer' && {addToCart}}                                */}
+                  {addToCart}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="space-20"></div>
+          <div class="space-20"></div>
+        </div>
       </Fragment>
     );
   }
 }
 Crop.propTypes = {
   getCrop: PropTypes.func.isRequired,
-  crop: PropTypes.object.isRequired,
+  crop: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   crop: state.crop,
-  user: state.auth.user,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps, { getCrop })(Crop);
