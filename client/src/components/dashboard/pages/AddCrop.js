@@ -16,14 +16,14 @@ class ProfilePage extends React.Component {
       city: "",
       details: "",
       loading: false,
-      error: false
+      error: false,
     };
   }
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit = async e => {
+  onSubmit = async (e) => {
     e.preventDefault();
     console.log("submit  axios");
     try {
@@ -37,7 +37,7 @@ class ProfilePage extends React.Component {
         price: price,
         quantity: quantity,
         role: "farmer",
-        city: city
+        city: city,
       };
 
       const res = await axios.post(url, body);
@@ -59,120 +59,124 @@ class ProfilePage extends React.Component {
     // if (loading) return <div>Loading </div>;
     // if (error) return <div>Error Occured</div>;
     // console.log("this state", this.state);
-    if (true)
-      return (
-        <div>
-          <div
-            className="card"
-            style={{
-              backgroundColor: "#eeeeee",
-              color: "black",
-              fontFamily: "garamond",
-              fontWeight: "bolder",
-              fontSize: "60px"
-            }}
-            className=" card h1-responsive font-weight-bolder text-center my-5"
+    const form_element = (
+      <form onSubmit={this.onSubmit}>
+        <div class="form-group ">
+          <label
+          // class="col-lg-7"
+          // style={{ fontSize: "20px" }}
           >
-            Add Crop
-          </div>
-          <div class="container py-2">
-            <div class="row my-2 ml-5 mt-5">
-              <div className="col-lg-4 text-center"></div>
-              <div class="col-lg-8 mt-5"></div>
-              <div class="col-lg-8 order-lg-1 personal-info">
-                <form role="form" onSubmit={this.onSubmit}>
-                  <div class="form-group row">
-                    <label
-                      class="col-lg-3 col-form-label form-control-label"
-                      style={{ fontSize: "20px" }}
-                    >
-                      Name :{" "}
-                      <input
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={this.onChange}
-                      />
-                    </label>
-                  </div>
-                  <div class="form-group row">
-                    <label
-                      class="col-lg-3 col-form-label form-control-label"
-                      style={{ fontSize: "20px" }}
-                    >
-                      city :{" "}
-                      <input
-                        type="text"
-                        name="city"
-                        value={city}
-                        onChange={this.onChange}
-                      />
-                    </label>
-                  </div>
-                  <div class="form-group row">
-                    <label
-                      class="col-lg-3 col-form-label form-control-label"
-                      style={{ fontSize: "20px" }}
-                    >
-                      details :{" "}
-                      <input
-                        type="text"
-                        name="details"
-                        value={details}
-                        onChange={this.onChange}
-                      />
-                    </label>
-                  </div>{" "}
-                  <div class="form-group row">
-                    <label
-                      class="col-lg-3 col-form-label form-control-label"
-                      style={{ fontSize: "20px" }}
-                    >
-                      price :{" "}
-                      <input
-                        type="number"
-                        name="price"
-                        value={price}
-                        onChange={this.onChange}
-                      />
-                    </label>
-                  </div>{" "}
-                  <div class="form-group row">
-                    <label
-                      class="col-lg-3 col-form-label form-control-label"
-                      style={{ fontSize: "20px" }}
-                    >
-                      quantity :{" "}
-                      <input
-                        type="number"
-                        name="quantity"
-                        value={quantity}
-                        onChange={this.onChange}
-                      />
-                    </label>
-                  </div>
-                  <button type="submit">Submit</button>
-                </form>
-              </div>
-
-              <div class="col-lg-4 order-lg-0 text-center">
-                <img
-                  src="https://img.etimg.com/thumb/width-640,height-480,imgsize-120883,resizemode-1,msid-65900138/small-and-marginal-farmers-are-to-see-better-days-with-a-free-of-cost-farmer-to-farmer-rental-program-through-this-revolutionary-app-by-tafes-jfarm-services.jpg"
-                  class="mx-auto img-fluid rounded-circle"
-                  alt="Image ka kya krega"
-                  style={{ width: "280px" }}
-                />
-              </div>
+            Name :
+            <div class="md-form form-lg">
+              <input
+                type="text"
+                name="name"
+                value={name}
+                className="form-control form-control-lg"
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+              />
+              <small id="emailHelp" class="form-text text-muted">
+                Enter a name of the crop like tea, coffe, wheat
+              </small>
             </div>
-          </div>
+          </label>
         </div>
-      );
+        <div class="form-group ">
+          <label
+            class="col-lg-7"
+            // style={{ fontSize: "20px" }}
+          >
+            <div class="md-form form-lg">
+              city :{" "}
+              <input
+                type="text"
+                name="city"
+                value={city}
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+              />
+            </div>
+          </label>
+        </div>
+        <div class="form-group ">
+          <label
+            class="col-lg-7"
+            // style={{ fontSize: "20px" }}
+          >
+            <div class="md-form form-lg">
+              details :{" "}
+              <input
+                type="text"
+                name="details"
+                value={details}
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+              />
+            </div>
+          </label>
+        </div>{" "}
+        <div class="form-group ">
+          <label class="col">
+            <div class="md-form form-lg">
+              price :{" "}
+              <input
+                type="number"
+                name="price"
+                value={price}
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+              />
+            </div>
+          </label>
+        </div>{" "}
+        <div class="form-group ">
+          <label
+            class="col-lg-7"
+            // style={{ fontSize: "20px" }}
+          >
+            <div class="md-form form-lg">
+              quantity :{" "}
+              <input
+                type="number"
+                name="quantity"
+                value={quantity}
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+              />
+            </div>
+          </label>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    );
+    return (
+      <React.Fragment>
+        <div
+          className="card"
+          style={{
+            backgroundColor: "#eeeeee",
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "60px",
+          }}
+          className=" card h1-responsive font-weight-bolder text-center my-5"
+        >
+          Add Crop
+        </div>
+
+        <div class="container py-2">
+          <div class="row ">{form_element}</div>
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.auth.user
+    user: state.auth.user,
   };
 };
 
