@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { render } from "react-dom";
 import axios from "axios";
 import crop from "../../assets/crop.jpg";
+import Grid from "@material-ui/core/Grid";
+import SuggestedCrops from "./suggestedCrop";
 import {
   MDBRow,
   MDBCol,
@@ -43,77 +45,95 @@ class ProfilePage extends React.Component {
     if (loading) return <div>Loading </div>;
     if (error) return <div>Error Occured</div>;
     const element = (
-      <div className="container">
-        {cart.map(cartItem => (
-          <div key={cartItem.productId._id} class="col">
-            {/* <!--Card group--> */}
-            <div class="card-group">
-              {/* <!--Card--> */}
-              <div class="card card-personal mb-4">
-                {/* <!--Card image--> */}
-                <a href={`/crop/detail/${cartItem.productId._id}`}>
-                  <div class="view" style={{ backgroundColor: "grey" }}>
-                    <img class="card-img-bottom" src={crop} alt={crop}></img>
 
-                    {/* <!--Card footer--> */}
-                    <div class="card card-cascade card-ecommerce wider">
-                      <div class="card-footer ">
-                        <span class="float-left">
-                          <a data-toggle="tooltip" data-placement="top">
-                            <MDBIcon icon="map-marker-alt" />{" "}
-                            {cartItem.productId.city}
-                          </a>
-                        </span>
-                        <span class="float-right">
-                          <a
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="Add to Cart"
-                            href="/crop/detail/"
-                          >
-                            <i
-                              style={{ color: "rgba(234, 111,123)" }}
-                              class="fas fa-shopping-cart mr-3"
-                            ></i>
-                          </a>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={5}>
+          {cart.map(cartItem => (
+            <div key={cartItem.productId._id} class="col" >
+              {/* <!--Card group--> */}
+              <div class="card-group">
+                {/* <!--Card--> */}
+                <div class="card card-personal mb-4">
+                  {/* <!--Card image--> */}
+                  <a href={`/crop/detail/${cartItem.productId._id}`}>
+                    <div class="view" style={{ backgroundColor: "grey" }}>
+                      <img class="card-img-bottom" src={crop} alt={crop}></img>
 
-                          <a
-                            class="active"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="Added to Wishlist"
-                          >
-                            <i class="fas fa-heart"></i>
-                          </a>
+                      {/* <!--Card footer--> */}
+                      <div class="card card-cascade card-ecommerce wider">
+                        <div class="card-footer ">
+                          <span class="float-left">
+                            <a data-toggle="tooltip" data-placement="top">
+                              <MDBIcon icon="map-marker-alt" />{" "}
+                              {cartItem.productId.city}
+                            </a>
+                          </span>
+                          <span class="float-right">
+                            <a
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Add to Cart"
+                            >
+                              <i
+                                style={{ color: "rgba(234, 111,123)" }}
+                                class="fas fa-shopping-cart mr-3"
+                              ></i>
+                            </a>
+
+                            <a
+                              class="active"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Added to Wishlist"
+                            >
+                              <i class="fas fa-heart"></i>
+                            </a>
+                          </span>
+                        </div>
+                        <div class="card-footer ">
+                          <strong>
+                            <a
+                              href=""
+                              style={{
+                                marginRight: "1rem",
+                                fontSize: "20px"
+                              }}
+                            >
+                              {cartItem.productId.name}
+                            </a>
+                          </strong>
+                          <span style={{ fontSize: "17px" }}>
+                            Rs. {cartItem.productId.price}/kg
                         </span>
-                      </div>
-                      <div class="card-footer ">
-                        <strong>
-                          <a
-                            href=""
-                            style={{
-                              marginRight: "1rem",
-                              fontSize: "20px"
-                            }}
-                          >
-                            {cartItem.productId.name}
-                          </a>
-                        </strong>
-                        <span style={{ fontSize: "17px" }}>
-                          Rs. {cartItem.productId.price}/kg
-                        </span>
-                        <span className="float-right">
-                          <MDBIcon icon="cash-register" />
-                        </span>
+                          <span className="float-right">
+                            <MDBIcon icon="cash-register" />
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
             </div>
+          ))}
+        </Grid>
+        <Grid item xs={12} sm={3}></Grid>
+        <Grid item xs={12} sm={4}>
+          <div>
+            <h3
+              style={{
+                fontWeight: "bold",
+                textAlign: "center",
+                color: "rgba(200,10,20,0.8)",
+              }}
+            >
+              Suggested crops
+                </h3>
           </div>
-        ))}
-      </div>
+          <SuggestedCrops
+          ></SuggestedCrops>
+        </Grid>
+      </Grid>
     );
     console.log("state", cart);
     return (

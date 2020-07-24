@@ -331,11 +331,17 @@ router.post("/order-successful", genAuth, async (req, res, next) => {
       crops: crop,
       deliverydate: new Date(new Date().getTime() + 7 * 3600 * 24 * 1000),
     });
-    if (farmerData1) await farmerData1.save();
-    if (cropData1) await cropData1.save();
-    if (farmerData2) await farmerData2.save();
-    if (cropData2) await cropData2.save();
     if (orderData) await orderData.save();
+    if (farmerData1) {
+      farmerData1.orders.push(orderData)
+      await farmerData1.save();
+    }
+    if (cropData1) await cropData1.save();
+    if (farmerData2 && quantity2 > 0) {
+      farmerData2.orders.push(orderData)
+      await farmerData2.save();
+    }
+    if (cropData2) await cropData2.save();
     // console.log("after that level")
     return res.json({
       msg: "success",
@@ -358,5 +364,40 @@ router.post("/order-successful", genAuth, async (req, res, next) => {
     });
   }
 });
+
+
+router.post("/get-orders-farmer", auth, async (req, res, next) => {
+
+  try {
+    const FarmerData = await Farmer.findById(req.user.id);
+    return res.json({ "msg": "success", "farmer": FarmerData, "orders": FarmerData.orders });
+
+  } catch (e) {
+    return res.status(400).json({ "msg": "failed", "farmer": null, "orders": null })
+  }
+
+})
+
+
+
+router.post("/get-crops-suggested", genAuth, async (req, res, next) => {
+  try {
+    Crops.find()
+      .sort({ date: -1 })
+      .limit(5)
+      .exec(function (err, docs) {
+        if (!err) {
+          return res.json({ msg: "success", crops: docs });
+        } else {
+          return res.status(404).json({ msg: "failed", crops: [] });
+        }
+      });
+  } catch (e) {
+    console.log("error is ", e);
+    return res.status(500).json({ msg: "failed", crops: [] });
+  }
+});
+
+
 
 module.exports = router;

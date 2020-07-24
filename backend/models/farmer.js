@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Role = require("../helpers/roles");
 const User = require("./User");
-
+const Schema = mongoose.Schema;
 var options = { discriminatorKey: "farmer" };
 var FarmerSchema = User.discriminator(
   "farmer",
@@ -22,7 +22,14 @@ var FarmerSchema = User.discriminator(
       totalEarnings: {
         type: Number,
         required: false
-      }
+      },
+      orders: [
+        {
+          type: Object,
+          ref: "order",
+          require:true
+        },
+      ]
     },
     options
   )
