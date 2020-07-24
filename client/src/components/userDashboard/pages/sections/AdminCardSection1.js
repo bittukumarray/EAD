@@ -7,14 +7,14 @@ class AdminCardSection1 extends Component {
     NoOfCartItems: 0,
     NoOfOrders: 0,
     error: false,
-    loading: true
+    loading: true,
   };
 
   async componentDidMount() {
     try {
       const url = "/api/user/get-user-details";
       const body = {
-        role: "genuser"
+        role: "genuser",
       };
       const res = await axios.post(url, body);
       const data = await res.data;
@@ -24,7 +24,7 @@ class AdminCardSection1 extends Component {
       this.setState({
         NoOfCartItems: NoOfCartItems,
         NoOfOrders: NoOfOrders,
-        loading: false
+        loading: false,
       });
     } catch {
       this.setState({ error: true, loading: false });
@@ -36,17 +36,14 @@ class AdminCardSection1 extends Component {
 
     return (
       <MDBRow className="mb-4">
-        <MDBCol className="mb-r">
-          <MDBCard
-            className="cascading-admin-card"
-            style={{ width: "30%", float: "right" }}
-          >
+        <MDBCol xl="3" md="6" className="mb-r">
+          <MDBCard className="cascading-admin-card">
             <div className="admin-up">
-              <MDBIcon icon="money-bill-alt" className="default-color-dark" />
+              <MDBIcon icon="chart-line" className="warning-color-dark" />
               <div className="data">
-                <p>Number of Item in cart </p>
+                <p>Total Orders</p>
                 <h4>
-                  <strong>{NoOfCartItems}</strong>
+                  <strong>{NoOfOrders}</strong>
                 </h4>
               </div>
             </div>
@@ -55,8 +52,8 @@ class AdminCardSection1 extends Component {
                 <div
                   aria-valuemax="100"
                   aria-valuemin="0"
-                  aria-valuenow="50"
-                  className="progress-bar default-color-dark"
+                  aria-valuenow="25"
+                  className="progress-bar warning-color-dark"
                   role="progressbar"
                   style={{ width: "25%" }}
                 ></div>
@@ -69,9 +66,9 @@ class AdminCardSection1 extends Component {
             <div className="admin-up">
               <MDBIcon icon="chart-line" className="warning-color-dark" />
               <div className="data">
-                <p>Total Orders</p>
+                <p>Number of Item in cart </p>
                 <h4>
-                  <strong>{NoOfOrders}</strong>
+                  <strong>{NoOfCartItems}</strong>
                 </h4>
               </div>
             </div>
