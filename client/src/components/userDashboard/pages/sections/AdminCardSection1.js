@@ -37,7 +37,10 @@ class AdminCardSection1 extends Component {
     return (
       <MDBRow className="mb-4">
         <MDBCol className="mb-r">
-          <MDBCard className="cascading-admin-card">
+          <MDBCard
+            className="cascading-admin-card"
+            style={{ width: "30%", float: "right" }}
+          >
             <div className="admin-up">
               <MDBIcon icon="money-bill-alt" className="default-color-dark" />
               <div className="data">
@@ -55,7 +58,7 @@ class AdminCardSection1 extends Component {
                   aria-valuenow="50"
                   className="progress-bar default-color-dark"
                   role="progressbar"
-                  style={{ width: "50%" }}
+                  style={{ width: "25%" }}
                 ></div>
               </div>
             </MDBCardBody>
