@@ -72,7 +72,10 @@ class TopNavigation extends Component {
               ></span>
             </p>
             <ul className="dropdown-menu" style={{ background: "#E5E8E8" }}>
-              <li>
+
+              {user && user.role === "farmer" && (
+                <React.Fragment>
+                                <li>
                 <Link
                   to="/profile"
                   style={{
@@ -84,8 +87,6 @@ class TopNavigation extends Component {
                   Profile
                 </Link>
               </li>
-              {user && user.role === "farmer" && (
-                <React.Fragment>
                   <li>
                     <Link
                       to="/dashboard"
@@ -104,6 +105,20 @@ class TopNavigation extends Component {
               {user && user.role === "genuser" && (
                 <React.Fragment>
                   {" "}
+                  <li>
+                <Link
+                  to="/user-profile"
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: "Courier",
+                    outline: "none"
+                  }}
+                >
+                  Profile
+                </Link>
+              </li>
+              <div class="dropdown-divider"></div>
+
                   <li>
                     <Link
                       to="/user-dashboard"
@@ -147,19 +162,7 @@ class TopNavigation extends Component {
           </li>
         </MDBNavItem>
         <MDBNavItem>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
+
         </MDBNavItem>
       </React.Fragment>
     );
