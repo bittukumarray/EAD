@@ -29,7 +29,7 @@ router.post("/add-cart", auth, async (req, res, next) => {
       _id: crop,
       productId: crop,
       quantity: req.body.quantity,
-      farmerId: farmerData
+      farmerId: farmerData,
     };
     // console.log("cart item is ", cartItem);
     userData.cart.items.push(cartItem);
@@ -40,7 +40,7 @@ router.post("/add-cart", auth, async (req, res, next) => {
   } catch (e) {
     res.status(500).json({
       msg: "maybe you are missing some fields",
-      status: 0
+      status: 0,
     });
   }
 });
@@ -49,7 +49,7 @@ router.post("/order", auth, async (req, res, next) => {
   const { user, crops } = req.body;
   order = new Order({
     user,
-    crops
+    crops,
   });
   const data = await order.save();
   return res.status(201).json({ msg: "successful", order: data });
@@ -64,19 +64,25 @@ router.post("/get-orders", auth, async (req, res, next) => {
     for (let i in orders) {
       c = {};
       const order = await Order.findById(orders[i]);
+      // const cropdetails = await Crops.findById("5f1b2ff71a68d24dd433eb86");
+      const cropdetails = await Crops.findById(order.crops[0].crop);
       console.log(order);
       c["Crops"] = order.crops;
-      c["Order Date"] = order.orderdate;
-      c["Delivery Date"] = order.deliverydate;
+      c["OrderDate"] = order.orderdate;
+      c["DeliveryDate"] = order.deliverydate;
       c["isDelivered"] = order.isDelivered;
+      c["crop_details"] = cropdetails;
+      c["order_id"] = order._id;
+      // c["___id"] = order.crops;
       b.push(c);
     }
     console.log(b);
     if (!b.length == 0) {
       return res.status(200).json({
         Type: "Success",
+        success: true,
         Message: "Fetched the orders for the user",
-        crops: b
+        crops: b,
       });
     } else {
       return res
@@ -86,8 +92,9 @@ router.post("/get-orders", auth, async (req, res, next) => {
   } catch (err) {
     return res.status(400).json({
       Type: "Failed",
+      success: false,
       Message: "Cannot fetch the orders",
-      errors: err
+      errors: err,
     });
   }
 });
@@ -111,14 +118,14 @@ router.post("/update-user", auth, async (req, res, next) => {
     return res.status(200).json({
       success: true,
       Message: "Updated the User details",
-      User: UserObj
+      User: UserObj,
       // details: farmer
     });
   } catch (err) {
     return res.status(400).json({
       success: false,
       Message: "Cannot update the details",
-      errors: err
+      errors: err,
     });
   }
 });
@@ -138,14 +145,14 @@ router.post("/get-user-details", auth, async (req, res, next) => {
     return res.status(200).json({
       success: true,
       message: "Fetched the details successfully",
-      details: dic, 
-      user:gen
+      details: dic,
+      user: gen,
     });
   } catch (err) {
     return res.status(400).json({
       success: false,
       Message: "Cannot update the details",
-      errors: err
+      errors: err,
     });
   }
 });
