@@ -6,6 +6,7 @@ import axios from "axios";
 import crop from "../../assets/crop.jpg";
 import Grid from "@material-ui/core/Grid";
 import SuggestedCrops from "./suggestedCrop";
+import SideNavigation from "./../userDashboard/sideNavigation";
 import {
   MDBRow,
   MDBCol,
@@ -45,11 +46,10 @@ class ProfilePage extends React.Component {
     if (loading) return <div>Loading </div>;
     if (error) return <div>Error Occured</div>;
     const element = (
-
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
           {cart.map(cartItem => (
-            <div key={cartItem.productId._id} class="col" >
+            <div key={cartItem.productId._id} class="col">
               {/* <!--Card group--> */}
               <div class="card-group">
                 {/* <!--Card--> */}
@@ -104,7 +104,7 @@ class ProfilePage extends React.Component {
                           </strong>
                           <span style={{ fontSize: "17px" }}>
                             Rs. {cartItem.productId.price}/kg
-                        </span>
+                          </span>
                           <span className="float-right">
                             <MDBIcon icon="cash-register" />
                           </span>
@@ -124,20 +124,20 @@ class ProfilePage extends React.Component {
               style={{
                 fontWeight: "bold",
                 textAlign: "center",
-                color: "rgba(200,10,20,0.8)",
+                color: "rgba(200,10,20,0.8)"
               }}
             >
               Suggested crops
-                </h3>
+            </h3>
           </div>
-          <SuggestedCrops
-          ></SuggestedCrops>
+          <SuggestedCrops></SuggestedCrops>
         </Grid>
       </Grid>
     );
     console.log("state", cart);
     return (
       <div class="container">
+        <SideNavigation />
         <div
           className="card"
           style={{
