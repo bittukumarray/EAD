@@ -122,7 +122,7 @@ router.post("/update-user", auth, async (req, res, next) => {
     });
   }
 });
-router.get("/get-user-details", auth, async (req, res, next) => {
+router.post("/get-user-details", auth, async (req, res, next) => {
   try {
     var userId = req.user.id;
     var gen = await genUser.findById(userId);
@@ -135,13 +135,11 @@ router.get("/get-user-details", auth, async (req, res, next) => {
     dic["NoOfCartItems"] = gen.cart.items.length;
     dic["NoOfOrders"] = orders;
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        Message: "Fetched the details successfully",
-        Details: dic
-      });
+    return res.status(200).json({
+      success: true,
+      Message: "Fetched the details successfully",
+      Details: dic
+    });
   } catch (err) {
     return res.status(400).json({
       success: false,
