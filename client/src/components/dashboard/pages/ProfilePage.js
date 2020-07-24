@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { registerFarmer } from "./../../../actions/auth";
 import { render } from "react-dom";
 import axios from "axios";
+import SideNavigation from "../sideNavigation";
 
 class ProfilePage extends React.Component {
   constructor() {
@@ -13,14 +14,14 @@ class ProfilePage extends React.Component {
       city: "",
       email: "",
       loading: true,
-      error: false,
+      error: false
     };
   }
   async componentDidMount() {
     try {
       const url = "/api/farmer/farmer-details/";
       const body = {
-        role: "farmer",
+        role: "farmer"
       };
       const res = await axios.post(url, body);
       const data = await res.data;
@@ -31,17 +32,17 @@ class ProfilePage extends React.Component {
         email: farmer.email,
         name: farmer.name,
         city: farmer.city,
-        id: farmer._id,
+        id: farmer._id
       });
     } catch {
       this.setState({ error: true, loading: false });
     }
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit = async (e) => {
+  onSubmit = async e => {
     e.preventDefault();
     console.log("submit ");
 
@@ -52,7 +53,7 @@ class ProfilePage extends React.Component {
       const body = {
         role: "farmer",
         city: city,
-        name: name,
+        name: name
       };
       const res = await axios.post(url, body); //,body,
       // alert("Successfully changed");
@@ -133,23 +134,17 @@ class ProfilePage extends React.Component {
     );
     return (
       <div class="container py-2">
-        <div style={{ float: "right", zIndex: "100" }}>
-          <img
-            src="https://img.etimg.com/thumb/width-640,height-480,imgsize-120883,resizemode-1,msid-65900138/small-and-marginal-farmers-are-to-see-better-days-with-a-free-of-cost-farmer-to-farmer-rental-program-through-this-revolutionary-app-by-tafes-jfarm-services.jpg"
-            class="mx-auto img-fluid rounded-circle"
-            alt="Image ka kya krega"
-            style={{ width: "280px" }}
-          />
-        </div>
+        <SideNavigation />
+
         {form_elemnt}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.auth.user,
+    user: state.auth.user
   };
 };
 
