@@ -138,7 +138,8 @@ router.post("/get-user-details", auth, async (req, res, next) => {
     return res.status(200).json({
       success: true,
       Message: "Fetched the details successfully",
-      Details: dic
+      Details: dic, 
+      user:gen
     });
   } catch (err) {
     return res.status(400).json({
