@@ -8,7 +8,7 @@ import {
   MDBNavItem,
   MDBNavLink,
   MDBView,
-  MDBBtn
+  MDBBtn,
 } from "mdbreact";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -18,18 +18,18 @@ import { logout } from "../../actions/auth";
 
 class TopNavigation extends Component {
   state = {
-    collapse: false
+    collapse: false,
   };
 
   onClick = () => {
     this.setState({
-      collapse: !this.state.collapse
+      collapse: !this.state.collapse,
     });
   };
 
   toggle = () => {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
     });
   };
 
@@ -45,10 +45,6 @@ class TopNavigation extends Component {
 
     const authLinks = (
       <React.Fragment>
-        {/* <MDBNavItem>
-          <h4 style={{color:"white"}}>Farmer Name</h4>
-        </MDBNavItem> */}
-
         <MDBNavItem>
           <li className="dropdown mt-3">
             <p
@@ -63,10 +59,10 @@ class TopNavigation extends Component {
                 style={{
                   color: "0E0401",
                   fontWeight: "bold",
-                  fontFamily: "courier"
+                  fontFamily: "courier",
                 }}
               >
-                {this.state.name}Farmer Name
+                Account
               </span>
               <span
                 className="caret"
@@ -80,43 +76,60 @@ class TopNavigation extends Component {
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Courier",
-                    outline: "none"
+                    outline: "none",
                   }}
                 >
                   Profile
                 </Link>
               </li>
-              <li>
-                <Link
+              {user && user.role === 'farmer' && (
+                <React.Fragment>
+                  <li>
+                  <Link
                   to="/dashboard"
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Courier",
-                    outline: "none"
+                    outline: "none",
+                  }}
+                >
+                  Dashboard
+                </Link>
+                  </li>
+                </React.Fragment>
+              )}
+              
+              {  user && user.role === 'genuser' &&    (  <React.Fragment>   <li>
+                <Link
+                  to="/user-dashboard"
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: "Courier",
+                    outline: "none",
                   }}
                 >
                   Dashboard
                 </Link>
               </li>
-              <li>
+   <li>
                 <Link
                   to="/cart"
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Courier",
-                    outline: "none"
+                    outline: "none",
                   }}
                 >
                   My Cart
                 </Link>
-              </li>
+              </li></React.Fragment>)}
               <li>
                 <Link
                   href="/logout"
                   style={{
                     color: "#A60819",
                     fontWeight: "bold",
-                    outline: "none"
+                    outline: "none",
                   }}
                   onClick={this.onlogoutclick}
                 >
@@ -140,11 +153,6 @@ class TopNavigation extends Component {
           <span>&nbsp;</span>
           <span>&nbsp;</span>
           <span>&nbsp;</span>
-          {/* <Link href="/logout" target="_blank">
-            <button type="button" className="btn btn-info btn-md">
-              logout
-            </button>
-          </Link> */}
         </MDBNavItem>
       </React.Fragment>
     );
@@ -159,7 +167,7 @@ class TopNavigation extends Component {
               style={{
                 backgroundColor: "#D5D8DC",
                 color: "black",
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               Login
@@ -174,7 +182,7 @@ class TopNavigation extends Component {
               style={{
                 backgroundColor: "#D5D8DC",
                 color: "black",
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               signup
@@ -214,7 +222,7 @@ class TopNavigation extends Component {
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
-                fontSize: "17px"
+                fontSize: "17px",
               }}
             >
               Dashboard
@@ -227,7 +235,7 @@ class TopNavigation extends Component {
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
-                fontSize: "17px"
+                fontSize: "17px",
               }}
             >
               CropsInfo
@@ -241,7 +249,7 @@ class TopNavigation extends Component {
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
 
-                fontSize: "17px"
+                fontSize: "17px",
               }}
             >
               {" "}
@@ -260,7 +268,7 @@ class TopNavigation extends Component {
                 color: "#D5D8DC",
                 // fontWeight: "bold",
                 fontFamily: "rockwell",
-                fontSize: "17px"
+                fontSize: "17px",
               }}
             >
               {" "}
@@ -292,7 +300,7 @@ class TopNavigation extends Component {
                   color: "black",
                   fontWeight: "bold",
                   fontSize: "25px",
-                  fontFamily: "garamond"
+                  fontFamily: "garamond",
                 }}
               >
                 Agventure
@@ -306,7 +314,7 @@ class TopNavigation extends Component {
                   color: "#D5D8DC",
                   // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px"
+                  fontSize: "17px",
                 }}
               >
                 Home
@@ -319,7 +327,7 @@ class TopNavigation extends Component {
                   color: "#D5D8DC",
                   // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px"
+                  fontSize: "17px",
                 }}
               >
                 Catalog
@@ -335,7 +343,7 @@ class TopNavigation extends Component {
                   color: "#D5D8DC",
                   // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px"
+                  fontSize: "17px",
                 }}
               >
                 {" "}
@@ -374,11 +382,11 @@ class TopNavigation extends Component {
 }
 TopNavigation.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { logout })(TopNavigation);
