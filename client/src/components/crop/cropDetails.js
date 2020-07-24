@@ -248,6 +248,9 @@ const ProductPage = (props) => {
               </Select>
             </FormControl>
             <hr></hr>
+            <h3>Pooling Option</h3>
+            <hr></hr>
+            <p>Enter quantity for pooling</p>
             <Input onChange={PoolingQuantityHandle} value={poolingQuantity} placeholder="Quanity for pooling" type="number" />
             <hr></hr>
             <Button variant="contained" onClick={onGetfarmers} color="primary">Get Farmers</Button>
