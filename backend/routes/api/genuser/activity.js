@@ -122,5 +122,32 @@ router.post("/update-user", auth, async (req, res, next) => {
     });
   }
 });
+router.get("/get-user-details", auth, async (req, res, next) => {
+  try {
+    var userId = req.user.id;
+    var gen = await genUser.findById(userId);
+    var orders = await Order.find({ user: userId }).countDocuments();
 
+    dic = {};
+    dic["Name"] = gen.name;
+    dic["Email"] = gen.email;
+    dic["City"] = gen.city;
+    dic["NoOfCartItems"] = gen.cart.items.length;
+    dic["NoOfOrders"] = orders;
+
+    return res
+      .status(200)
+      .json({
+        success: true,
+        Message: "Fetched the details successfully",
+        Details: dic
+      });
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      Message: "Cannot update the details",
+      errors: err
+    });
+  }
+});
 module.exports = router;
