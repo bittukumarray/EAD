@@ -41,7 +41,9 @@ router.post("/add-crops", auth, async (req, res, next) => {
     const farmer = req.user.id;
     const farmer_obj = await Farmer.findById(req.user.id);
     const img =
-      "https://ccbucket-12345.s3.ap-south-1.amazonaws.com/" + name + ".jpeg";
+      "https://ccbucket-12345.s3.ap-south-1.amazonaws.com/" +
+      name.toLowerCase() +
+      ".jpeg";
     console.log(farmer_obj);
     const farmer_name = farmer_obj.name;
     // console.log(farmer_name1);
