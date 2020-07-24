@@ -55,8 +55,9 @@ class ProfilePage extends React.Component {
         name: name,
       };
       const res = await axios.post(url, body); //,body,
-      alert("Successfully changed");
-      this.props.history.push("/dashboard");
+      // alert("Successfully changed");
+      window.location.reload(false);
+      // this.props.history.push("/dashboard");
     } catch {
       alert("Error Occured , not able to add to cart ");
     }
@@ -91,7 +92,7 @@ class ProfilePage extends React.Component {
           </label>
         </div>
 
-        <div className="form-group row">
+        <div className="form-group ">
           <label
             className="col-lg-7"
             // style={{ fontSize: "20px" }}
@@ -110,7 +111,7 @@ class ProfilePage extends React.Component {
             </div>
           </label>
         </div>
-        <div className="form-group row">
+        <div className="form-group ">
           <label className="col-lg-7">
             city :{" "}
             <div class="md-form form-lg">
@@ -132,12 +133,14 @@ class ProfilePage extends React.Component {
     );
     return (
       <div class="container py-2">
-        <img
-          src="https://img.etimg.com/thumb/width-640,height-480,imgsize-120883,resizemode-1,msid-65900138/small-and-marginal-farmers-are-to-see-better-days-with-a-free-of-cost-farmer-to-farmer-rental-program-through-this-revolutionary-app-by-tafes-jfarm-services.jpg"
-          class="mx-auto img-fluid rounded-circle"
-          alt="Image ka kya krega"
-          style={{ width: "280px" }}
-        />
+        <div style={{ float: "right", zIndex: "100" }}>
+          <img
+            src="https://img.etimg.com/thumb/width-640,height-480,imgsize-120883,resizemode-1,msid-65900138/small-and-marginal-farmers-are-to-see-better-days-with-a-free-of-cost-farmer-to-farmer-rental-program-through-this-revolutionary-app-by-tafes-jfarm-services.jpg"
+            class="mx-auto img-fluid rounded-circle"
+            alt="Image ka kya krega"
+            style={{ width: "280px" }}
+          />
+        </div>
         {form_elemnt}
       </div>
     );
