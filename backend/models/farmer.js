@@ -13,14 +13,17 @@ var FarmerSchema = User.discriminator(
       },
       completedOrders: {
         type: Number,
+        default:0,
         required: false
       },
       totalOrders: {
         type: Number,
+        default:0,
         required: false
       },
       totalEarnings: {
         type: Number,
+        default:0,
         required: false
       },
       orders: [
