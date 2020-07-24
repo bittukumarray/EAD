@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const config = require("config");
-// let db = config.get("mongoURI");
+let db = config.get("mongoURI");
 
-const db = "mongodb://bittu:password@127.0.0.1:27017/EAD_DB?authSource=admin";
+// const db = "mongodb://bittu:password@127.0.0.1:27017/EAD_DB?authSource=admin";
 
 // console.log(url);
 // mongoose.connect(db);
@@ -12,7 +12,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
 
     console.log("Mongodb conneted");
