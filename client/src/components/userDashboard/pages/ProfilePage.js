@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { registerFarmer } from "./../../../actions/auth";
 import { render } from "react-dom";
 import axios from "axios";
-
+import SideNavigation from "../../dashboard/sideNavigation";
+import Divider from "@material-ui/core/Divider";
 class ProfilePage extends React.Component {
   constructor() {
     super();
@@ -13,14 +14,14 @@ class ProfilePage extends React.Component {
       city: "",
       email: "",
       loading: true,
-      error: false,
+      error: false
     };
   }
   async componentDidMount() {
     try {
       const url = "/api/user/get-user-details/";
       const body = {
-        role: "farmer",
+        role: "farmer"
       };
       const res = await axios.post(url, body);
       const data = await res.data;
@@ -31,17 +32,17 @@ class ProfilePage extends React.Component {
         email: user.email,
         name: user.name,
         city: user.city,
-        id: user._id,
+        id: user._id
       });
     } catch {
       this.setState({ error: true, loading: false });
     }
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit = async (e) => {
+  onSubmit = async e => {
     e.preventDefault();
     console.log("submit ");
 
@@ -52,7 +53,7 @@ class ProfilePage extends React.Component {
       const body = {
         role: "farmer",
         city: city,
-        name: name,
+        name: name
       };
       const res = await axios.post(url, body); //,body,
       // alert("Successfully changed");
@@ -91,7 +92,7 @@ class ProfilePage extends React.Component {
             </div>
           </label>
         </div>
-
+        <Divider />
         <div className="form-group ">
           <label
             className="col-lg-7"
@@ -111,6 +112,7 @@ class ProfilePage extends React.Component {
             </div>
           </label>
         </div>
+        <Divider />
         <div className="form-group ">
           <label className="col-lg-7">
             city :
@@ -126,31 +128,50 @@ class ProfilePage extends React.Component {
             </div>
           </label>
         </div>
-
-        <button className="btn" type="submit">
+        <Divider />
+        <button className="btn btn-danger" type="submit">
           Submit
         </button>
       </form>
     );
     return (
       <div class="container py-2">
-        <div style={{ float: "right", zIndex: "100" }}>
-          <img
-            src="https://img.etimg.com/thumb/width-640,height-480,imgsize-120883,resizemode-1,msid-65900138/small-and-marginal-farmers-are-to-see-better-days-with-a-free-of-cost-farmer-to-farmer-rental-program-through-this-revolutionary-app-by-tafes-jfarm-services.jpg"
-            class="mx-auto img-fluid rounded-circle"
-            alt="Image ka kya krega"
-            style={{ width: "280px" }}
-          />
+        <SideNavigation />
+        <div
+          className="card"
+          style={{
+            backgroundColor: "#eeeeee",
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "60px"
+          }}
+          className=" card h1-responsive font-weight-bolder text-center my-5"
+        >
+          User Profile
         </div>
-        <div>{form_elemnt}</div>
+
+        <div
+          className="card h1-responsive font-weight-bolder my-5"
+          style={{
+            backgroundColor: "#D5D8DC",
+
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "30px"
+          }}
+        >
+          {form_elemnt}
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.auth.user,
+    user: state.auth.user
   };
 };
 

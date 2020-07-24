@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/farmer-logo.png";
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from "mdbreact";
 import { NavLink, Link } from "react-router-dom";
-
+import Divider from "@material-ui/core/Divider";
 import "./sideNav.css";
 
 // const sidebarStyles = {
@@ -31,24 +31,32 @@ const SideNavigation = () => {
             Dashboard
           </MDBListGroupItem>
         </NavLink>
+        <Divider variant="inset" component="li" />
         <NavLink to="/user-profile" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Profile
           </MDBListGroupItem>
         </NavLink>
+        <Divider variant="inset" component="li" />
         <NavLink to="/get-orders" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Orders
           </MDBListGroupItem>
         </NavLink>
-        <NavLink to="/get-cart" activeClassName="activeClass">
+        <Divider variant="inset" component="li" />
+        <NavLink to="/cart" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Cart
           </MDBListGroupItem>
         </NavLink>
+        <Divider
+          style={{ backgroundColor: "black" }}
+          variant="inset"
+          component="li"
+        />
 
         {/* <Link to="/farmer-crops" activeClassName="activeClass">
           <MDBListGroupItem>
