@@ -37,13 +37,13 @@ const SideNavigation = () => {
             Profile
           </MDBListGroupItem>
         </NavLink>
-        <NavLink to="/user-profile" activeClassName="activeClass">
+        <NavLink to="/get-orders" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Orders
           </MDBListGroupItem>
         </NavLink>
-        <NavLink to="/user-profile" activeClassName="activeClass">
+        <NavLink to="/get-cart" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Cart
