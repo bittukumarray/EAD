@@ -52,11 +52,6 @@ const SideNavigation = () => {
             Cart
           </MDBListGroupItem>
         </NavLink>
-        <Divider
-          style={{ backgroundColor: "black" }}
-          variant="inset"
-          component="li"
-        />
 
         {/* <Link to="/farmer-crops" activeClassName="activeClass">
           <MDBListGroupItem>

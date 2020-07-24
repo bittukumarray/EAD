@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/farmer-logo.png";
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from "mdbreact";
-import { NavLink,Link } from "react-router-dom";
-
+import { NavLink, Link } from "react-router-dom";
+import Divider from "@material-ui/core/Divider";
 import "./sideNav.css";
 
 // const sidebarStyles = {
@@ -27,13 +27,14 @@ const SideNavigation = () => {
             Dashboard
           </MDBListGroupItem>
         </NavLink>
+        <Divider variant="inset" component="li" />
         <NavLink to="/profile" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
             Profile
           </MDBListGroupItem>
         </NavLink>
-
+        <Divider variant="inset" component="li" />
         <Link to="/farmer-crops" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />

@@ -72,21 +72,20 @@ class TopNavigation extends Component {
               ></span>
             </p>
             <ul className="dropdown-menu" style={{ background: "#E5E8E8" }}>
-
               {user && user.role === "farmer" && (
                 <React.Fragment>
-                                <li>
-                <Link
-                  to="/profile"
-                  style={{
-                    fontWeight: "bold",
-                    fontFamily: "Courier",
-                    outline: "none"
-                  }}
-                >
-                  Profile
-                </Link>
-              </li>
+                  <li>
+                    <Link
+                      to="/profile"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      Profile
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       to="/dashboard"
@@ -106,19 +105,17 @@ class TopNavigation extends Component {
                 <React.Fragment>
                   {" "}
                   <li>
-                <Link
-                  to="/user-profile"
-                  style={{
-                    fontWeight: "bold",
-                    fontFamily: "Courier",
-                    outline: "none"
-                  }}
-                >
-                  Profile
-                </Link>
-              </li>
-              <div class="dropdown-divider"></div>
-
+                    <Link
+                      to="/user-profile"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      Profile
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       to="/user-dashboard"
@@ -161,9 +158,7 @@ class TopNavigation extends Component {
             </ul>
           </li>
         </MDBNavItem>
-        <MDBNavItem>
-
-        </MDBNavItem>
+        <MDBNavItem></MDBNavItem>
       </React.Fragment>
     );
 
