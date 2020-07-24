@@ -64,7 +64,7 @@ class TopNavigation extends Component {
                   fontSize: "18px"
                 }}
               >
-                {this.state.name}Hello,Farmer Name
+                Hello,{user && user.name}
               </span>
               <span
                 className="caret"

@@ -41,12 +41,12 @@ const SideNavigation = () => {
           </MDBListGroupItem>
         </Link>
 
-        <Link to="/add-crop" activeClassName="activeClass">
+        {/* <Link to="/add-crop" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />
             Farmer Crops
           </MDBListGroupItem>
-        </Link>
+        </Link> */}
         {/* <NavLink to="/setting" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="map" className="mr-3" />
