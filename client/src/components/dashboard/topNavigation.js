@@ -45,10 +45,6 @@ class TopNavigation extends Component {
 
     const authLinks = (
       <React.Fragment>
-        {/* <MDBNavItem>
-          <h4 style={{color:"white"}}>Farmer Name</h4>
-        </MDBNavItem> */}
-
         <MDBNavItem>
           <li className="dropdown mt-3">
             <p
@@ -88,30 +84,52 @@ class TopNavigation extends Component {
                   Profile
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/dashboard"
-                  style={{
-                    fontWeight: "bold",
-                    fontFamily: "Courier",
-                    outline: "none"
-                  }}
-                >
-                  Dashboard
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/cart"
-                  style={{
-                    fontWeight: "bold",
-                    fontFamily: "Courier",
-                    outline: "none"
-                  }}
-                >
-                  My Cart
-                </Link>
-              </li>
+              {user && user.role === "farmer" && (
+                <React.Fragment>
+                  <li>
+                    <Link
+                      to="/dashboard"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                </React.Fragment>
+              )}
+
+              {user && user.role === "genuser" && (
+                <React.Fragment>
+                  {" "}
+                  <li>
+                    <Link
+                      to="/user-dashboard"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/cart"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      My Cart
+                    </Link>
+                  </li>
+                </React.Fragment>
+              )}
               <li>
                 <Link
                   href="/logout"
@@ -142,11 +160,6 @@ class TopNavigation extends Component {
           <span>&nbsp;</span>
           <span>&nbsp;</span>
           <span>&nbsp;</span>
-          {/* <Link href="/logout" target="_blank">
-            <button type="button" className="btn btn-info btn-md">
-              logout
-            </button>
-          </Link> */}
         </MDBNavItem>
       </React.Fragment>
     );
