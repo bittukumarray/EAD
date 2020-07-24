@@ -67,12 +67,12 @@ class DashboardPage extends React.Component {
           <AdminCardSection1 />
         </div>
         <div class="row mt-3">
-          <div class="col-md-6">
+          <div class="col-12">
             <div style={{ marginTop: "1rem" }}>
               <TableSection2 crops={crops} />
             </div>
           </div>
-          <div class="col-md-6">
+          {/* <div class="col-md-6">
             <div style={{ marginTop: "1rem" }}>
               <BarChart
                 heading={"Crops Quantity"}
@@ -80,7 +80,7 @@ class DashboardPage extends React.Component {
                 data={data}
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div class="row mt-3">

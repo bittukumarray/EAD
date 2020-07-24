@@ -5,6 +5,7 @@ import axios from "axios";
 import AdminCardSection1 from "./sections/AdminCardSection1";
 // import TableSection from "./sections/TableSection";
 import TableSection2 from "./sections/TableSection2";
+import TableSection1 from "./sections/TableSection1";
 // import BreadcrumSection from './sections/BreadcrumSection';
 // import ChartSection1 from "./sections/ChartSection1";
 import ChartSection2 from "./sections/ChartSection2";
@@ -70,14 +71,15 @@ class DashboardPage extends React.Component {
           <div class="col-md-6">
             <div style={{ marginTop: "1rem" }}>
               <TableSection2 crops={crops} />
+              <TableSection1 />
             </div>
           </div>
           <div class="col-md-6">
             <div style={{ marginTop: "1rem" }}>
               <BarChart
                 heading={"Crops Quantity"}
-                labels={labels}
-                data={data}
+                labels={labels.slice(0, 5)}
+                data={data.slice(0, 5)}
               />
             </div>
           </div>

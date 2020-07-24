@@ -19,15 +19,15 @@ class TableSection extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "/api/user/get-orders";
+    const url = "/api/farmer/get-orders-farmer";
     const body = {
       role: "farmer",
     };
     const res = await axios.post(url, body);
     const data = await res.data;
 
-    console.log("data loadin ", data.crops);
-    this.setState({ crops: data.crops, loading: false });
+    console.log("data loadin ", data.orders);
+    this.setState({ crops: data.orders, loading: false });
   }
   //   componentWillReceiveProps(newprops) {
   //     this.setState({ crops: newprops.crops });
@@ -42,9 +42,7 @@ class TableSection extends React.Component {
       item = this.state.crops.map((item, key) => (
         <tr>
           <th>{key + 1}</th>
-          <th>{item.order_id}</th>
-          <th>{item.crop_details.name}</th>
-
+          <th>{item._id}</th>
           <th>
             {item.isDelivered !== false ? (
               <div>Delivered</div>
@@ -52,7 +50,7 @@ class TableSection extends React.Component {
               <div>Not Delivered</div>
             )}
           </th>
-          <th>{item.DeliveryDate}</th>
+          <th>{item.deliverydate}</th>
         </tr>
       ));
     }
@@ -70,7 +68,6 @@ class TableSection extends React.Component {
                     <tr>
                       <th>#</th>
                       <th>Order Id</th>
-                      <th>Ordered Crop</th>
 
                       <th>Delivery status</th>
                       <th>Delivery Date</th>
