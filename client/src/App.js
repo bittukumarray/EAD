@@ -52,6 +52,7 @@ const App = () => {
         {/* <div className="flyout"> */}
         {/* <Navbar /> */}
         <Route exact path="/" component={Landing} />
+
         <TopNavigation />
         <main style={{ marginTop: "4rem" }}>
           <Alert />
