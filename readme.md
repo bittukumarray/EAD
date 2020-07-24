@@ -23,9 +23,7 @@
 
 1. `docker-compose up`
 
-> Now a postgres psql shell will appear. Execute the following queries in it
 
-> The postgres server is now ready to use.
 > Now install node js and npm
 
 `sudo apt update; sudo apt install node npm;`
