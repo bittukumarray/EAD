@@ -12,7 +12,7 @@ import {
   MDBMask,
   MDBIcon,
   MDBView,
-  MDBBtn,
+  MDBBtn
 } from "mdbreact";
 class ProfilePage extends React.Component {
   constructor() {
@@ -20,14 +20,14 @@ class ProfilePage extends React.Component {
     this.state = {
       cart: null,
       loading: true,
-      error: false,
+      error: false
     };
   }
   async componentDidMount() {
     try {
       const url = "/api/user/get-cart";
       const body = {
-        role: "genuser",
+        role: "genuser"
       };
       const res = await axios.post(url, body);
       const data = await res.data;
@@ -44,7 +44,7 @@ class ProfilePage extends React.Component {
     if (error) return <div>Error Occured</div>;
     const element = (
       <div className="container">
-        {cart.map((cartItem) => (
+        {cart.map(cartItem => (
           <div key={cartItem.productId._id} class="col">
             {/* <!--Card group--> */}
             <div class="card-group">
@@ -93,7 +93,7 @@ class ProfilePage extends React.Component {
                             href=""
                             style={{
                               marginRight: "1rem",
-                              fontSize: "20px",
+                              fontSize: "20px"
                             }}
                           >
                             {cartItem.productId.name}
@@ -116,13 +116,31 @@ class ProfilePage extends React.Component {
       </div>
     );
     console.log("state", cart);
-    return <div>{element}</div>;
+    return (
+      <div class="container">
+        <div
+          className="card"
+          style={{
+            marginTop: "5rem",
+            backgroundColor: "#eeeeee",
+            color: "black",
+            fontFamily: "garamond",
+            fontWeight: "bolder",
+            fontSize: "60px"
+          }}
+          className=" card h1-responsive font-weight-bolder text-center my-5"
+        >
+          Cart
+        </div>
+        {element}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.auth.user,
+    user: state.auth.user
   };
 };
 

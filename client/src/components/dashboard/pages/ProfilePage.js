@@ -78,7 +78,7 @@ class ProfilePage extends React.Component {
                 className="text-center font-weight-dark"
                 style={{ color: "#0099ff" }}
               >
-                User Profile111
+                User Profile
               </h2>
             </div>
             <div class="col-lg-8 mt-5"></div>

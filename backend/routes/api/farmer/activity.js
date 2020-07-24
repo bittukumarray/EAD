@@ -103,17 +103,17 @@ router.post("/update-farmer", auth, async (req, res, next) => {
 
     const { name, city } = req.body;
     const id = req.user.id;
-    var farmer = await User.findById(id);
-    console.log(farmer);
+    var UserObj = await User.findById(id);
+
     // var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
-    farmer.name = name;
-    farmer.city = city;
-    farmer.save();
+    UserObj.name = name;
+    UserObj.city = city;
+    UserObj.save();
     // });
     return res.status(200).json({
       success: true,
       Message: "Updated the farmer details",
-      farmer: farmer
+      farmer: UserObj
       // details: farmer
     });
   } catch (err) {

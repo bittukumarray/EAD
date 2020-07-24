@@ -29,7 +29,7 @@ router.post("/add-cart", auth, async (req, res, next) => {
       _id: crop,
       productId: crop,
       quantity: req.body.quantity,
-      farmerId: farmerData,
+      farmerId: farmerData
     };
     // console.log("cart item is ", cartItem);
     userData.cart.items.push(cartItem);
@@ -40,7 +40,7 @@ router.post("/add-cart", auth, async (req, res, next) => {
   } catch (e) {
     res.status(500).json({
       msg: "maybe you are missing some fields",
-      status: 0,
+      status: 0
     });
   }
 });
@@ -49,15 +49,15 @@ router.post("/order", auth, async (req, res, next) => {
   const { user, crops } = req.body;
   order = new Order({
     user,
-    crops,
+    crops
   });
   const data = await order.save();
   return res.status(201).json({ msg: "successful", order: data });
 });
 
-router.post("/get-orders", async (req, res, next) => {
+router.post("/get-orders", auth, async (req, res, next) => {
   try {
-    var userId = req.body.userId;
+    var userId = req.user.id;
     const orders = await Order.find({ user: userId });
     var c = {};
     var b = [];
@@ -76,7 +76,7 @@ router.post("/get-orders", async (req, res, next) => {
       return res.status(200).json({
         Type: "Success",
         Message: "Fetched the orders for the user",
-        crops: b,
+        crops: b
       });
     } else {
       return res
@@ -87,9 +87,66 @@ router.post("/get-orders", async (req, res, next) => {
     return res.status(400).json({
       Type: "Failed",
       Message: "Cannot fetch the orders",
-      errors: err,
+      errors: err
     });
   }
 });
+router.post("/update-user", auth, async (req, res, next) => {
+  // var farmer = await User.update(
+  //   { role: "farmer" },
+  //   { $set: { completedOrders: 0, totalOrders: 0, totalEarnings: 0 } }
+  // );
+  try {
+    console.log(req.body);
 
+    const { name, city } = req.body;
+    const id = req.user.id;
+    var UserObj = await genUser.findById(id);
+
+    // var farmer = await User.findOne({ _id: farm._id }, function (err, doc) {
+    UserObj.name = name;
+    UserObj.city = city;
+    UserObj.save();
+    // });
+    return res.status(200).json({
+      success: true,
+      Message: "Updated the User details",
+      User: UserObj
+      // details: farmer
+    });
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      Message: "Cannot update the details",
+      errors: err
+    });
+  }
+});
+router.post("/get-user-details", auth, async (req, res, next) => {
+  try {
+    var userId = req.user.id;
+    var gen = await genUser.findById(userId);
+    var orders = await Order.find({ user: userId }).countDocuments();
+
+    dic = {};
+    dic["Name"] = gen.name;
+    dic["Email"] = gen.email;
+    dic["City"] = gen.city;
+    dic["NoOfCartItems"] = gen.cart.items.length;
+    dic["NoOfOrders"] = orders;
+
+    return res.status(200).json({
+      success: true,
+      message: "Fetched the details successfully",
+      details: dic, 
+      user:gen
+    });
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      Message: "Cannot update the details",
+      errors: err
+    });
+  }
+});
 module.exports = router;

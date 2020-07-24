@@ -16,14 +16,14 @@ class ProfilePage extends React.Component {
       city: "",
       details: "",
       loading: false,
-      error: false,
+      error: false
     };
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit = async (e) => {
+  onSubmit = async e => {
     e.preventDefault();
     console.log("submit  axios");
     try {
@@ -37,7 +37,7 @@ class ProfilePage extends React.Component {
         price: price,
         quantity: quantity,
         role: "farmer",
-        city: city,
+        city: city
       };
 
       const res = await axios.post(url, body);
@@ -62,16 +62,22 @@ class ProfilePage extends React.Component {
     if (true)
       return (
         <div>
+          <div
+            className="card"
+            style={{
+              backgroundColor: "#eeeeee",
+              color: "black",
+              fontFamily: "garamond",
+              fontWeight: "bolder",
+              fontSize: "60px"
+            }}
+            className=" card h1-responsive font-weight-bolder text-center my-5"
+          >
+            Add Crop
+          </div>
           <div class="container py-2">
             <div class="row my-2 ml-5 mt-5">
-              <div className="col-lg-4 text-center">
-                <h2
-                  className="text-center font-weight-dark"
-                  style={{ color: "#0099ff" }}
-                >
-                  User Profile111
-                </h2>
-              </div>
+              <div className="col-lg-4 text-center"></div>
               <div class="col-lg-8 mt-5"></div>
               <div class="col-lg-8 order-lg-1 personal-info">
                 <form role="form" onSubmit={this.onSubmit}>
@@ -164,9 +170,9 @@ class ProfilePage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.auth.user,
+    user: state.auth.user
   };
 };
 

@@ -45,10 +45,6 @@ class TopNavigation extends Component {
 
     const authLinks = (
       <React.Fragment>
-        {/* <MDBNavItem>
-          <h4 style={{color:"white"}}>Farmer Name</h4>
-        </MDBNavItem> */}
-
         <MDBNavItem>
           <li className="dropdown mt-3">
             <p
@@ -61,12 +57,14 @@ class TopNavigation extends Component {
             >
               <span
                 style={{
-                  color: "0E0401",
-                  fontWeight: "bold",
-                  fontFamily: "courier"
+                  marginTop: "0.8rem",
+                  color: "#D5D8DC",
+                  // fontWeight: "bold",
+                  fontFamily: "rockwell",
+                  fontSize: "18px"
                 }}
               >
-                {this.state.name}Farmer Name
+                Hello,{user && user.name}
               </span>
               <span
                 className="caret"
@@ -74,7 +72,10 @@ class TopNavigation extends Component {
               ></span>
             </p>
             <ul className="dropdown-menu" style={{ background: "#E5E8E8" }}>
-              <li>
+
+              {user && user.role === "farmer" && (
+                <React.Fragment>
+                                <li>
                 <Link
                   to="/profile"
                   style={{
@@ -86,30 +87,64 @@ class TopNavigation extends Component {
                   Profile
                 </Link>
               </li>
-              <li>
+                  <li>
+                    <Link
+                      to="/dashboard"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                </React.Fragment>
+              )}
+
+              {user && user.role === "genuser" && (
+                <React.Fragment>
+                  {" "}
+                  <li>
                 <Link
-                  to="/dashboard"
+                  to="/user-profile"
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Courier",
                     outline: "none"
                   }}
                 >
-                  Dashboard
+                  Profile
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/cart"
-                  style={{
-                    fontWeight: "bold",
-                    fontFamily: "Courier",
-                    outline: "none"
-                  }}
-                >
-                  My Cart
-                </Link>
-              </li>
+              <div class="dropdown-divider"></div>
+
+                  <li>
+                    <Link
+                      to="/user-dashboard"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/cart"
+                      style={{
+                        fontWeight: "bold",
+                        fontFamily: "Courier",
+                        outline: "none"
+                      }}
+                    >
+                      My Cart
+                    </Link>
+                  </li>
+                </React.Fragment>
+              )}
               <li>
                 <Link
                   href="/logout"
@@ -127,24 +162,7 @@ class TopNavigation extends Component {
           </li>
         </MDBNavItem>
         <MDBNavItem>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          <span>&nbsp;</span>
-          {/* <Link href="/logout" target="_blank">
-            <button type="button" className="btn btn-info btn-md">
-              logout
-            </button>
-          </Link> */}
+
         </MDBNavItem>
       </React.Fragment>
     );
@@ -157,9 +175,11 @@ class TopNavigation extends Component {
               type="button"
               className="btn btn-md"
               style={{
-                backgroundColor: "#D5D8DC",
-                color: "black",
-                fontWeight: "bold"
+                borderRadius: "10%",
+                backgroundColor: "#DF1E3E",
+                color: "#D5D8DC",
+                fontWeight: "bold",
+                fontSize: "15px"
               }}
             >
               Login
@@ -172,9 +192,11 @@ class TopNavigation extends Component {
               type="button"
               className="btn btn-md"
               style={{
-                backgroundColor: "#D5D8DC",
-                color: "black",
-                fontWeight: "bold"
+                borderRadius: "10%",
+                backgroundColor: "#DF1E3E",
+                color: "#D5D8DC",
+                fontWeight: "bold",
+                fontSize: "15px"
               }}
             >
               signup
@@ -211,10 +233,11 @@ class TopNavigation extends Component {
             <MDBNavLink
               to="/dashboard"
               style={{
+                marginTop: "0.8rem",
                 color: "#D5D8DC",
-                // fontWeight: "bold",
+
                 fontFamily: "rockwell",
-                fontSize: "17px"
+                fontSize: "18px"
               }}
             >
               Dashboard
@@ -224,10 +247,11 @@ class TopNavigation extends Component {
             <MDBNavLink
               to="/crops-info"
               style={{
+                marginTop: "0.8rem",
                 color: "#D5D8DC",
-                // fontWeight: "bold",
+
                 fontFamily: "rockwell",
-                fontSize: "17px"
+                fontSize: "18px"
               }}
             >
               CropsInfo
@@ -237,11 +261,11 @@ class TopNavigation extends Component {
             <MDBNavLink
               to="/add-crop"
               style={{
+                marginTop: "0.8rem",
                 color: "#D5D8DC",
-                // fontWeight: "bold",
-                fontFamily: "rockwell",
 
-                fontSize: "17px"
+                fontFamily: "rockwell",
+                fontSize: "18px"
               }}
             >
               {" "}
@@ -257,10 +281,11 @@ class TopNavigation extends Component {
             <MDBNavLink
               to="/user-dashboard"
               style={{
+                marginTop: "0.8rem",
                 color: "#D5D8DC",
-                // fontWeight: "bold",
+
                 fontFamily: "rockwell",
-                fontSize: "17px"
+                fontSize: "18px"
               }}
             >
               {" "}
@@ -274,8 +299,8 @@ class TopNavigation extends Component {
 
     return (
       <MDBNavbar
-        style={{ height: "59px" }}
-        className="flexible-navbar border navbar-dark  teal lighten-1"
+        style={{ height: "59px", backgroundColor: "#DF1E3E  " }}
+        className="flexible-navbar border navbar-dark "
         light
         expand="md"
         fixed="top"
@@ -291,7 +316,7 @@ class TopNavigation extends Component {
                   marginRight: "5rem",
                   color: "black",
                   fontWeight: "bold",
-                  fontSize: "25px",
+                  fontSize: "35px",
                   fontFamily: "garamond"
                 }}
               >
@@ -303,10 +328,10 @@ class TopNavigation extends Component {
               <MDBNavLink
                 to="/"
                 style={{
+                  marginTop: "0.8rem",
                   color: "#D5D8DC",
-                  // fontWeight: "bold",
                   fontFamily: "rockwell",
-                  fontSize: "17px"
+                  fontSize: "18px"
                 }}
               >
                 Home
@@ -316,10 +341,11 @@ class TopNavigation extends Component {
               <MDBNavLink
                 to="/catalog"
                 style={{
+                  marginTop: "0.8rem",
                   color: "#D5D8DC",
-                  // fontWeight: "bold",
+
                   fontFamily: "rockwell",
-                  fontSize: "17px"
+                  fontSize: "18px"
                 }}
               >
                 Catalog
@@ -332,10 +358,11 @@ class TopNavigation extends Component {
               <MDBNavLink
                 to="/weather-report"
                 style={{
+                  marginTop: "0.8rem",
                   color: "#D5D8DC",
-                  // fontWeight: "bold",
+
                   fontFamily: "rockwell",
-                  fontSize: "17px"
+                  fontSize: "18px"
                 }}
               >
                 {" "}
@@ -345,26 +372,6 @@ class TopNavigation extends Component {
           </MDBNavbarNav>
 
           <MDBNavbarNav right>
-            {/* <MDBNavItem
-              style={{
-                marginTop: "0.8rem",
-                fontSize: "20px",
-                marginRight: "2rem",
-                fontWeight: "bolder",
-              }}
-            >
-              Hello, Wilson
-            </MDBNavItem>
-            <MDBNavItem
-              style={{
-                marginTop: "6px",
-                fontSize: "25px",
-                marginRight: "1rem",
-                fontWeight: "bolder",
-              }}
-            >
-              Logout
-            </MDBNavItem> */}
             {isAuthenticated ? authLinks : guestLinks}
           </MDBNavbarNav>
         </MDBCollapse>
