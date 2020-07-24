@@ -6,7 +6,7 @@ import SideNavigation from "./sideNavigation";
 
 import DashboardPage from "./pages/DashboardPage";
 import ProfilePage from "./pages/ProfilePage";
-
+import Cart from "../cart/cart";
 import "./index.css";
 
 class Dashboard extends React.Component {
@@ -25,7 +25,10 @@ class Dashboard extends React.Component {
               {/* Famer Side Nav */}
               <Route path="/user-dashboard" component={DashboardPage} />
               <Route path="/user-profile" component={ProfilePage} />
+              <Route path="/cart" component={Cart} />
+
               {/* <Route path="/farmer-crops" component={Crops} /> */}
+
               {/* <Route exact path="/farmer-crop/:id" component={Crop} /> */}
             </Switch>
           </main>
