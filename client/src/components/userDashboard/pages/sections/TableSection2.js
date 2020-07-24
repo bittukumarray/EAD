@@ -19,15 +19,19 @@ class TableSection extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "/api/user/get-orders";
-    const body = {
-      role: "farmer",
-    };
-    const res = await axios.post(url, body);
-    const data = await res.data;
+    try {
+      const url = "/api/user/get-orders";
+      const body = {
+        role: "farmer",
+      };
+      const res = await axios.post(url, body);
+      const data = await res.data;
 
-    console.log("data loadin ", data.crops);
-    this.setState({ crops: data.crops, loading: false });
+      console.log("data loadin ", data.crops);
+      this.setState({ crops: data.crops, loading: false });
+    } catch {
+      this.setState({ crops: [], loading: false });
+    }
   }
   //   componentWillReceiveProps(newprops) {
   //     this.setState({ crops: newprops.crops });

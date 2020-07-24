@@ -32,32 +32,32 @@ class DashboardPage extends React.Component {
     data: [],
     crops: {},
   };
-  async componentDidMount() {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const farmerid = this.props.auth.user._id;
+  // async componentDidMount() {
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+  //   const farmerid = this.props.auth.user._id;
 
-    const body = JSON.stringify({ farmer: farmerid });
-    // try
-    try {
-      const res = await axios.post("/api/farmer/pie-chart", body, config);
-      const labels = [];
-      const data = [];
-      const success = res.data.Type;
-      if (success === "Success") {
-        const { crops } = res.data;
+  //   const body = JSON.stringify({ farmer: farmerid });
+  //   // try
+  //   try {
+  //     const res = await axios.post("/api/farmer/pie-chart", body, config);
+  //     const labels = [];
+  //     const data = [];
+  //     const success = res.data.Type;
+  //     if (success === "Success") {
+  //       const { crops } = res.data;
 
-        for (const [key, value] of Object.entries(crops)) {
-          labels.push(value["crop"]);
-          data.push(value["quantity"]);
-        }
-        this.setState({ data, labels, crops });
-      }
-    } catch (err) {}
-  }
+  //       for (const [key, value] of Object.entries(crops)) {
+  //         labels.push(value["crop"]);
+  //         data.push(value["quantity"]);
+  //       }
+  //       this.setState({ data, labels, crops });
+  //     }
+  //   } catch (err) {}
+  // }
   render() {
     const { labels, data, crops } = this.state;
 
@@ -69,7 +69,7 @@ class DashboardPage extends React.Component {
         <div class="row mt-3">
           <div class="col-12">
             <div style={{ marginTop: "1rem" }}>
-              <TableSection2 crops={crops} />
+              <TableSection2 />
             </div>
           </div>
           {/* <div class="col-md-6">
@@ -82,7 +82,7 @@ class DashboardPage extends React.Component {
             </div>
           </div> */}
         </div>
-
+        {/* 
         <div class="row mt-3">
           <div class="col-md-10">
             <div>
@@ -93,7 +93,7 @@ class DashboardPage extends React.Component {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }
