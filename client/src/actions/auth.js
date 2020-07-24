@@ -9,14 +9,14 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
   GENERAL_REGISTER_SUCCESS,
-  GENERAL_REGISTER_FAIL
+  GENERAL_REGISTER_FAIL,
 } from "./types";
 
 import setAuthToken from "../utils/setAuthToken";
 
 //load user
 
-export const loadUser = () => async dispatch => {
+export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -25,15 +25,15 @@ export const loadUser = () => async dispatch => {
     const res = await axios.get("/api/check-user");
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
   }
 };
-export const loadCompanyUser = () => async dispatch => {
+export const loadCompanyUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -42,24 +42,24 @@ export const loadCompanyUser = () => async dispatch => {
     const res = await axios.get("/api/signup/company");
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
   }
 };
 
 //registration general user
 
-export const registerUser = ({ name, email, password }) => async dispatch => {
+export const registerUser = ({ name, email, password }) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
-  const role="genuser";
+  const role = "genuser";
   const body = JSON.stringify({ name, email, password, role });
 
   try {
@@ -67,32 +67,34 @@ export const registerUser = ({ name, email, password }) => async dispatch => {
 
     dispatch({
       type: GENERAL_REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
 
     dispatch({
-      type: GENERAL_REGISTER_FAIL
+      type: GENERAL_REGISTER_FAIL,
     });
   }
 };
 
 //register Farmer
 
-export const registerFarmer = ({ name, email, password }) => async dispatch => {
+export const registerFarmer = ({ name, email, password }) => async (
+  dispatch
+) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
-  let role="farmer"
+  let role = "farmer";
   const body = JSON.stringify({ name, email, password, role });
 
   try {
@@ -100,30 +102,30 @@ export const registerFarmer = ({ name, email, password }) => async dispatch => {
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
 
     dispatch({
-      type: REGISTER_FAIL
+      type: REGISTER_FAIL,
     });
   }
 };
 //
 //login genuser
 
-export const loginAllUser = (email, password) => async dispatch => {
+export const loginAllUser = (email, password) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const body = JSON.stringify({ email, password });
@@ -133,30 +135,30 @@ export const loginAllUser = (email, password) => async dispatch => {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
 
 //login Farmer
 
-export const loginFarmer = (email, password) => async dispatch => {
+export const loginFarmer = (email, password) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const body = JSON.stringify({ email, password });
@@ -166,34 +168,32 @@ export const loginFarmer = (email, password) => async dispatch => {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
 
 //login for company
 
-export const registerCompany1 = ({
-  name,
-  email,
-  password
-}) => async dispatch => {
+export const registerCompany1 = ({ name, email, password }) => async (
+  dispatch
+) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const body = JSON.stringify({ name, email, password });
@@ -204,33 +204,31 @@ export const registerCompany1 = ({
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
     dispatch({
-      type: REGISTER_FAIL
+      type: REGISTER_FAIL,
     });
   }
 };
 
 //register Farmer
 
-export const registerCompany = ({
-  name,
-  email,
-  password
-}) => async dispatch => {
+export const registerCompany = ({ name, email, password }) => async (
+  dispatch
+) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const body = JSON.stringify({ name, email, password });
@@ -240,55 +238,56 @@ export const registerCompany = ({
     console.log("register");
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
 
     dispatch({
-      type: REGISTER_FAIL
+      type: REGISTER_FAIL,
     });
   }
 };
 
-export const loginCompany = (email, password) => async dispatch => {
+export const loginCompany = (email, password) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   const body = JSON.stringify({ email, password });
   try {
     const res = await axios.post("/api/login/company", body, config);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => {
+      errors.forEach((error) => {
         dispatch(setAlert(error.msg, "danger"));
       });
     }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
 
 //logout
 
-export const logout = () => dispatch => {
+export const logout = (history) => (dispatch) => {
   dispatch({
-    type: LOGOUT
+    type: LOGOUT,
   });
+  window.location = "/login";
 };
