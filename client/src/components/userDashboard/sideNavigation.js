@@ -39,13 +39,6 @@ const SideNavigation = () => {
           </MDBListGroupItem>
         </NavLink>
         <Divider variant="inset" component="li" />
-        <NavLink to="/get-orders" activeClassName="activeClass">
-          <MDBListGroupItem>
-            <MDBIcon icon="user" className="mr-3" />
-            Orders
-          </MDBListGroupItem>
-        </NavLink>
-        <Divider variant="inset" component="li" />
         <NavLink to="/cart" activeClassName="activeClass">
           <MDBListGroupItem>
             <MDBIcon icon="user" className="mr-3" />
