@@ -63,10 +63,10 @@ class ProfilePage extends React.Component {
       <form onSubmit={this.onSubmit}>
         <div class="form-group ">
           <label
-          // class="col-lg-7"
-          // style={{ fontSize: "20px" }}
+            class="col-lg-7"
+            // style={{ fontSize: "20px" }}
           >
-            Name :
+            Crop Name :
             <div class="md-form form-lg">
               <input
                 type="text"
@@ -88,14 +88,57 @@ class ProfilePage extends React.Component {
             // style={{ fontSize: "20px" }}
           >
             <div class="md-form form-lg">
-              city :{" "}
+              Details :{" "}
               <input
                 type="text"
-                name="city"
-                value={city}
+                name="details"
+                value={details}
                 onChange={this.onChange}
                 style={{ width: "700px" }}
+                className="form-control form-control-lg"
               />
+              <small id="emailHelp" class="form-text text-muted">
+                Tell us about your crops
+              </small>
+            </div>
+          </label>
+        </div>{" "}
+        <div class="form-group ">
+          <label class="col">
+            <div class="md-form form-lg">
+              Price :{" "}
+              <input
+                type="number"
+                name="price"
+                value={price}
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+                className="form-control form-control-lg"
+              />
+              <small id="emailHelp" class="form-text text-muted">
+                Price of crop per unit
+              </small>
+            </div>
+          </label>
+        </div>{" "}
+        <div class="form-group ">
+          <label
+            class="col-lg-7"
+            // style={{ fontSize: "20px" }}
+          >
+            <div class="md-form form-lg">
+              Quantity :{" "}
+              <input
+                type="number"
+                name="quantity"
+                value={quantity}
+                onChange={this.onChange}
+                style={{ width: "700px" }}
+                className="form-control form-control-lg"
+              />
+              <small id="emailHelp" class="form-text text-muted">
+                Quantity in Kg
+              </small>
             </div>
           </label>
         </div>
@@ -105,45 +148,18 @@ class ProfilePage extends React.Component {
             // style={{ fontSize: "20px" }}
           >
             <div class="md-form form-lg">
-              details :{" "}
+              City :{" "}
               <input
                 type="text"
-                name="details"
-                value={details}
+                name="city"
+                value={city}
                 onChange={this.onChange}
                 style={{ width: "700px" }}
+                className="form-control form-control-lg"
               />
-            </div>
-          </label>
-        </div>{" "}
-        <div class="form-group ">
-          <label class="col">
-            <div class="md-form form-lg">
-              price :{" "}
-              <input
-                type="number"
-                name="price"
-                value={price}
-                onChange={this.onChange}
-                style={{ width: "700px" }}
-              />
-            </div>
-          </label>
-        </div>{" "}
-        <div class="form-group ">
-          <label
-            class="col-lg-7"
-            // style={{ fontSize: "20px" }}
-          >
-            <div class="md-form form-lg">
-              quantity :{" "}
-              <input
-                type="number"
-                name="quantity"
-                value={quantity}
-                onChange={this.onChange}
-                style={{ width: "700px" }}
-              />
+              <small id="emailHelp" class="form-text text-muted">
+                Enter a name of the city
+              </small>
             </div>
           </label>
         </div>
