@@ -72,7 +72,7 @@ class ProfilePage extends React.Component {
     // console.log("this state", this.state);
     if (!user) return <div>Loading </div>;
     const form_elemnt = (
-      <form role="form" onSubmit={this.onSubmit} className="">
+      <form role="form" onSubmit={this.onSubmit}>
         <div className="form-group ">
           <label
             className="col-lg-7"
