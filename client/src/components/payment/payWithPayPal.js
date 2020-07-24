@@ -3,7 +3,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import axios from "axios";
 
 function PayWithPayPal(props) {
-    const { items, total, farmerId, cropId, quantity } = props
+    const { items, total, farmerId, cropId, quantity, earning } = props
     const [paidFor, setPaidFor] = useState(false);
     const [error, setError] = useState(null);
     const paypalRef = useRef();
@@ -26,10 +26,10 @@ function PayWithPayPal(props) {
                     const order = await actions.order.capture();
                     setPaidFor(true);
                     console.log('ORDER', order);
-                    alert('sucessful order is done call api from backend')
+                    // alert('sucessful order is done call api from backend')
                     let body = {
                         quantity: quantity,
-                        earnings: total,
+                        earning:earning,
                         farmerId: farmerId,
                         cropId: cropId,
                         role: "genuser"

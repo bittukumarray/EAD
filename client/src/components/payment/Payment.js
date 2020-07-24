@@ -9,11 +9,12 @@ class Payment extends Component {
   // }
 
     render() {
-        const {checkoutList, total, isCheckout, farmerId, quantity, cropId} = this.props.location;
+        const {checkoutList, total, isCheckout, farmerId, quantity, cropId, earning} = this.props.location;
 
             if(isCheckout) return (
              <PayWithPayPal 
               total = {total}
+              earning={earning}
               items  = {checkoutList}
               farmerId={farmerId}
               cropId={cropId}
