@@ -28,7 +28,7 @@ export default function AlignItemsList(props) {
     React.useEffect(() => {
         (async function anyNameFunction() {
             try {
-                // console.log("Data is ", props);
+                
                 let header = {
                     headers: {
                         "Content-Type": "application/json",
