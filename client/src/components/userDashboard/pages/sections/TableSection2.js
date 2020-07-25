@@ -47,7 +47,7 @@ class TableSection extends React.Component {
         <tr>
           <th>{key + 1}</th>
           <th>{item.order_id}</th>
-          <th>{item.crop_details.name}</th>
+          <th>{item.crop_details ? item.crop_details.name : "rice"}</th>
 
           <th>
             {item.isDelivered !== false ? (
