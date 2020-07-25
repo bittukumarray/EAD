@@ -51,7 +51,7 @@ function PayWithPayPal(props) {
                     const order = await actions.order.capture();
                     setPaidFor(true);
                     console.log('ORDER', order);
-                    alert('sucessful order is done call api from backend')
+                    alert('Order is successful')
                     let body = {
                         quantity: quantity,
                         earning: earning,
