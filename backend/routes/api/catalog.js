@@ -101,7 +101,7 @@ router.post("/create-es-index", async (req, res, next) => {
               client.index(
                 {
                   index: cropIndex,
-                  body:{crop},
+                  body: { crop },
                 },
                 function (err, resp, status) {
                   console.log(resp);
@@ -129,76 +129,82 @@ router.post("/create-es-index", async (req, res, next) => {
 // });
 router.get("/es-search/city/:crop", async (req, res, next) => {
   const crop = req.params.crop;
-  
+
   try {
     //  const lal = "city"
     //  const valll = "d"
     //  const srch  = `${cropIndex}.${field}`
-     const val = `*${crop}*`
-     console.log("here")
+    const val = `*${crop}*`;
+    console.log("here");
 
-    client.search({  
-      index: cropIndex,
-      body: {
-        "query": {
-          "wildcard": {
-           "crop.city": val
-          }
-        }
-      }
-    },function (error, response,status) {
-        if (error){
-          console.log("search error: "+error)
-        }
-        else {
+    client.search(
+      {
+        index: cropIndex,
+        body: {
+          size: 10000,
+          query: {
+            wildcard: {
+              "crop.city.keyword": val,
+            },
+          },
+        },
+      },
+      function (error, response, status) {
+        if (error) {
+          console.log("search error: " + error);
+        } else {
           console.log("--- Response ---");
           console.log(response);
           console.log("--- Hits ---");
-          const data = []
-          response.hits.hits.forEach(function(hit){
-            data.push(hit['_source']['crop']);
-          })
-          res.status(200).json(data);        }
-    });
-
+          const data = [];
+          response.hits.hits.forEach(function (hit) {
+            data.push(hit["_source"]["crop"]);
+          });
+          res.status(200).json(data);
+        }
+      }
+    );
   } catch (e) {
     res.json({ success: false, message: "error occured", error: e });
   }
 });
 router.get("/es-search/name/:crop", async (req, res, next) => {
   const crop = req.params.crop;
-  
+
   try {
     //  const lal = "city"
     //  const valll = "d"
     //  const srch  = `${cropIndex}.${field}`
-     const val = `*${crop}*`
-     console.log("here")
+    const val = `*${crop}*`;
+    console.log("here");
 
-    client.search({  
-      index: cropIndex,
-      body: {
-        "query": {
-          "wildcard": {
-           "crop.name": val
-          }
-        }
-      }
-    },function (error, response,status) {
-        if (error){
-          console.log("search error: "+error)
-        }
-        else {
+    client.search(
+      {
+        index: cropIndex,
+        body: {
+          size: 10000,
+          query: {
+            wildcard: {
+              "crop.name": val,
+            },
+          },
+        },
+      },
+      function (error, response, status) {
+        if (error) {
+          console.log("search error: " + error);
+        } else {
           console.log("--- Response ---");
           console.log(response);
           console.log("--- Hits ---");
-          const data = []
-          response.hits.hits.forEach(function(hit){
-            data.push(hit['_source']['crop']);
-          })
-          res.status(200).json(data);        }
-    });
-
+          const data = [];
+          response.hits.hits.forEach(function (hit) {
+            data.push(hit["_source"]["crop"]);
+          });
+          res.status(200).json(data);
+        }
+      }
+    );
   } catch (e) {
     res.json({ success: false, message: "error occured", error: e });
   }
