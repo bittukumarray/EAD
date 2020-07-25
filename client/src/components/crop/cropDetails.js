@@ -291,71 +291,72 @@ const ProductPage = props => {
                 >
                   {cropsData
                     ? cropsData.finalcrop.map((element, index) => {
-                        return (
-                          <ListItem
-                            key={index}
-                            name={element}
-                            value={index}
-                            alignItems="flex-start"
-                            className={classes.list}
-                          >
-                            <ListItemAvatar>
-                              <Avatar
-                                alt="No Image"
-                                src={element.farmer.avatar}
-                              />
-                            </ListItemAvatar>
-                            <ListItemText
-                              primary={element.farmer.name}
-                              secondary={
-                                <React.Fragment>
-                                  <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
+                      return (
+                        <ListItem
+                          key={index}
+                          name={element}
+                          value={index}
+                          alignItems="flex-start"
+                          className={classes.list}
+                        >
+                          <ListItemAvatar>
+                            <Avatar
+                              alt="No Image"
+                              src={element.farmer.avatar}
+                            />
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={element.farmer.name}
+                            secondary={
+                              <React.Fragment>
+                                <Typography
+                                  component="span"
+                                  variant="body2"
+                                  className={classes.inline}
+                                  color="textPrimary"
+                                >
+                                  {element.crops.city}
+                                </Typography>
+                                <Typography>
+                                  He has total of{" "}
+                                  <span
+                                    style={{ color: "rgba(200,20,20,0.8)" }}
                                   >
-                                    {element.crops.city}
-                                  </Typography>
-                                  <Typography>
-                                    He has total of{" "}
-                                    <span
-                                      style={{ color: "rgba(200,20,20,0.8)" }}
-                                    >
-                                      {element.crops.quantity}{" "}
-                                    </span>{" "}
+                                    {element.crops.quantity}{" "}
+                                  </span>{" "}
                                     kg{" "}
-                                    <span
-                                      style={{ color: "rgba(200,20,20,0.8)" }}
-                                    >
-                                      {element.crops.name}{" "}
-                                    </span>{" "}
+                                  <span
+                                    style={{ color: "rgba(200,20,20,0.8)" }}
+                                  >
+                                    {element.crops.name}{" "}
+                                  </span>{" "}
                                     and total{" "}
-                                    <span
-                                      style={{ color: "rgba(200,20,20,0.8)" }}
-                                    >
-                                      {element.farmer.totalOrders}{" "}
-                                    </span>{" "}
+                                  <span
+                                    style={{ color: "rgba(200,20,20,0.8)" }}
+                                  >
+                                    {element.farmer.totalOrders}{" "}
+                                  </span>{" "}
                                     Customers have bought from him and He is
                                     selling at{" "}
-                                    <span
-                                      style={{ color: "rgba(200,20,20,0.8)" }}
-                                    >
-                                      {element.crops.price} per kg.
+                                  <span
+                                    style={{ color: "rgba(200,20,20,0.8)" }}
+                                  >
+                                    {element.crops.price} per kg.
                                     </span>{" "}
-                                  </Typography>
-                                </React.Fragment>
-                              }
-                            />
-                          </ListItem>
-                        );
-                      })
+                                </Typography>
+                              </React.Fragment>
+                            }
+                          />
+                        </ListItem>
+                      );
+                    })
                     : null}
                 </Select>
               </FormControl>
               <hr></hr>
               <div>
-                <Button>
+
+                {localStorage.getItem("token") ? <Button>
                   <ShopIcon
                     style={{ paddingRight: 15, color: red[500], fontSize: 40 }}
                   ></ShopIcon>
@@ -398,6 +399,19 @@ const ProductPage = props => {
                     Buy Now
                   </Link>
                 </Button>
+                  : <Button>
+                    <ShopIcon
+                      style={{ paddingRight: 15, color: red[500], fontSize: 40 }}
+                    ></ShopIcon>
+                    <a
+                      href="/login"
+                    >
+                      Buy Now
+                </a>
+                  </Button>
+
+                }
+
               </div>
               <hr></hr>
             </Grid>
@@ -436,10 +450,12 @@ const ProductPage = props => {
                 >
                   Suggested Farmers
                 </div>
+                <Grid item xs={12} sm={6}>
                 <FarmerSuggestionList
                   cropName={props.crop.crop.name}
                   farmerId={props.crop.crop.farmer}
                 ></FarmerSuggestionList>
+                </Grid>
               </Grid>
             ) : null}
           </Grid>

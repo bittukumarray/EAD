@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -50,7 +51,7 @@ function PayWithPayPal(props) {
                     const order = await actions.order.capture();
                     setPaidFor(true);
                     console.log('ORDER', order);
-                    // alert('sucessful order is done call api from backend')
+                    alert('sucessful order is done call api from backend')
                     let body = {
                         quantity: quantity,
                         earning: earning,
@@ -85,9 +86,10 @@ function PayWithPayPal(props) {
 
     if (paidFor) {
         return (
-            <div>
-                Thanks for making the purchase.
-            </div>
+            <Redirect to="user-dashboard"></Redirect>
+            // <div>
+            //     Thanks for making the purchase.
+            // </div>
         )
     }
 
