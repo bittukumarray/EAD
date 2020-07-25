@@ -420,7 +420,7 @@ const ProductPage = props => {
               </Grid>
             ) : null}
           </Grid>
-          <Grid>
+          <Grid container spacing={3}>
             {props.crop.crop ? (
               <Grid item xs={12} sm={12}>
                 <div
