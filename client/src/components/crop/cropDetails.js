@@ -434,7 +434,7 @@ const ProductPage = props => {
               </Grid>
             ) : null}
           </Grid>
-          <Grid>
+          <Grid container spacing={3}>
             {props.crop.crop ? (
               <Grid item xs={12} sm={12}>
                 <div
@@ -450,10 +450,12 @@ const ProductPage = props => {
                 >
                   Suggested Farmers
                 </div>
+                <Grid item xs={12} sm={6}>
                 <FarmerSuggestionList
                   cropName={props.crop.crop.name}
                   farmerId={props.crop.crop.farmer}
                 ></FarmerSuggestionList>
+                </Grid>
               </Grid>
             ) : null}
           </Grid>

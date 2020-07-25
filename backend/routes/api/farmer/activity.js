@@ -226,7 +226,11 @@ router.get("/get-same-crops/:id/:id2", async (req, res, next) => {
     crop.toLowerCase();
     crops = await Crops.find({ name: { $regex: crop, $options: "i" } });
     let finalcrop = [];
+    let j=0;
     for (let i in crops) {
+      if(j>=5){
+        break;
+      }
       if (crops[i].quantity > 0) {
         let dic = {};
         let farmerId = crops[i].farmer._id;
@@ -237,6 +241,7 @@ router.get("/get-same-crops/:id/:id2", async (req, res, next) => {
           dic["crops"] = crops[i];
           dic["farmer"] = farm;
           finalcrop.push(dic);
+          j+=1;
         }
       }
     }
